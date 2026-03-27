@@ -1,0 +1,219 @@
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/1200x/7d/28/e5/7d28e566d8ef7207e7e51b1913ff714d.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 10rem 0 8rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.125rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.searchWrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted-foreground);
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1.25rem 1rem 1.25rem 3.5rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.filterLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+}
+
+.categoryChips {
+    display: flex;
+    gap: 1rem;
+}
+
+.chip {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--border);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.chipActive {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.chip:hover:not(.chipActive) {
+    background: var(--muted);
+}
+
+.sortWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sortSelect {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    background: transparent;
+}
+
+/* Price Filter */
+.priceFilter {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.priceInputs {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.priceInput {
+    width: 120px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.875rem;
+    transition: border-color 0.3s ease;
+}
+
+.priceInput:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.priceInput::placeholder {
+    color: var(--muted-foreground);
+}
+
+.priceSeparator {
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+.clearPriceBtn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clearPriceBtn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.resultsInfo {
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 8rem;
+}
+
+.simpleFooter {
+    border-top: 1px solid var(--border);
+    padding: 4rem 0;
+    text-align: center;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 1024px) {
+    .filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .priceFilter {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .categoryChips {
+        flex-wrap: wrap;
+    }
+
+    .priceInputs {
+        flex-wrap: wrap;
+    }
+
+    .priceInput {
+        width: 100px;
+    }
+}

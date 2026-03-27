@@ -1,0 +1,222 @@
+.heroSection {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/1200x/ed/6c/8d/ed6c8d36ba19c30e22fdcf8bff484b7f.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 10rem 0 8rem;
+    text-align: center;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.heroSub {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+}
+
+/* Info Column */
+.infoCard {
+    background: #f9f9f9;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.infoCard h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.infoCard>p {
+    color: var(--muted-foreground);
+    margin-bottom: 2.5rem;
+}
+
+.infoItem {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.infoItem:last-child {
+    margin-bottom: 0;
+}
+
+.iconBox {
+    width: 48px;
+    height: 48px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+}
+
+.infoItem h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.infoItem p {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    line-height: 1.5;
+}
+
+/* Form Column */
+.form {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.form h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--foreground);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.submitBtn {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Success State */
+.successCard {
+    background: white;
+    padding: 4rem 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checkCircle {
+    width: 64px;
+    height: 64px;
+    background: #dcfce7;
+    color: #166534;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.successCard h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.successCard p {
+    color: var(--muted-foreground);
+    max-width: 400px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.infoBtn {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.infoBtn:hover {
+    background: #f9f9f9;
+    border-color: #000;
+}
+
+@media (max-width: 900px) {
+    .contactGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .infoColumn {
+        order: 2;
+    }
+}

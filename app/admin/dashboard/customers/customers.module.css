@@ -1,0 +1,426 @@
+.container {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+}
+
+.headerTitle h1 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.025em;
+}
+
+.headerTitle p {
+    color: var(--muted-foreground);
+    font-size: 0.9375rem;
+}
+
+.headerTools {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.searchWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 0 1rem;
+    width: 300px;
+}
+
+.searchWrapper svg {
+    color: var(--muted-foreground);
+    position: absolute;
+    left: 12px;
+}
+
+.searchInput {
+    background: transparent;
+    border: none;
+    padding: 0.625rem 0.5rem 0.625rem 2rem;
+    font-size: 0.875rem;
+    width: 100%;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.addBtn {
+    background: var(--primary);
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tableCard {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.table td {
+    padding: 1.25rem 1rem;
+    font-size: 0.9375rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.userCell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.userInfo h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.userInfo p {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    margin: 0;
+}
+
+.roleBadge {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.roleAdmin {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.roleAlumni {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.roleStudent {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.roleCustomer {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.actionBtn {
+    color: var(--muted-foreground);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.actionBtn:hover {
+    color: var(--primary);
+}
+
+/* Modal Styles */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: scaleIn 0.2s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.modalHeader h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.modalClose {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.modalClose:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.modalBody {
+    padding: 1.5rem;
+}
+
+.formGroup {
+    margin-bottom: 1.25rem;
+}
+
+.formGroup:last-child {
+    margin-bottom: 0;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.formGroup input,
+.formGroup select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+    background: #f9fafb;
+}
+
+.modalCancelBtn {
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: white;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modalCancelBtn:hover {
+    background: #f3f4f6;
+}
+
+.modalSubmitBtn {
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 5rem 1rem 2rem 1rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .headerTools {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .searchWrapper {
+        width: 100%;
+    }
+
+    .addBtn {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Table to Card Transformation */
+    .table thead {
+        display: none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem;
+        background: #f9fafb;
+    }
+
+    .table td {
+        border: none;
+        padding: 0.6rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        text-align: left;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+    }
+
+    /* Special handling for user details cell */
+    .table td:first-child {
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 0.5rem;
+        padding-bottom: 1rem;
+        justify-content: flex-start;
+    }
+
+    .table td:first-child::before {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .userCell {
+        justify-content: flex-start;
+    }
+
+    .mobileHideIcon {
+        display: none;
+    }
+}

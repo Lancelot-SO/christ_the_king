@@ -1,0 +1,333 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.drawer {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    background: white;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerInfo h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.orderNumber {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.closeBtn {
+    background: #f3f4f6;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.closeBtn:hover {
+    background: #e5e7eb;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.statusSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+}
+
+.statusGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.dateGroup {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #111827;
+}
+
+.customerCard,
+.shippingCard,
+.summaryCard {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.infoRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.infoLabel {
+    color: #6b7280;
+    font-size: 0.875rem;
+    min-width: 60px;
+}
+
+.infoValue {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: #111827;
+}
+
+.notesBox {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 8px;
+}
+
+.notesLabel {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 0.25rem;
+}
+
+.notesBox p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #92400e;
+}
+
+.itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.itemCard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+    transition: border-color 0.2s;
+}
+
+.itemCard:hover {
+    border-color: #000;
+}
+
+.itemIcon {
+    width: 44px;
+    height: 44px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    flex-shrink: 0;
+}
+
+.itemInfo {
+    flex: 1;
+}
+
+.itemInfo h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+}
+
+.itemInfo p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.itemPricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.itemQty {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.itemPrice {
+    font-weight: 700;
+    font-size: 0.9375rem;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9375rem;
+    color: #6b7280;
+}
+
+.totalRow {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+    font-weight: 800;
+    font-size: 1.125rem;
+    color: #000;
+}
+
+.paymentMethod {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.methodBadge {
+    padding: 0.25rem 0.6rem;
+    background: #eff6ff;
+    color: #1e40af;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.statusBadge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+}
+
+/* Status Colors */
+.statusPending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.statusPaid {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.statusProcessing {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.statusShipped {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.statusDelivered {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.statusCancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeActionBtn {
+    padding: 0.75rem 2rem;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.closeActionBtn:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+    .drawer {
+        max-width: 100%;
+    }
+}
