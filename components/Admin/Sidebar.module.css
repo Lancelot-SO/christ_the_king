@@ -1,0 +1,141 @@
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: white;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 800;
+    font-family: var(--font-outfit);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    flex: 1;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: var(--muted-foreground);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.navItem:hover {
+    background: var(--muted);
+    color: var(--primary);
+}
+
+.active {
+    background: var(--primary);
+    color: white !important;
+}
+
+.footer {
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.viewWebsiteBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.viewWebsiteBtn:hover {
+    background: var(--muted);
+}
+
+.logoutBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: #ef4444;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+    background: #fef2f2;
+}
+
+.mobileToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 1001;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem;
+    color: var(--foreground);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.mobileToggle:hover {
+    transform: scale(1.05);
+    background: var(--muted);
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 99;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 280px;
+    }
+
+    .nav {
+        padding-top: 5rem;
+    }
+}
+
+@media (min-width: 1025px) {
+
+    .mobileToggle,
+    .backdrop {
+        display: none !important;
+    }
+}
