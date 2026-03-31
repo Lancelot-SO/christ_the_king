@@ -16,8 +16,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "OAA E-commerce | Achimota Centenary Official Store",
-  description: "The official OAA E-commerce platform for Achimota School's 100th-anniversary commemorative collection. Luxury apparel, accessories, and collectibles.",
+  title: "Christ the King | Official Store",
+  description: "The official e-commerce platform for Christ the King School's commemorative collection. Luxury apparel, accessories, and collectibles.",
 };
 
 export default function RootLayout({

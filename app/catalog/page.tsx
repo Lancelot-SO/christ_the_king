@@ -122,7 +122,7 @@ export default function Catalog() {
             <div className={styles.hero}>
                 <div className="container">
                     <h1>Catalog</h1>
-                    <p>Explore the full range of centenary merchandise.</p>
+                    <p>Explore the full range of Christ the King merchandise.</p>
                 </div>
             </div>
 

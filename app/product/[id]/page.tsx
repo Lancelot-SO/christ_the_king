@@ -167,7 +167,7 @@ const displayImage = activeImage || galleryImages[0] || fallbackImage;
 
                         <div className={styles.divider}></div>
 
-                        <p className={styles.description}>{product.description || "Official commemorative merchandise for the Achimota Senior High School 100th Anniversary Celebration."}</p>
+                        <p className={styles.description}>{product.description || "Official commemorative merchandise for Christ the King School."}</p>
                         {product.sku && <p className={styles.sku}><strong>SKU:</strong> {product.sku}</p>}
 
                         <div className={styles.options}>

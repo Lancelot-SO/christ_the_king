@@ -1,5 +1,5 @@
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/1200x/7d/28/e5/7d28e566d8ef7207e7e51b1913ff714d.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/ctk-catalog-bg.png');
     background-size: cover;
     background-position: center;
     color: white;

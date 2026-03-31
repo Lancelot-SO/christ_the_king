@@ -67,9 +67,9 @@ export default function SignupPage() {
         <div className={styles.container}>
             <div className={styles.signupCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="Achimota Logo" width={80} height={80} />
+                    <Image src="/logo.png" alt="Christ the King Logo" width={80} height={80} />
                     <h1>Create Account</h1>
-                    <p>Join the centenary celebration</p>
+                    <p>Join the Christ the King community</p>
                 </div>
 
                 <form onSubmit={handleSignup} className={styles.form}>

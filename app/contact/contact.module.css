@@ -1,5 +1,5 @@
 .heroSection {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/1200x/ed/6c/8d/ed6c8d36ba19c30e22fdcf8bff484b7f.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/ctk-contact-bg.png');
     background-size: cover;
     background-position: center;
     color: white;

@@ -7,8 +7,8 @@ export default function Footer() {
             <div className="container">
                 <div className={styles.footerGrid}>
                     <div className={styles.footerBrand}>
-                        <h3>OAA Store</h3>
-                        <p>The official marketplace for the Achimota Old Students Association Centenary.</p>
+                        <h3>Christ the King Store</h3>
+                        <p>The official marketplace for the Christ the King Old Students Association.</p>
                     </div>
                     <div className={styles.footerLinks}>
                         <div>
@@ -23,7 +23,7 @@ export default function Footer() {
                             <h4>Legacy</h4>
                             <ul>
                                 <li><Link href="/about">Our Story</Link></li>
-                                <li>Centenary Events</li>
+                                <li>School Events</li>
                                 <li>Foundation</li>
                             </ul>
                         </div>
@@ -38,7 +38,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className={styles.copyright}>
-                    <p>&copy; 2026 Old Achimotans Association. <span className="text-gold-footer">UT OMNES UNUM SINT</span></p>
+                    <p>&copy; 2026 Christ the King Old Students Association. <span className="text-gold-footer">CHRIST THE KING</span></p>
                 </div>
             </div>
         </footer>

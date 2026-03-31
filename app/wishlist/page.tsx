@@ -82,7 +82,7 @@ export default function WishlistPage() {
             </div>
 
             <footer className={styles.simpleFooter}>
-                <p>&copy; 2026 Achimota Old Students Association</p>
+                <p>&copy; 2026 Christ the King Old Students Association</p>
             </footer>
         </main>
     );
