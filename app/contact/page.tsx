@@ -29,7 +29,7 @@ export default function ContactPage() {
                 <div className="container">
                     <h1 className={styles.heroTitle}>Get in Touch</h1>
                     <p className={styles.heroSub}>
-                        We value your opinion. Whether you have a question about the centenary store, 
+                        We value your opinion. Whether you have a question about the school store,
                         suggestions for new merchandise, or just want to say hello, we're here to listen.
                     </p>
                 </div>
@@ -41,13 +41,13 @@ export default function ContactPage() {
                     <div className={styles.infoColumn}>
                         <div className={styles.infoCard}>
                             <h3>Contact Information</h3>
-                            <p>Reach out to the OAA Secretariat directly.</p>
-                            
+                            <p>Reach out to the Christ the King Secretariat directly.</p>
+
                             <div className={styles.infoItem}>
                                 <div className={styles.iconBox}><MapPin size={20} /></div>
                                 <div>
                                     <h4>Visit Us</h4>
-                                    <p>Achimota School Campus<br/>Accra, Ghana</p>
+                                    <p>Christ the King School Campus<br />Accra, Ghana</p>
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@ export default function ContactPage() {
                                 <div className={styles.iconBox}><Mail size={20} /></div>
                                 <div>
                                     <h4>Email Us</h4>
-                                    <p>store@achimota.edu.gh</p>
+                                    <p>store@christtheking.edu.gh</p>
                                 </div>
                             </div>
 
@@ -76,7 +76,7 @@ export default function ContactPage() {
                                 <div className={styles.checkCircle}>✓</div>
                                 <h2>Message Sent!</h2>
                                 <p>Thank you for reaching out. We appreciate your feedback and will get back to you shortly.</p>
-                                <button 
+                                <button
                                     className={styles.infoBtn}
                                     onClick={() => {
                                         setSubmitted(false);
@@ -89,34 +89,34 @@ export default function ContactPage() {
                         ) : (
                             <form onSubmit={handleSubmit} className={styles.form}>
                                 <h2>Send a Message</h2>
-                                
+
                                 <div className={styles.formGroup}>
                                     <label>Full Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         required
                                         value={formData.name}
-                                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         placeholder="Your Name"
                                     />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label>Email Address</label>
-                                    <input 
-                                        type="email" 
+                                    <input
+                                        type="email"
                                         required
                                         value={formData.email}
-                                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         placeholder="your@email.com"
                                     />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label>Subject</label>
-                                    <select 
+                                    <select
                                         value={formData.subject}
-                                        onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                     >
                                         <option value="inquiry">General Inquiry</option>
                                         <option value="order">Order Support</option>
@@ -127,11 +127,11 @@ export default function ContactPage() {
 
                                 <div className={styles.formGroup}>
                                     <label>Message</label>
-                                    <textarea 
+                                    <textarea
                                         required
                                         rows={6}
                                         value={formData.message}
-                                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                         placeholder="How can we help you?"
                                     ></textarea>
                                 </div>

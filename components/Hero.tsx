@@ -16,14 +16,14 @@ export default function Hero() {
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     className={styles.content}
                 >
-                    <span className={styles.subtitle}>ESTABLISHED 1927</span>
+                    <span className={styles.subtitle}>FAITH • EXCELLENCE • SERVICE</span>
                     <h1 className={styles.title}>
-                        <span className={styles.upper}>A Century of</span>
-                        <span className="premium-gold-text">Achimota Excellence</span>
+                        <span className={styles.upper}>A Legacy of</span>
+                        <span className="premium-gold-text">Christ the King Excellence</span>
                     </h1>
                     <p className={styles.description}>
-                        Celebrate 100 years of heritage, leadership, and unity.
-                        Official commemorative merchandise for the Akora community worldwide.
+                        Celebrate a legacy of faith, heritage, leadership, and unity.
+                        Official commemorative merchandise for the Christ the King alumni community worldwide.
                     </p>
                     <div className={styles.actions}>
                         <Link href="/catalog" className={styles.primaryBtn}>
@@ -42,7 +42,7 @@ export default function Hero() {
             </div>
 
             <div className={styles.motto}>
-                <span>UT OMNES UNUM SINT</span>
+                <span>CHRIST THE KING</span>
             </div>
         </section>
     );

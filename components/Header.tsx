@@ -56,15 +56,15 @@ export default function Header() {
 
                 <Link href="/" className={styles.logoContainer}>
                     <Image
-                        src="https://i.pinimg.com/1200x/c0/77/1f/c0771f0f67d5bffb2668c803b77dd868.jpg"
-                        alt="Achimota Centenary Logo"
+                        src="/logo.png"
+                        alt="Christ the King Logo"
                         width={60}
                         height={60}
                         className={styles.logo}
                     />
                     <div className={styles.logoText}>
-                        <span className={styles.schoolName}>ACHIMOTA</span>
-                        <span className={styles.centenary}>CENTENARY</span>
+                        <span className={styles.schoolName}>CHRIST THE KING</span>
+                        <span className={styles.centenary}>SCHOOL</span>
                     </div>
                 </Link>
 

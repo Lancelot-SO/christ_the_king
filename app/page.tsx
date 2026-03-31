@@ -25,13 +25,13 @@ export default function Home() {
               <span className="section-title">A CENTURY OF EXCELLENCE</span>
               <h2 className="section-heading">Heritage & Leadership</h2>
               <p className={styles.legacyText}>
-                Founded in 1927, Achimota School was established to provide the finest education in Africa.
-                As we approach our centenary, we celebrate the "Achimota Spirit"—a legacy of leadership,
-                unity, and excellence that continues to shape the future of our continent.
+                Founded as a beacon of faith and learning, Christ the King School was established to provide exceptional education in Ghana.
+                As we celebrate our legacy, we honor the "Christ the King Spirit"—a tradition of leadership,
+                unity, and excellence that continues to shape the future of our community.
               </p>
               <div className={styles.legacyStats}>
                 <div className={styles.statItem}>
-                  <span className={styles.statNumber}>1927</span>
+                  <span className={styles.statNumber}>Est.</span>
                   <span className={styles.statLabel}>Founded</span>
                 </div>
                 <div className={styles.statItem}>
@@ -40,7 +40,7 @@ export default function Home() {
                 </div>
                 <div className={styles.statItem}>
                   <span className={styles.statNumber}>50k+</span>
-                  <span className={styles.statLabel}>Akora Members</span>
+                  <span className={styles.statLabel}>Alumni</span>
                 </div>
               </div>
               <Link href="/about" className={styles.outlineBtn}>Explore Our Story</Link>
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="container">
           <div className={`${styles.newsletterCard} glass-morphism`}>
             <h2 className={styles.newsletterTitle}>Join the Celebration</h2>
-            <p className={styles.newsletterSub}>Subscribe for exclusive access to centenary events and limited-edition releases.</p>
+            <p className={styles.newsletterSub}>Subscribe for exclusive access to school events and limited-edition releases.</p>
             <form className={styles.newsletterForm}>
               <input type="email" placeholder="Email Address" className={styles.input} />
               <button type="submit" className={styles.submitBtn}>Subscribe</button>

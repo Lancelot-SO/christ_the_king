@@ -1,6 +1,6 @@
 .hero {
     padding: 12rem 0 6rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/736x/b9/a4/43/b9a4435887987c89f61fb96964db89e3.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/ctk-about-bg.png');
     background-size: cover;
     background-position: center;
     color: white;

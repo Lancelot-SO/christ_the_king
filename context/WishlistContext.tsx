@@ -19,7 +19,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     // Load wishlist from localStorage on mount
     useEffect(() => {
         setMounted(true);
-        const savedWishlist = localStorage.getItem("aosa-wishlist");
+        const savedWishlist = localStorage.getItem("ctk-wishlist");
         if (savedWishlist) {
             try {
                 setWishlist(JSON.parse(savedWishlist));
@@ -32,7 +32,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     // Save wishlist to localStorage on changes
     useEffect(() => {
         if (mounted) {
-            localStorage.setItem("aosa-wishlist", JSON.stringify(wishlist));
+            localStorage.setItem("ctk-wishlist", JSON.stringify(wishlist));
         }
     }, [wishlist, mounted]);
 

@@ -34,7 +34,7 @@ export default function ForgotPassword() {
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="AOSA Logo" width={80} height={80} />
+                    <Image src="/logo.png" alt="Christ the King Logo" width={80} height={80} />
                     <h1>Recovery</h1>
                     <p>Enter your email to reset your password</p>
                 </div>
@@ -61,7 +61,7 @@ export default function ForgotPassword() {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="admin@achimota.edu.gh"
+                                placeholder="admin@christtheking.edu.gh"
                             />
                         </div>
                         
@@ -79,7 +79,7 @@ export default function ForgotPassword() {
 
                 {!success && (
                     <div className={styles.footer}>
-                        <p>&copy; 2027 Achimota School</p>
+                        <p>&copy; 2027 Christ the King School</p>
                     </div>
                 )}
             </div>

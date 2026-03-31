@@ -425,7 +425,7 @@ export default function AdminDashboard() {
                                 <AlertCircle size={18} color="#ef4444" />
                                 <div>
                                     <strong>Low Stock Alert</strong>
-                                    <p>Centenary Blazers (Size L) is below threshold (2 left).</p>
+                                    <p>School Blazers (Size L) is below threshold (2 left).</p>
                                 </div>
                             </div>
                             <div className={styles.alertCard}>

@@ -83,7 +83,7 @@ export default function LoginPage() {
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="Achimota Logo" width={80} height={80} />
+                    <Image src="/logo.png" alt="Christ the King Logo" width={80} height={80} />
                     <h1>Welcome Back</h1>
                     <p>Sign in to your account</p>
                 </div>

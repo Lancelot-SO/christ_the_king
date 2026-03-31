@@ -18,7 +18,7 @@ export default function CartPage() {
                     <div className={styles.emptyCart}>
                         <ShoppingBag size={64} style={{ marginBottom: '2rem', opacity: 0.2 }} />
                         <h1>Your cart is empty</h1>
-                        <p>Looks like you haven't added any centenary items yet.</p>
+                        <p>Looks like you haven't added any items yet.</p>
                         <Link href="/catalog" className={styles.continueBtn}>
                             Start Shopping
                         </Link>

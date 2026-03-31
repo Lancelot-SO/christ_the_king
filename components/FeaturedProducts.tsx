@@ -10,7 +10,7 @@ import styles from "./FeaturedProducts.module.css";
 const MOCK_PRODUCTS = [
     {
         id: "1",
-        name: "Centenary Bespoke Blazer",
+        name: "Bespoke School Blazer",
         price: 1200,
         images: ["/centenary_blazer_1769187792564.png"],
         categories: { name: "Apparel" }
@@ -24,14 +24,14 @@ const MOCK_PRODUCTS = [
     },
     {
         id: "3",
-        name: "Commemorative Centenary Coin",
+        name: "Commemorative School Coin",
         price: 450,
         images: ["/commemorative_coin_1769187825033.png"],
         categories: { name: "Collectibles" }
     },
     {
         id: "4",
-        name: "Official Silk Centenary Tie",
+        name: "Official Silk School Tie",
         price: 350,
         images: ["/official_tie_silk_1769187839635.png"],
         categories: { name: "Apparel" }
@@ -76,7 +76,7 @@ export default function FeaturedProducts() {
                 <div className={styles.header}>
                     <div className={styles.titleArea}>
                         <span className="section-title">EXCLUSIVE SELECTION</span>
-                        <h2 className="section-heading">Featured Centenary Items</h2>
+                        <h2 className="section-heading">Featured Items</h2>
                     </div>
                     <Link href="/catalog" className={styles.viewAll}>View All Store</Link>
                 </div>

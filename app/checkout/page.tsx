@@ -46,7 +46,7 @@ export default function CheckoutPage() {
     const totalAmount = subtotal + deliveryFee;
 
     const paystackConfig = {
-        reference: `AOSA-${new Date().getTime().toString()}`,
+        reference: `CTK-${new Date().getTime().toString()}`,
         email: formData.email,
         amount: Math.round(totalAmount * 100), // Paystack expects amount in pesewas
         publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "",
