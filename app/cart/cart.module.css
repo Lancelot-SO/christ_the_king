@@ -1,77 +1,57 @@
-.emptyCart {
-    padding: 5rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.emptyCart h1 {
-    margin-bottom: 1rem;
-}
-
-.emptyCart p {
-    color: var(--muted-foreground);
-    margin-bottom: 3rem;
-}
-
-.continueBtn {
-    background: var(--primary);
-    color: white;
-    padding: 1rem 3rem;
-    border-radius: 4px;
-    font-weight: 700;
-}
-
 .cartHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
+    padding: 12rem 0 6rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 6rem;
 }
 
 .title {
-    font-size: 2.5rem;
-    margin-bottom: 0;
-}
-
-.clearAllBtn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.25rem;
-    border: 1px solid #ef4444;
-    border-radius: 6px;
-    color: #ef4444;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.clearAllBtn:hover {
-    background: #ef4444;
-    color: white;
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--burgundy);
+    margin: 0;
 }
 
 .cartGrid {
     display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 4rem;
-    margin-bottom: 8rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vw;
+    margin-bottom: 15rem;
+    align-items: start;
+}
+
+.emptyCart {
+    padding: 15rem 0;
+    text-align: center;
+}
+
+.emptyCart h1 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.continueBtn {
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    background-color: var(--burgundy);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 2rem; /* Modular Elegance 32px */
 }
 
 .itemsList {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
 }
 
 .cartItem {
     display: grid;
-    grid-template-columns: 100px 1fr auto;
-    gap: 2rem;
-    padding-bottom: 2rem;
+    grid-template-columns: 120px 1fr auto;
+    gap: 3rem;
+    padding: 3rem 0;
     border-bottom: 1px solid var(--border);
     align-items: center;
 }
@@ -79,140 +59,139 @@
 .itemImage {
     position: relative;
     aspect-ratio: 1/1;
-    background: var(--muted);
-    border-radius: 4px;
+    background-color: var(--muted);
     overflow: hidden;
+    border-radius: 2rem; /* Modular Elegance 32px */
+}
+
+.itemImage img {
+    object-fit: cover;
 }
 
 .itemInfo h3 {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .itemDetails {
-    font-size: 0.85rem;
-    color: var(--muted-foreground);
-    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
 .itemPrice {
-    font-weight: 700;
-    font-family: var(--font-outfit);
-}
-
-.itemActions {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--burgundy);
 }
 
 .quantityControls {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    border: 1px solid var(--border);
-    padding: 0.5rem;
-    border-radius: 4px;
+    gap: 1.5rem;
+    font-size: 0.875rem;
 }
 
 .quantityControls button {
-    color: var(--muted-foreground);
-    transition: color 0.3s ease;
-}
-
-.quantityControls button:hover {
-    color: var(--primary);
-}
-
-.quantityControls span {
-    font-weight: 700;
-    min-width: 20px;
-    text-align: center;
-}
-
-.removeBtn {
-    color: #ef4444;
-    opacity: 0.6;
+    opacity: 0.5;
     transition: opacity 0.3s ease;
 }
 
-.removeBtn:hover {
+.quantityControls button:hover {
     opacity: 1;
 }
 
+.removeBtn {
+    color: var(--muted-foreground);
+    margin-left: 2rem;
+    transition: color 0.3s ease;
+}
+
+.removeBtn:hover {
+    color: #ef4444;
+}
+
 .summary {
-    background: var(--muted);
-    padding: 2.5rem;
-    border-radius: var(--radius);
-    height: fit-content;
+    background-color: var(--muted);
+    padding: 5rem;
+    position: sticky;
+    top: 160px;
+    border-radius: 2rem; /* Modular Hub */
 }
 
 .summary h3 {
-    margin-bottom: 2rem;
-    font-size: 1.25rem;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 3rem;
 }
 
 .summaryRow {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.25rem;
-}
-
-.divider {
-    height: 1px;
-    background: var(--border);
-    margin: 1.5rem 0;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 .totalRow {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: var(--primary);
-    margin-bottom: 2.5rem;
+    padding: 3rem 0;
+    font-size: 1.5rem;
+    color: var(--burgundy);
+    background: transparent;
+    border: none;
 }
 
 .checkoutBtn {
-    background: var(--primary);
-    color: white;
     width: 100%;
-    padding: 1.25rem;
-    border-radius: 4px;
+    height: 5rem;
+    background-color: var(--burgundy);
+    color: white;
+    font-size: 0.75rem;
     font-weight: 700;
+    letter-spacing: 0.2em;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    transition: all 0.3s ease;
+    gap: 1rem;
+    text-transform: uppercase;
+    border-radius: 2rem; /* Standardized radius */
 }
 
-.checkoutBtn:hover {
-    background: #222;
-    transform: translateY(-2px);
+.clearAllBtn {
+    margin-top: 4rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .secureText {
     margin-top: 2rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     color: var(--muted-foreground);
     text-align: center;
+    text-transform: uppercase;
 }
 
 @media (max-width: 1024px) {
     .cartGrid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 5rem;
     }
-}
-
-@media (max-width: 640px) {
-    .cartItem {
-        grid-template-columns: 80px 1fr;
-        gap: 1rem;
-    }
-
-    .itemActions {
-        grid-column: 1 / -1;
-        justify-content: space-between;
-        margin-top: 1rem;
+    
+    .summary {
+        position: static;
+        padding: 3rem;
     }
 }

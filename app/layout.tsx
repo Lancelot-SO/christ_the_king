@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { WishlistProvider } from "@/context/WishlistContext";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const playfair = Playfair_Display({
+  variable: "--font-serif",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Christ the King | Official Store",
-  description: "The official e-commerce platform for Christ the King School's commemorative collection. Luxury apparel, accessories, and collectibles.",
+  title: "Christ the King | Legacy & Collection",
+  description: "The official editorial platform and boutique for Christ the King School alumni. Heritage, contribution, and exclusive collections.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
         <CartProvider>
           <AuthProvider>
             <WishlistProvider>

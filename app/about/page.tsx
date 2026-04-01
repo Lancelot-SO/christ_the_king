@@ -1,50 +1,66 @@
+"use client";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "./about.module.css";
+import Image from "next/image";
 
 export default function AboutPage() {
     return (
         <main>
             <Header />
-            <div className={styles.hero}>
+            
+            <header id="hero-section" className={styles.hero}>
                 <div className="container">
-                    <span className="premium-gold-text" style={{ fontWeight: 700, letterSpacing: '0.3em' }}>OUR STORY</span>
-                    <h1>A Century of Excellence</h1>
+                    <span className={styles.chapterTitle}>CHAPTER I</span>
+                    <h1>Our Heritage</h1>
                 </div>
-            </div>
+            </header>
 
-            <div className="container" style={{ padding: '8rem 1.5rem' }}>
-                <div className={styles.contentGrid}>
-                    <div className={styles.textContent}>
-                        <h2>Christ the King School</h2>
-                        <p>
-                            Christ the King School is a prestigious Catholic institution located in Accra, Ghana,
-                            dedicated to nurturing young minds through faith, academic excellence, and moral values.
-                        </p>
-                        <p>
-                            Rooted in Christian principles, Christ the King has been a beacon of academic excellence, leadership, and faith.
-                            The school&apos;s mission is to develop the whole person — intellectually, spiritually, and socially —
-                            preparing students to be responsible citizens and leaders of tomorrow.
-                        </p>
-                        <p>
-                            The merchandise collection offered here celebrates the pride and identity of the Christ the King community,
-                            supporting the school&apos;s mission and legacy for generations to come.
-                        </p>
-                    </div>
-                    <div className={styles.imageContent}>
-                        <img 
-                            src="/ctk-school.png" 
-                            alt="Christ the King School Campus"
-                            style={{ 
-                                width: '100%', 
-                                height: '500px', 
-                                objectFit: 'cover', 
-                                borderRadius: 'var(--radius)' 
-                            }}
-                        />
+            <section className={styles.contentContainer}>
+                <div className="container">
+                    <div className={styles.aboutGrid}>
+                        <div className={styles.visuals}>
+                            <div className={styles.imageWrapper}>
+                                <Image 
+                                    src="/ctk-school.png" 
+                                    alt="Christ the King School Campus"
+                                    fill
+                                    className={styles.img}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.textContent}>
+                            <h2>A Sanctuary of Knowledge & Faith</h2>
+                            <p>
+                                Founded on the bedrock of Catholic values, Christ the King School stands as an 
+                                architectural and spiritual landmark in Accra. Our institution is not merely a 
+                                school, but a sanctuary where young minds are sculpted through the dual lenses of 
+                                academic rigor and moral fortitude.
+                            </p>
+                            <p>
+                                For decades, CTK has nurtured the leaders of tomorrow, instilling a sense of purpose 
+                                that transcends the classroom. The burgundy and gold we wear are more than colors; 
+                                they are symbols of a standard that we uphold in every endeavor—be it intellectual, 
+                                spiritual, or social.
+                            </p>
+                            <p>
+                                The artifacts found within this digital archive are curated to represent this 
+                                legacy. Each piece of merchandise is a thread in the rich tapestry of our community, 
+                                designed to be worn with pride and preserved as a part of our collective history.
+                            </p>
+                            
+                            <h2 style={{ marginTop: '4rem' }}>Our Mission</h2>
+                            <p>
+                                To develop the whole person, preparing students to lead with integrity and serve 
+                                with compassion. We believe in an education that empowers, a faith that inspires, 
+                                and a community that lasts a lifetime.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <Footer />
         </main>

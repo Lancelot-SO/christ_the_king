@@ -16,7 +16,7 @@ export default function SignupPage() {
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return;
@@ -46,7 +46,7 @@ export default function SignupPage() {
                             name: email.split('@')[0], // Default name
                         }
                     ]);
-                
+
                 if (profileError) {
                     console.error("Error creating profile:", profileError);
                 }
@@ -54,7 +54,7 @@ export default function SignupPage() {
 
             alert("Registration successful! Please sign in.");
             router.push("/login");
-            
+
         } catch (error: any) {
             console.error("Signup error:", error.message);
             alert(error.message || "Error creating account");

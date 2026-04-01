@@ -17,54 +17,47 @@ export default function ContactPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Here you would typically send to an API
-        console.log("Form submitted:", formData);
         setSubmitted(true);
     };
 
     return (
         <main>
             <Header />
-            <section className={styles.heroSection}>
+            <section id="hero-section" className={styles.heroSection}>
                 <div className="container">
-                    <h1 className={styles.heroTitle}>Get in Touch</h1>
-                    <p className={styles.heroSub}>
-                        We value your opinion. Whether you have a question about the school store,
-                        suggestions for new merchandise, or just want to say hello, we're here to listen.
-                    </p>
+                    <span className={styles.heroSub}>DIRECT CHANNELS</span>
+                    <h1 className={styles.heroTitle}>Inquiries</h1>
                 </div>
             </section>
 
-            <section className="section">
-                <div className={`container ${styles.contactGrid}`}>
-                    {/* Contact Info */}
+            <section className="container">
+                <div className={`${styles.contactGrid}`}>
+                    {/* Info Column */}
                     <div className={styles.infoColumn}>
-                        <div className={styles.infoCard}>
-                            <h3>Contact Information</h3>
-                            <p>Reach out to the Christ the King Secretariat directly.</p>
+                        <h3>Connect with the Secretariat</h3>
+                        <p>Our dedicated team is ready to assist you with any inquiries regarding our heritage artifacts, membership, or institutional governance.</p>
 
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconBox}><MapPin size={20} /></div>
-                                <div>
-                                    <h4>Visit Us</h4>
-                                    <p>Christ the King School Campus<br />Accra, Ghana</p>
-                                </div>
+                        <div className={styles.infoItem}>
+                            <MapPin className={styles.iconBox} size={24} />
+                            <div>
+                                <h4>VISIT US</h4>
+                                <p>Christ the King School Campus, Accra, Ghana</p>
                             </div>
+                        </div>
 
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconBox}><Mail size={20} /></div>
-                                <div>
-                                    <h4>Email Us</h4>
-                                    <p>store@christtheking.edu.gh</p>
-                                </div>
+                        <div className={styles.infoItem}>
+                            <Mail className={styles.iconBox} size={24} />
+                            <div>
+                                <h4>DIRECT EMAIL</h4>
+                                <p>archive@christtheking.edu.gh</p>
                             </div>
+                        </div>
 
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconBox}><Phone size={20} /></div>
-                                <div>
-                                    <h4>Call Us</h4>
-                                    <p>+233 20 123 4567</p>
-                                </div>
+                        <div className={styles.infoItem}>
+                            <Phone className={styles.iconBox} size={24} />
+                            <div>
+                                <h4>INSTITUTIONAL LINE</h4>
+                                <p>+233 20 123 4567</p>
                             </div>
                         </div>
                     </div>
@@ -73,9 +66,8 @@ export default function ContactPage() {
                     <div className={styles.formColumn}>
                         {submitted ? (
                             <div className={styles.successCard}>
-                                <div className={styles.checkCircle}>✓</div>
-                                <h2>Message Sent!</h2>
-                                <p>Thank you for reaching out. We appreciate your feedback and will get back to you shortly.</p>
+                                <h2>Message Transmitted</h2>
+                                <p>Thank you for reaching out. A member of our executive team will review your inquiry and respond within 48 hours.</p>
                                 <button
                                     className={styles.infoBtn}
                                     onClick={() => {
@@ -83,26 +75,26 @@ export default function ContactPage() {
                                         setFormData({ name: "", email: "", subject: "inquiry", message: "" });
                                     }}
                                 >
-                                    Send Another Message
+                                    SEND ANOTHER MESSAGE
                                 </button>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className={styles.form}>
-                                <h2>Send a Message</h2>
+                                <h2>Direct Transmission</h2>
 
                                 <div className={styles.formGroup}>
-                                    <label>Full Name</label>
+                                    <label>IDENTITY / FULL NAME</label>
                                     <input
                                         type="text"
                                         required
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        placeholder="Your Name"
+                                        placeholder="Enter your name"
                                     />
                                 </div>
 
                                 <div className={styles.formGroup}>
-                                    <label>Email Address</label>
+                                    <label>SECURE EMAIL ADDRESS</label>
                                     <input
                                         type="email"
                                         required
@@ -113,31 +105,31 @@ export default function ContactPage() {
                                 </div>
 
                                 <div className={styles.formGroup}>
-                                    <label>Subject</label>
+                                    <label>INQUIRY TYPE</label>
                                     <select
                                         value={formData.subject}
                                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                     >
                                         <option value="inquiry">General Inquiry</option>
-                                        <option value="order">Order Support</option>
-                                        <option value="opinion">My Opinion / Feedback</option>
-                                        <option value="suggestion">Merchandise Suggestion</option>
+                                        <option value="order">Artifact Support</option>
+                                        <option value="opinion">Strategic Feedback</option>
+                                        <option value="suggestion">Heritage Suggestions</option>
                                     </select>
                                 </div>
 
                                 <div className={styles.formGroup}>
-                                    <label>Message</label>
+                                    <label>MESSAGE / TRANSMISSION</label>
                                     <textarea
                                         required
                                         rows={6}
                                         value={formData.message}
                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        placeholder="How can we help you?"
+                                        placeholder="State your inquiry..."
                                     ></textarea>
                                 </div>
 
                                 <button type="submit" className={styles.submitBtn}>
-                                    Send Message <Send size={18} />
+                                    TRANSMIT MESSAGE <Send size={16} />
                                 </button>
                             </form>
                         )}

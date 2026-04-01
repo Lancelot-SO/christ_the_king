@@ -2,36 +2,38 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
-import ProductCard from "./ProductCard";
 import styles from "./FeaturedProducts.module.css";
+import { motion } from "framer-motion";
 
 // Mock data for demo purposes if DB is empty
 const MOCK_PRODUCTS = [
     {
         id: "1",
-        name: "Bespoke School Blazer",
+        name: "Heritage Wool Blazer",
         price: 1200,
-        images: ["/centenary_blazer_1769187792564.png"],
-        categories: { name: "Apparel" }
+        images: ["/ctk_blazer_luxury_1775074607371.png"],
+        categories: { name: "Apparel" },
+        featured: true
     },
     {
         id: "2",
-        name: "Heritage Gold Watch",
+        name: "Gold Crest Signet Ring",
         price: 2500,
         images: ["/luxury_watch_gold_1769187808007.png"],
         categories: { name: "Accessories" }
     },
     {
         id: "3",
-        name: "Commemorative School Coin",
+        name: "The Founder's Portfolio",
         price: 450,
         images: ["/commemorative_coin_1769187825033.png"],
-        categories: { name: "Collectibles" }
+        categories: { name: "Leather" }
     },
     {
         id: "4",
-        name: "Official Silk School Tie",
+        name: "Official Silk Ceremonial Tie",
         price: 350,
         images: ["/official_tie_silk_1769187839635.png"],
         categories: { name: "Apparel" }
@@ -55,12 +57,19 @@ export default function FeaturedProducts() {
                 .eq('is_active', true)
                 .limit(4);
 
-            if (error || !data || data.length === 0) {
-                // Use mock data if DB is empty or fails
-                console.log("Using mock data due to empty database or error");
+            if (error || !data) {
                 setProducts(MOCK_PRODUCTS);
             } else {
-                setProducts(data);
+                // Combine live data with mocks to ensure the editorial layout is full
+                const combined = [...data];
+                if (combined.length < 4) {
+                    const extraMocks = MOCK_PRODUCTS.slice(0, 4 - combined.length);
+                    // Give mock products distinct IDs to avoid key collisions
+                    const uniqueMocks = extraMocks.map(m => ({ ...m, id: `mock-${m.id}` }));
+                    setProducts([...combined, ...uniqueMocks]);
+                } else {
+                    setProducts(data);
+                }
             }
         } catch (error) {
             console.error('Error fetching featured products:', error);
@@ -71,39 +80,42 @@ export default function FeaturedProducts() {
     }
 
     return (
-        <section className="section">
+        <section className={styles.boutiqueSection}>
             <div className="container">
                 <div className={styles.header}>
-                    <div className={styles.titleArea}>
-                        <span className="section-title">EXCLUSIVE SELECTION</span>
-                        <h2 className="section-heading">Featured Items</h2>
+                    <div className={styles.intro}>
+                        <span className={styles.kicker}>CURATED ARCHIVE</span>
+                        <h2 className={styles.title}>The Heritage Collection</h2>
+                        <p className={styles.description}>
+                            Exclusive pieces precision-crafted to celebrate the 70th 
+                            Anniversary of Christ the King. Limited edition and heritage-bound.
+                        </p>
                     </div>
-                    <Link href="/catalog" className={styles.viewAll}>View All Store</Link>
+                    <div className={styles.tabs}>
+                        <button className={`${styles.tab} ${styles.tabActive}`}>ALL</button>
+                        <button className={styles.tab}>APPAREL</button>
+                        <button className={styles.tab}>ACCESSORIES</button>
+                    </div>
                 </div>
 
-                <div className={styles.grid}>
-                    {loading ? (
-                        <div style={{ textAlign: 'center', gridColumn: '1/-1', padding: '40px' }}>
-                            <div className={styles.loader}></div>
-                            <p>Loading the collection...</p>
-                        </div>
-                    ) : products.length > 0 ? (
-                        products.map((product) => (
-                            <ProductCard
-                                key={product.id}
-                                id={product.id}
-                                name={product.name}
-                                price={product.price}
-                                image={product.images?.[0] || "/products/blazer.png"}
-                                category={product.categories?.name}
-                                stock_quantity={product.stock_quantity}
+                <div className={styles.categoryGrid}>
+                    {products.slice(0, 4).map((product) => (
+                        <Link 
+                            key={product.id}
+                            href={`/catalog?category=${product.categories?.name}`}
+                            className={styles.card}
+                        >
+                            <Image 
+                                src={product.images?.[0] || "/products/blazer.png"} 
+                                alt={product.name}
+                                fill
+                                className={styles.image}
                             />
-                        ))
-                    ) : (
-                        <div style={{ textAlign: 'center', gridColumn: '1/-1', padding: '40px', color: '#6b7280' }}>
-                            No items found in the shop.
-                        </div>
-                    )}
+                            <div className={styles.label}>
+                                {product.categories?.name || "ARCHIVE"}
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </div>
         </section>

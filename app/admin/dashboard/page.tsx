@@ -85,7 +85,7 @@ export default function AdminDashboard() {
                 .limit(5);
 
             setRecentOrders(recentOrdersData || []);
-            setAllOrders(revenueData || []); 
+            setAllOrders(revenueData || []);
 
             // Basic Top Products logic (placeholder for now)
             const { data: popularProducts } = await supabase
