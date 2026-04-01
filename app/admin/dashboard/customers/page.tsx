@@ -26,6 +26,8 @@ export default function CustomersPage() {
 
     const [deleteUserId, setDeleteUserId] = useState<string | null>(null);
     const [editingUser, setEditingUser] = useState<any | null>(null);
+    const [userDues, setUserDues] = useState<any[]>([]);
+    const [duesLoading, setDuesLoading] = useState(false);
 
     useEffect(() => {
         fetchUsers();
@@ -103,27 +105,12 @@ export default function CustomersPage() {
 
                 if (error) throw error;
 
-                // Sync admin_users table based on role change
-                const wasAdmin = editingUser.role === 'Admin';
-                const isNowAdmin = newUser.role === 'Admin';
-
-                if (isNowAdmin && !wasAdmin) {
-                    // Promote to admin: add to admin_users table
-                    const { error: adminError } = await supabase
-                        .from('admin_users')
-                        .upsert({ id: editingUser.id, role: 'staff', is_active: true });
-                    if (adminError) console.error('Error adding admin role:', adminError);
-                } else if (!isNowAdmin && wasAdmin) {
-                    // Demote from admin: remove from admin_users table
-                    const { error: removeError } = await supabase
-                        .from('admin_users')
-                        .delete()
-                        .eq('id', editingUser.id);
-                    if (removeError) console.error('Error removing admin role:', removeError);
-                }
-
                 // Update local state
-                setCustomers(customers.map(u => u.id === editingUser.id ? { ...u, name: newUser.name, email: newUser.email, role: newUser.role, class_year: newUser.classYear } : u));
+                setCustomers(prev => prev.map(u => 
+                    u.id === editingUser.id 
+                    ? { ...u, name: newUser.name, email: newUser.email, role: newUser.role, class_year: newUser.classYear } 
+                    : u
+                ));
                 alert("User updated successfully");
             } else {
                 // Create new user
@@ -179,7 +166,7 @@ export default function CustomersPage() {
         setIsModalOpen(true);
     };
 
-    const openEditModal = (user: any) => {
+    const openEditModal = async (user: any) => {
         setEditingUser(user);
         setNewUser({ 
             name: user.name, 
@@ -188,6 +175,26 @@ export default function CustomersPage() {
             classYear: user.class_year || "" 
         });
         setIsModalOpen(true);
+        
+        // Fetch their dues
+        setDuesLoading(true);
+        const { data } = await supabase
+            .from('dues_payments')
+            .select('*, dues_fees(amount, description)')
+            .eq('profile_id', user.id);
+        setUserDues(data || []);
+        setDuesLoading(false);
+    };
+
+    const handleUpdateDue = async (dueId: string, status: string) => {
+        const { error } = await supabase
+            .from('dues_payments')
+            .update({ payment_status: status })
+            .eq('id', dueId);
+        
+        if (!error) {
+            setUserDues(prev => prev.map(d => d.id === dueId ? { ...d, payment_status: status } : d));
+        }
     };
 
     const closeModal = () => {
@@ -388,6 +395,39 @@ export default function CustomersPage() {
                                         />
                                     </div>
                                 </div>
+
+                                {editingUser && (newUser.role === "Alumni" || newUser.role === "Student") && (
+                                    <div className={styles.duesSection}>
+                                        <h3>Annual Dues History</h3>
+                                        {duesLoading ? (
+                                            <p className={styles.loadingText}>Loading dues...</p>
+                                        ) : userDues.length === 0 ? (
+                                            <p className={styles.emptyText}>No dues records found for this year group.</p>
+                                        ) : (
+                                            <div className={styles.duesList}>
+                                                {userDues.map((due) => (
+                                                    <div key={due.id} className={styles.dueItem}>
+                                                        <div className={styles.dueInfo}>
+                                                            <span className={styles.dueYear}>{due.year_group} Dues</span>
+                                                            <span className={styles.dueAmount}>GHS {due.dues_fees?.amount || 0}</span>
+                                                        </div>
+                                                        <div className={styles.dueActions}>
+                                                            <select 
+                                                                className={`${styles.dueStatusSelect} ${due.payment_status === 'paid' ? styles.statusPaid : ''}`}
+                                                                value={due.payment_status}
+                                                                onChange={(e) => handleUpdateDue(due.id, e.target.value)}
+                                                            >
+                                                                <option value="pending">Pending</option>
+                                                                <option value="paid">Paid</option>
+                                                                <option value="waived">Waived</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                             <div className={styles.modalFooter}>
                                 <button type="button" className={styles.modalCancelBtn} onClick={closeModal}>Cancel</button>

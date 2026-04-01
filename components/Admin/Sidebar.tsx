@@ -13,7 +13,8 @@ import {
     ChevronLeft,
     Menu,
     X,
-    Store
+    Store,
+    CreditCard
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -45,6 +46,7 @@ export default function Sidebar() {
         { label: "Inventory", icon: <Package size={20} />, href: "/admin/dashboard/inventory" },
         { label: "Orders", icon: <ShoppingBag size={20} />, href: "/admin/dashboard/orders" },
         { label: "Customers", icon: <Users size={20} />, href: "/admin/dashboard/customers" },
+        { label: "Dues", icon: <CreditCard size={20} />, href: "/admin/dashboard/dues" },
         { label: "Settings", icon: <Settings size={20} />, href: "/admin/dashboard/settings" },
     ];
 
