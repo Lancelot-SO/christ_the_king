@@ -14,7 +14,7 @@ interface Product {
     price: number;
     images: string[];
     stock_quantity: number;
-    categories: { name: string } | null;
+    categories: { name: string }[] | { name: string } | null;
 }
 
 export default function BestSelling() {
@@ -32,19 +32,26 @@ export default function BestSelling() {
             setLoading(true);
             const { data, error } = await supabase
                 .from("products")
-                .select("*, categories(name)")
+                .select(`
+                    id,
+                    name,
+                    price,
+                    images,
+                    stock_quantity,
+                    categories ( name )
+                `)
                 .eq("is_active", true)
                 .order("created_at", { ascending: false })
                 .limit(2);
 
             if (error) {
-                console.error("Error fetching best sellers:", error);
+                console.warn("Best sellers unavailable:", error.message);
                 setProducts([]);
             } else {
-                setProducts(data || []);
+                setProducts((data as Product[]) || []);
             }
         } catch (err) {
-            console.error("Error fetching best sellers:", err);
+            console.warn("Best sellers unavailable:", err);
             setProducts([]);
         } finally {
             setLoading(false);
@@ -130,7 +137,10 @@ export default function BestSelling() {
                                     )}
                                     <div className={styles.cardOverlay}>
                                         <span className={styles.cardCategory}>
-                                            {product.categories?.name || "Shop"}
+                                            {(Array.isArray(product.categories)
+                                                ? product.categories[0]?.name
+                                                : (product.categories as { name: string } | null)?.name
+                                            ) || "Shop"}
                                         </span>
                                         <h3 className={styles.cardName}>
                                             {product.name}

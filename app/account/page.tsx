@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase";
+import dynamic from "next/dynamic";
 import {
     ShoppingBag,
     Package,
@@ -16,8 +17,20 @@ import {
     Settings,
     LogOut,
     ChevronRight,
+    CreditCard,
+    CheckCircle,
+    Clock,
 } from "lucide-react";
 import styles from "./account.module.css";
+
+const PaymentButton = dynamic(() => import("@/components/PaymentButton"), { 
+    ssr: false,
+    loading: () => (
+        <button className={styles.payDuesBtn} disabled>
+            Loading...
+        </button>
+    )
+});
 
 interface Order {
     id: string;
@@ -33,6 +46,7 @@ interface Profile {
     name: string;
     email: string;
     role: string;
+    class_year: string | null;
     created_at: string;
 }
 
@@ -42,6 +56,14 @@ export default function AccountPage() {
     const [orders, setOrders] = useState<Order[]>([]);
     const [profile, setProfile] = useState<Profile | null>(null);
     const [loadingData, setLoadingData] = useState(true);
+    const [mounted, setMounted] = useState(false);
+    const [payingDues, setPayingDues] = useState(false);
+    const [duesFee, setDuesFee] = useState<{ amount: number; description: string | null } | null>(null);
+    const [duesPayment, setDuesPayment] = useState<{ payment_status: string; payment_date: string | null } | null>(null);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (!isLoading && !user) {
@@ -64,10 +86,30 @@ export default function AccountPage() {
                 .from("profiles")
                 .select("*")
                 .eq("id", user!.id)
-                .single();
+                .maybeSingle();
 
             if (profileData) {
                 setProfile(profileData);
+
+                // Fetch dues fee for this user's year group
+                if (profileData.class_year) {
+                    const { data: feeData } = await supabase
+                        .from("dues_fees")
+                        .select("amount, description")
+                        .eq("year_group", profileData.class_year)
+                        .maybeSingle();
+        
+                    setDuesFee(feeData || null);
+        
+                    // Fetch this user's payment record
+                    const { data: paymentData } = await supabase
+                        .from("dues_payments")
+                        .select("payment_status, payment_date")
+                        .eq("profile_id", user!.id)
+                        .maybeSingle();
+        
+                    setDuesPayment(paymentData || null);
+                }
             }
 
             // Fetch orders by user email
@@ -87,6 +129,65 @@ export default function AccountPage() {
             setLoadingData(false);
         }
     }
+
+    const handlePaymentSuccess = async (reference: string) => {
+        if (!user || !duesFee || !profile?.class_year) return;
+
+        try {
+            setPayingDues(true);
+            
+            // 1. Check if a record already exists for this year group
+            const { data: existingRecord } = await supabase
+                .from("dues_payments")
+                .select("id")
+                .eq("profile_id", user.id)
+                .eq("year_group", profile.class_year)
+                .maybeSingle();
+
+            const paymentData = {
+                profile_id: user.id,
+                year_group: profile.class_year,
+                amount_paid: duesFee.amount,
+                payment_status: "paid",
+                payment_date: new Date().toISOString(),
+                payment_reference: reference
+            };
+
+            let saveError;
+            if (existingRecord) {
+                // 2a. Update existing record
+                const { error } = await supabase
+                    .from("dues_payments")
+                    .update(paymentData)
+                    .eq("id", existingRecord.id);
+                saveError = error;
+            } else {
+                // 2b. Insert new record
+                const { error } = await supabase
+                    .from("dues_payments")
+                    .insert([paymentData]);
+                saveError = error;
+            }
+
+            if (saveError) throw saveError;
+            
+            alert("Payment successful! Your dues have been updated.");
+            fetchUserData(); // Refresh UI
+        } catch (error: any) {
+            console.error("Error updating dues payment:", error);
+            alert("Payment successful but failed to update platform. Please contact support with reference: " + reference);
+        } finally {
+            setPayingDues(false);
+        }
+    };
+
+    const paystackConfig = {
+        reference: `DUES-${profile?.class_year}-${user?.id?.substring(0, 8)}-${new Date().getTime()}`,
+        email: profile?.email || user?.email || "",
+        amount: Math.round((duesFee?.amount || 0) * 100),
+        publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "",
+        currency: "GHS",
+    };
 
     const getDisplayStatus = (order: Order) => {
         if (order.order_status === "cancelled") return "Cancelled";
@@ -190,6 +291,102 @@ export default function AccountPage() {
                                 }
                             </h3>
                         </div>
+                    </div>
+                </div>
+
+                {/* ── Dues Section ── */}
+                <div className={styles.duesSection}>
+                    <div className={styles.duesSectionHeader}>
+                        <div className={styles.duesSectionTitle}>
+                            <CreditCard size={20} />
+                            <h2>My Annual Dues</h2>
+                        </div>
+                        {duesFee && duesPayment?.payment_status !== "paid" && duesPayment?.payment_status !== "waived" && (
+                            mounted ? (
+                                <PaymentButton 
+                                    config={paystackConfig}
+                                    onSuccess={(response: any) => handlePaymentSuccess(response.reference)}
+                                    onClose={() => setPayingDues(false)}
+                                    loading={payingDues}
+                                    setLoading={setPayingDues}
+                                    styles={styles}
+                                    label={`Pay Dues — GH₵ ${Number(duesFee.amount).toLocaleString()}`}
+                                    skipCartCheck={true}
+                                />
+                            ) : (
+                                <button className={styles.payDuesBtn} disabled>
+                                    Pay Dues — GH₵ {Number(duesFee.amount).toLocaleString()}
+                                </button>
+                            )
+                        )}
+                        {duesPayment?.payment_status === "paid" && (
+                            <span className={styles.duesPaidBadge}><CheckCircle size={14} /> Dues Paid</span>
+                        )}
+                        {duesPayment?.payment_status === "waived" && (
+                            <span className={styles.duesWaivedBadge}>Waived</span>
+                        )}
+                    </div>
+
+                    <div className={styles.tableWrap}>
+                        <table className={styles.table}>
+                            <thead>
+                                <tr>
+                                    <th>Year Group</th>
+                                    <th>Annual Fee</th>
+                                    <th>Description</th>
+                                    <th>Payment Status</th>
+                                    <th>Date Confirmed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {loadingData ? (
+                                    <tr>
+                                        <td colSpan={5} style={{ textAlign: "center", color: "#9ca3af" }}>Loading dues...</td>
+                                    </tr>
+                                ) : !profile?.class_year ? (
+                                    <tr>
+                                        <td colSpan={5} style={{ textAlign: "center", color: "#9ca3af" }}>
+                                            No year group linked to your profile. Contact support to update.
+                                        </td>
+                                    </tr>
+                                ) : !duesFee ? (
+                                    <tr>
+                                        <td data-label="Year Group"><strong>{profile.class_year}</strong></td>
+                                        <td colSpan={4} style={{ color: "#9ca3af" }}>No dues set for your year group yet — check back later.</td>
+                                    </tr>
+                                ) : (
+                                    <tr>
+                                        <td data-label="Year Group">
+                                            <span className={styles.yearBadge}>{profile.class_year}</span>
+                                        </td>
+                                        <td data-label="Annual Fee">
+                                            <strong>GH₵ {Number(duesFee.amount).toLocaleString()}</strong>
+                                        </td>
+                                        <td data-label="Description">
+                                            {duesFee.description || "—"}
+                                        </td>
+                                        <td data-label="Status">
+                                            <span className={`${styles.badge} ${
+                                                duesPayment?.payment_status === "paid" ? styles.badgePaid :
+                                                duesPayment?.payment_status === "waived" ? styles.badgeWaived :
+                                                styles.badgePending
+                                            }`}>
+                                                {duesPayment?.payment_status === "paid" ? (
+                                                    <><CheckCircle size={11} /> Paid</>
+                                                ) : duesPayment?.payment_status === "waived" ? "Waived" : (
+                                                    <><Clock size={11} /> Pending</>
+                                                )}
+                                            </span>
+                                        </td>
+                                        <td data-label="Date Confirmed">
+                                            {duesPayment?.payment_date
+                                                ? new Date(duesPayment.payment_date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+                                                : "—"}
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -306,6 +503,12 @@ export default function AccountPage() {
                                     <span className={styles.infoLabel}>Role</span>
                                     <span className={styles.infoValue}>
                                         {profile?.role || "Customer"}
+                                    </span>
+                                </div>
+                                <div className={styles.infoItem}>
+                                    <span className={styles.infoLabel}>Year Group</span>
+                                    <span className={styles.infoValue}>
+                                        {profile?.class_year || "—"}
                                     </span>
                                 </div>
                                 <div className={styles.infoItem}>
