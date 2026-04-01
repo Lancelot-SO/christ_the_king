@@ -1,61 +1,69 @@
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/ctk-catalog-bg.png');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 10rem 0 8rem;
-    margin-bottom: 4rem;
+    background-color: var(--muted);
+    padding: 12rem 0 6rem;
+    margin-bottom: 6rem;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--burgundy);
+    margin-bottom: 1.5rem;
 }
 
 .hero p {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--muted-foreground);
     font-size: 1.125rem;
+    max-width: 60ch;
+    margin: 0 auto;
 }
 
 .controls {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
     border-bottom: 1px solid var(--border);
 }
 
 .searchWrapper {
     position: relative;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     width: 100%;
 }
 
 .searchIcon {
     position: absolute;
-    left: 1.5rem;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--muted-foreground);
+    color: var(--burgundy);
 }
 
 .searchInput {
     width: 100%;
-    padding: 1.25rem 1rem 1.25rem 3.5rem;
-    border: 1px solid var(--border);
+    padding: 1.5rem 0 1.5rem 2.5rem;
+    border: none;
+    border-bottom: 1px solid var(--border);
     background: transparent;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 1.125rem;
+    outline: none;
+    transition: border-color 0.4s ease;
+}
+
+.searchInput:focus {
+    border-color: var(--burgundy);
 }
 
 .filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .filterGroup {
@@ -65,155 +73,146 @@
 }
 
 .filterLabel {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted-foreground);
+    letter-spacing: 0.2rem;
+    color: var(--gold);
 }
 
 .categoryChips {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .chip {
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 2rem;
     border: 1px solid var(--border);
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    border-radius: 2rem; /* Modular Elegance 32px */
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    cursor: pointer;
 }
 
 .chipActive {
-    background: var(--primary);
+    background-color: var(--burgundy);
     color: white;
-    border-color: var(--primary);
+    border-color: var(--burgundy);
 }
 
 .chip:hover:not(.chipActive) {
-    background: var(--muted);
+    border-color: var(--burgundy);
+    color: var(--burgundy);
 }
 
 .sortWrapper {
     display: flex;
     align-items: center;
     gap: 1rem;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
 }
 
 .sortSelect {
-    border: 1px solid var(--border);
-    padding: 0.5rem 1rem;
+    border: none;
+    padding: 0.5rem 0;
     font-family: inherit;
-    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--foreground);
     background: transparent;
+    outline: none;
+    cursor: pointer;
 }
 
 /* Price Filter */
 .priceFilter {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .priceInputs {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .priceInput {
-    width: 120px;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--border);
+    width: 100px;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
     background: transparent;
     font-family: inherit;
     font-size: 0.875rem;
+    font-weight: 600;
     transition: border-color 0.3s ease;
-}
-
-.priceInput:focus {
-    border-color: var(--accent);
     outline: none;
 }
 
-.priceInput::placeholder {
-    color: var(--muted-foreground);
+.priceInput:focus {
+    border-color: var(--burgundy);
 }
 
 .priceSeparator {
     color: var(--muted-foreground);
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .clearPriceBtn {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted-foreground);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.65rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.clearPriceBtn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    letter-spacing: 0.1rem;
+    color: var(--burgundy);
+    margin-left: 1rem;
 }
 
 .resultsInfo {
-    margin-bottom: 2rem;
-    font-size: 0.875rem;
+    margin-bottom: 3rem;
+    font-size: 0.75rem;
+    font-weight: 700;
     color: var(--muted-foreground);
+    letter-spacing: 0.1rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-bottom: 8rem;
-}
-
-.simpleFooter {
-    border-top: 1px solid var(--border);
-    padding: 4rem 0;
-    text-align: center;
-    color: var(--muted-foreground);
-    font-size: 0.875rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 4rem;
+    margin-bottom: 10rem;
 }
 
 @media (max-width: 1024px) {
     .filters {
         flex-direction: column;
         align-items: flex-start;
+        gap: 2rem;
     }
 
     .priceFilter {
-        flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
     }
 }
 
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero {
+        padding-top: 10rem;
     }
 
     .categoryChips {
         flex-wrap: wrap;
     }
-
-    .priceInputs {
-        flex-wrap: wrap;
-    }
-
-    .priceInput {
-        width: 100px;
+    
+    .grid {
+        grid-template-columns: 1fr;
     }
 }

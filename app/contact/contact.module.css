@@ -1,222 +1,172 @@
 .heroSection {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/ctk-contact-bg.png');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 10rem 0 8rem;
+    background-color: var(--muted);
+    padding: 12rem 4rem 8rem;
     text-align: center;
+    border-bottom: 1px solid var(--border);
 }
 
 .heroTitle {
-    font-size: 3.5rem;
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--burgundy);
     margin-bottom: 1.5rem;
 }
 
 .heroSub {
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.6;
 }
 
 .contactGrid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 8vw;
+    padding: var(--section-padding) 0;
+    align-items: start;
 }
 
-/* Info Column */
-.infoCard {
-    background: #f9f9f9;
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
+.infoColumn {
+    padding-top: 2rem;
 }
 
-.infoCard h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.infoColumn h3 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--foreground);
 }
 
-.infoCard>p {
+.infoColumn p {
+    font-size: 1.125rem;
+    line-height: 1.8;
     color: var(--muted-foreground);
-    margin-bottom: 2.5rem;
+    margin-bottom: 4rem;
 }
 
 .infoItem {
     display: flex;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-}
-
-.infoItem:last-child {
-    margin-bottom: 0;
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 .iconBox {
-    width: 48px;
-    height: 48px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
+    color: var(--burgundy);
+    flex-shrink: 0;
 }
 
 .infoItem h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--gold);
 }
 
 .infoItem p {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-    line-height: 1.5;
+    font-size: 1.125rem;
+    color: var(--foreground);
+    margin-bottom: 0;
 }
 
-/* Form Column */
-.form {
-    background: white;
-    padding: 3rem;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+.formColumn {
+    background-color: var(--muted);
+    padding: 5rem;
 }
 
 .form h2 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
 }
 
 .formGroup {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .formGroup label {
     display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--foreground);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--muted-foreground);
 }
 
 .formGroup input,
 .formGroup select,
 .formGroup textarea {
     width: 100%;
-    padding: 0.875rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.2s ease;
-    background: white;
+    padding: 1rem 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+    border-bottom-color: var(--burgundy);
 }
 
 .submitBtn {
-    background: var(--primary);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    transition: all 0.2s ease;
     width: 100%;
+    height: 5rem;
+    background-color: var(--burgundy);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-.submitBtn:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-
-/* Success State */
 .successCard {
-    background: white;
-    padding: 4rem 2rem;
-    border-radius: 16px;
-    border: 1px solid var(--border);
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.checkCircle {
-    width: 64px;
-    height: 64px;
-    background: #dcfce7;
-    color: #166534;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+    padding: 5rem 0;
 }
 
 .successCard h2 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-bottom: 2rem;
 }
 
 .successCard p {
+    font-size: 1.125rem;
     color: var(--muted-foreground);
-    max-width: 400px;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    margin-bottom: 4rem;
 }
 
 .infoBtn {
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--burgundy);
 }
 
-.infoBtn:hover {
-    background: #f9f9f9;
-    border-color: #000;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .contactGrid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 5rem;
     }
-
-    .infoColumn {
-        order: 2;
+    
+    .formColumn {
+        padding: 3rem;
     }
 }

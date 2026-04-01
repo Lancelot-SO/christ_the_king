@@ -222,10 +222,10 @@ export default function AccountPage() {
                                             const status = getDisplayStatus(order);
                                             const itemCount = Array.isArray(order.items)
                                                 ? order.items.reduce(
-                                                      (sum: number, i: any) =>
-                                                          sum + (i.quantity || 1),
-                                                      0
-                                                  )
+                                                    (sum: number, i: any) =>
+                                                        sum + (i.quantity || 1),
+                                                    0
+                                                )
                                                 : 0;
 
                                             return (
@@ -313,11 +313,11 @@ export default function AccountPage() {
                                     <span className={styles.infoValue}>
                                         {profile?.created_at
                                             ? new Date(
-                                                  profile.created_at
-                                              ).toLocaleDateString("en-US", {
-                                                  month: "short",
-                                                  year: "numeric",
-                                              })
+                                                profile.created_at
+                                            ).toLocaleDateString("en-US", {
+                                                month: "short",
+                                                year: "numeric",
+                                            })
                                             : "—"}
                                     </span>
                                 </div>
