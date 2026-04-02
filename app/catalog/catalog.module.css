@@ -217,4 +217,24 @@
     .grid {
         grid-template-columns: 1fr;
     }
+
+    .priceInputs {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .priceInput {
+        width: 100%;
+        text-align: center;
+    }
+
+    .priceSeparator {
+        display: none;
+    }
+
+    .clearPriceBtn {
+        margin: 1.5rem auto 0;
+        display: block;
+    }
 }

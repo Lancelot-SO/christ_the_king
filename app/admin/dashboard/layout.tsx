@@ -90,7 +90,14 @@ export default function AdminLayout({
 
                     @media (max-width: 1024px) {
                         .admin-main {
-                            padding-top: 5rem; /* Space for mobile toggle */
+                            padding-top: 5rem;
+                            padding-left: 0.5rem;
+                            padding-right: 0.5rem;
+                            padding-bottom: 2rem;
+                        }
+
+                        .admin-content-inner {
+                            padding: 1.25rem 0.75rem;
                         }
                     }
                 `}</style>

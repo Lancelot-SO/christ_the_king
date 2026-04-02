@@ -35,7 +35,7 @@ export default function CartPage() {
             <Header />
             <div className="container">
                 <header id="hero-section" className={styles.cartHeader}>
-                    <h1 className={styles.title}>Your Collection</h1>
+                    <h1 className={styles.title}>Archival Review</h1>
                 </header>
 
                 <div className={styles.cartGrid}>

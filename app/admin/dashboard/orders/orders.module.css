@@ -1,8 +1,6 @@
 .container {
-    padding: 1.25rem;
-    max-width: 1440px;
+    padding: 0;
     margin: 0 auto;
-    animation: fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn {
@@ -26,15 +24,19 @@
 }
 
 .headerTitle h1 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 0.125rem;
-    letter-spacing: -0.025em;
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
 }
 
 .headerTitle p {
     color: var(--muted-foreground);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .headerTools {
@@ -90,15 +92,15 @@
 }
 
 .exportBtn {
-    background: white;
+    background: var(--background);
     border: 1px solid var(--border);
-    padding: 0.5rem 1.25rem;
+    padding: 0.625rem 1.25rem;
     border-radius: 2rem;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.2s ease;
+    letter-spacing: 0.1em;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -163,6 +165,14 @@
     padding: 1rem 0.75rem;
     font-size: 0.8125rem;
     border-bottom: 1px solid #f3f4f6;
+}
+
+.table td h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--burgundy);
+    letter-spacing: -0.01em;
 }
 
 .statusBadge {
@@ -315,116 +325,121 @@
 
 
 @media (max-width: 1024px) {
-    .container {
-        padding: 5rem 1rem 2rem 1rem;
-    }
-
     .header {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
         gap: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .headerTools {
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
-        gap: 1rem;
+        gap: 0.75rem;
     }
 
     .searchWrapper {
         width: 100%;
+        min-width: 100%;
+    }
+
+    .filterBtn, .exportBtn {
+        width: 100%;
+        justify-content: center;
     }
 
     .tabs {
         overflow-x: auto;
-        padding-bottom: 1rem;
+        padding-bottom: 0.75rem;
         gap: 1.5rem;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        padding-left: 1rem;
     }
 
     .tab {
         white-space: nowrap;
     }
-
 }
 
 @media (max-width: 768px) {
-    .progressStages {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: flex-start;
-        padding-left: 1rem;
+    .tableCard {
+        padding: 0;
+        background: transparent;
+        border: none;
     }
 
-    .progressStages::before {
-        top: 20px;
-        bottom: 20px;
-        left: 27px;
-        width: 2px;
-        height: auto;
-    }
-
-    .progressStage {
-        flex-direction: row;
-        gap: 1rem;
-    }
-
-    /* Table to Card Transformation */
     .table thead {
         display: none;
     }
 
-    .table,
-    .table tbody,
-    .table tr,
-    .table td {
+    .table, .table tbody, .table tr, .table td {
         display: block;
         width: 100%;
     }
 
     .table tr {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
+        background: var(--background);
         border: 1px solid var(--border);
         border-radius: 1.5rem;
-        padding: 1rem;
-        background: #f9fafb;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     }
 
     .table td {
         border: none;
-        padding: 0.6rem 0;
+        padding: 0.75rem 0;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: right;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        text-align: left;
     }
 
     .table td::before {
         content: attr(data-label);
-        font-weight: 700;
-        text-align: left;
-        color: var(--muted-foreground);
-        font-size: 0.75rem;
+        font-size: 0.6rem;
+        font-weight: 800;
         text-transform: uppercase;
+        color: var(--gold);
+        letter-spacing: 0.1em;
     }
 
-    /* Special handling for order ID cell */
+    .table td:last-child {
+        border-top: 1px dashed var(--border);
+        margin-top: 0.5rem;
+        padding-top: 1.25rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Primary identifiers get bold shelf styling */
     .table td:first-child {
-        display: block;
-        text-align: left;
         border-bottom: 1px solid var(--border);
+        padding-bottom: 1rem;
         margin-bottom: 0.5rem;
-        padding-bottom: 0.75rem;
-        font-weight: 700;
-        font-size: 1rem;
     }
 
-    .table td:first-child::before {
-        display: block;
-        margin-bottom: 0.25rem;
+    .table td:first-child h3 {
+        font-family: var(--font-serif);
+        font-size: 1.25rem;
+        color: var(--burgundy);
     }
 
     .customerCell {
-        text-align: right;
-        display: block;
+        width: 100%;
     }
-}
+
+    .customerCell h4 {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        color: var(--foreground);
+    }
+
+    .statusBadge {
+        width: fit-content;
+    }
+}

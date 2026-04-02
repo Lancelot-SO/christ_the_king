@@ -175,8 +175,8 @@ export default function DuesPage() {
                                 </div>
                             </div>
                             
-                            <div className={styles.formGroup} style={{ marginBottom: '2rem' }}>
-                                <label style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--muted-foreground)', display: 'block', marginBottom: '0.5rem' }}>RECEIPT EMAIL</label>
+                            <div className={styles.formGroup} style={{ marginBottom: '2rem', padding: '0 1rem' }}>
+                                <label style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--muted-foreground)', display: 'block', marginBottom: '0.5rem', paddingLeft: '1rem' }}>RECEIPT EMAIL</label>
                                 <input 
                                     type="email" 
                                     placeholder="your@email.com"
@@ -205,7 +205,7 @@ export default function DuesPage() {
                                 label="AUTHORIZE CONTRIBUTION"
                                 skipCartCheck={true}
                             />
-                            <button className={styles.backBtn} style={{ display: 'block', margin: '0 auto', border: 'none', background: 'none', color: 'var(--muted-foreground)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', marginTop: '1.5rem', cursor: 'pointer' }} onClick={() => setStep(2)}>RETURN TO SCHEDULE</button>
+                            <button className={styles.backBtn} style={{ display: 'block', margin: '0 auto', border: 'none', background: 'none', color: 'var(--muted-foreground)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', marginTop: '1.5rem', cursor: 'pointer', }} onClick={() => setStep(2)}>RETURN TO SCHEDULE</button>
                         </div>
                     )}
                 </div>

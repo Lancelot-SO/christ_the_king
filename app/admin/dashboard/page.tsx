@@ -17,7 +17,10 @@ import {
     ChevronRight,
     Search,
     X,
-    Calendar
+    Calendar,
+    TrendingDown,
+    CheckCircle,
+    Mail
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./dashboard.module.css";
@@ -38,6 +41,53 @@ export default function AdminDashboard() {
     const [recentOrders, setRecentOrders] = useState<any[]>([]);
     const [allOrders, setAllOrders] = useState<any[]>([]);
     const [topProductsData, setTopProductsData] = useState<any[]>([]);
+    const [elevationEmail, setElevationEmail] = useState("");
+    const [searchResult, setSearchResult] = useState<any | null>(null);
+    const [isSearching, setIsSearching] = useState(false);
+    const [isElevating, setIsElevating] = useState(false);
+
+    const handleSearchUser = async () => {
+        if (!elevationEmail) return;
+        setIsSearching(true);
+        setSearchResult(null);
+        try {
+            const { data, error } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('email', elevationEmail.trim())
+                .maybeSingle();
+
+            if (data) {
+                setSearchResult(data);
+            } else {
+                alert("User not found with this email.");
+            }
+        } catch (error) {
+            console.error('Error finding user:', error);
+        } finally {
+            setIsSearching(false);
+        }
+    };
+
+    const handleElevateUser = async () => {
+        if (!searchResult) return;
+        setIsElevating(true);
+        try {
+            const { error } = await supabase
+                .from('profiles')
+                .update({ role: 'Admin' })
+                .eq('id', searchResult.id);
+
+            if (error) throw error;
+            alert(`${searchResult.name} promoted to Admin successfully!`);
+            setSearchResult({ ...searchResult, role: 'Admin' });
+        } catch (error) {
+            console.error('Error elevating user:', error);
+            alert("Failed to elevate user.");
+        } finally {
+            setIsElevating(false);
+        }
+    };
     const [loading, setLoading] = useState(true);
     const dateFilterRef = useRef<HTMLDivElement>(null);
 
@@ -97,7 +147,8 @@ export default function AdminDashboard() {
                 id: p.id,
                 name: p.name,
                 sales: Math.floor(Math.random() * 100), // Placeholder sales
-                price: `GHS ${p.price}`
+                price: `GHS ${p.price}`,
+                image: p.image_url
             })) || []);
 
         } catch (error) {
@@ -170,7 +221,15 @@ export default function AdminDashboard() {
         }
     };
 
-    const chartData = [40, 65, 45, 80, 55, 90, 75];
+    const revenueTrend = [
+        { day: "MON", value: 40 },
+        { day: "TUE", value: 65 },
+        { day: "WED", value: 45 },
+        { day: "THU", value: 80 },
+        { day: "FRI", value: 55 },
+        { day: "SAT", value: 90 },
+        { day: "SUN", value: 75 },
+    ];
 
     const handleRefresh = async () => {
         setIsRefreshing(true);
@@ -307,24 +366,33 @@ export default function AdminDashboard() {
                                 <ArrowUpRight size={16} /> +24% from last week
                             </div>
                         </div>
-                        <div className={styles.chartPlaceholder}>
-                            {chartData.map((val, i) => (
-                                <motion.div
-                                    key={i}
-                                    className={`${styles.bar} ${i === 5 ? styles.barActive : ""}`}
-                                    initial={{ height: 0 }}
-                                    animate={{ height: `${val}%` }}
-                                    transition={{ delay: 0.5 + i * 0.1, duration: 0.8, ease: "easeOut" }}
-                                >
-                                    <motion.div
-                                        className={styles.tooltip}
-                                        initial={{ opacity: 0 }}
-                                        whileHover={{ opacity: 1 }}
-                                    >
-                                        GHS {(val * 2400).toLocaleString()}
-                                    </motion.div>
-                                </motion.div>
-                            ))}
+                        <div className={styles.chartWrapper}>
+                            <div className={styles.chartGrid}>
+                                <div className={styles.gridLine}><span>10K</span></div>
+                                <div className={styles.gridLine}><span>5K</span></div>
+                                <div className={styles.gridLine}><span>0</span></div>
+                            </div>
+                            <div className={styles.chartPlaceholder}>
+                                {revenueTrend.map((data, i) => (
+                                    <div key={i} className={styles.barContainer}>
+                                        <motion.div
+                                            className={`${styles.bar} ${i === 5 ? styles.barActive : ""}`}
+                                            initial={{ height: 0 }}
+                                            animate={{ height: `${data.value}%` }}
+                                            transition={{ delay: 0.5 + i * 0.1, duration: 0.8, ease: "easeOut" }}
+                                        >
+                                            <motion.div
+                                                className={styles.tooltip}
+                                                initial={{ opacity: 0 }}
+                                                whileHover={{ opacity: 1 }}
+                                            >
+                                                GHS {(data.value * 2400).toLocaleString()}
+                                            </motion.div>
+                                        </motion.div>
+                                        <span className={styles.xAxisLabel}>{data.day}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
 
@@ -359,8 +427,20 @@ export default function AdminDashboard() {
                                 <h2>Top Products</h2>
                             </div>
                             {topProductsData.length > 0 ? topProductsData.map((product) => (
-                                <div key={product.id} className={styles.productItem}>
-                                    <div className={styles.productImg} />
+                                <div 
+                                    key={product.id} 
+                                    className={styles.productItem}
+                                    onClick={() => router.push("/admin/dashboard/inventory")}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    <div 
+                                        className={styles.productImg} 
+                                        style={{ 
+                                            backgroundImage: `url(${product.image})`,
+                                            backgroundSize: 'cover',
+                                            backgroundPosition: 'center'
+                                        }} 
+                                    />
                                     <div className={styles.productInfo}>
                                         <h4>{product.name}</h4>
                                         <p>{product.sales} sales • {product.price}</p>
@@ -420,6 +500,66 @@ export default function AdminDashboard() {
                     </motion.div>
 
                     <motion.div className={styles.sideColumn} variants={itemVariants}>
+                        <div className={styles.card}>
+                            <div className={styles.sectionHeader}>
+                                <h2>Role Elevation</h2>
+                                <p style={{ fontSize: '0.65rem', color: 'var(--muted-foreground)' }}>Quickly promote any user to Admin</p>
+                            </div>
+                            <div className={styles.elevationSearch}>
+                                <div className={styles.searchWrapper} style={{ minWidth: '100%', marginBottom: '1rem' }}>
+                                    <Mail size={16} />
+                                    <input 
+                                        type="email" 
+                                        placeholder="Admin email..." 
+                                        className={styles.searchInput}
+                                        value={elevationEmail}
+                                        onChange={(e) => setElevationEmail(e.target.value)}
+                                        onKeyDown={(e) => e.key === 'Enter' && handleSearchUser()}
+                                    />
+                                </div>
+                                <button 
+                                    className={styles.refreshBtn} 
+                                    style={{ width: '100%', borderRadius: '1rem' }}
+                                    onClick={handleSearchUser}
+                                    disabled={isSearching}
+                                >
+                                    {isSearching ? "Searching..." : "Find User"}
+                                </button>
+                            </div>
+
+                            {searchResult && (
+                                <motion.div 
+                                    className={styles.elevationResult}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                >
+                                    <div className={styles.resultProfile}>
+                                        <div className={styles.productImg} style={{ borderRadius: '50%' }}>
+                                            {searchResult.name.charAt(0)}
+                                        </div>
+                                        <div className={styles.productInfo}>
+                                            <h4>{searchResult.name}</h4>
+                                            <p>{searchResult.role}</p>
+                                        </div>
+                                    </div>
+                                    {searchResult.role !== 'Admin' ? (
+                                        <button 
+                                            className={styles.secondaryBtn}
+                                            style={{ width: '100%', marginTop: '1rem', borderRadius: '1rem' }}
+                                            onClick={handleElevateUser}
+                                            disabled={isElevating}
+                                        >
+                                            {isElevating ? "Elevating..." : "Elevate to Admin"}
+                                        </button>
+                                    ) : (
+                                        <div className={styles.adminStatus}>
+                                            <CheckCircle size={14} /> Already Admin
+                                        </div>
+                                    )}
+                                </motion.div>
+                            )}
+                        </div>
+
                         <div className={styles.card}>
                             <div className={styles.sectionHeader}>
                                 <h2>Critical Alerts</h2>
