@@ -34,7 +34,7 @@ export default function ForgotPassword() {
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="Christ the King Logo" width={80} height={80} />
+                    <Image src="/Logo_new.png" alt="Christ the King Logo" width={80} height={80} />
                     <h1>Recovery</h1>
                     <p>Enter your email to reset your password</p>
                 </div>

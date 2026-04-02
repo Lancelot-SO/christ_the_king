@@ -27,6 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const checkUserRole = async (userId: string) => {
+    // Avoid redundant checks if we already have the data for this user
     if (lastCheckedId === userId && (isAdmin || role)) return;
 
     try {
@@ -37,6 +38,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .maybeSingle();
 
       if (error) {
+        if (error.message?.includes('aborted')) {
+          console.warn("Role check aborted, will retry on next state change.");
+          return;
+        }
         console.error("Error fetching user role:", error);
         setIsAdmin(false);
         setRole(null);
@@ -44,12 +49,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const userRole = data.role;
         setIsAdmin(userRole === "Admin");
         setRole(userRole);
+        setLastCheckedId(userId);
       } else {
+        // No profile found, assume Customer
         setIsAdmin(false);
-        setRole(null);
+        setRole("Customer");
+        setLastCheckedId(userId);
       }
-      setLastCheckedId(userId);
-    } catch (error) {
+    } catch (error: any) {
+      if (error.name === 'AbortError' || error.message?.includes('aborted')) {
+        console.warn("Role check caught AbortError");
+        return;
+      }
       console.error("Error checking role:", error);
       setIsAdmin(false);
       setRole(null);
@@ -58,6 +69,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshSession = async () => {
     try {
+      setIsLoading(true);
       const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
       setUser(session?.user ?? null);
@@ -83,27 +95,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
+      // Set loading state when user becomes available to prevent race conditions during role check
+      if (event === 'SIGNED_IN' || (event === 'INITIAL_SESSION' && session && !lastCheckedId)) {
+        setIsLoading(true);
+      }
+      
       setSession(session);
       setUser(session?.user ?? null);
       
       try {
         if (session?.user) {
           await checkUserRole(session.user.id);
-        } else {
+        } else if (event === 'SIGNED_OUT') {
           setIsAdmin(false);
           setRole(null);
+          setLastCheckedId(null);
         }
       } catch (error) {
         console.error("Auth state change error:", error);
       } finally {
-        setIsLoading(false);
+        // Ensure we only stop loading if we've attempted a check OR if we have no user
+        if (!session?.user || lastCheckedId === session.user.id || event === 'SIGNED_OUT') {
+           setIsLoading(false);
+        } else if (session?.user && lastCheckedId !== session.user.id) {
+           // We have a user but checkUserRole didn't update lastCheckedId yet (maybe aborted)
+           // We keep loading true so it can be retried or handled
+           setIsLoading(false); // Still need to prevent stuck loading
+        }
       }
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [lastCheckedId]);
 
   const signOut = async () => {
     try {

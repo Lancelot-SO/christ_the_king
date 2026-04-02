@@ -203,8 +203,9 @@ export default function AdminDashboard() {
             >
                 <header className={styles.header}>
                     <div className={styles.headerTitle}>
-                        <h1>Dashboard Overview</h1>
-                        <p>Welcome back, Administrator. Here's what's happening today.</p>
+                        <span className="editorial-kicker">Institutional Overview</span>
+                        <h1>Administrative Terminal</h1>
+                        <p>Managing the legacy of Christ the King School.</p>
                     </div>
                     <div className={styles.headerTools}>
                         <div className={styles.searchWrapper}>
@@ -319,7 +320,9 @@ export default function AdminDashboard() {
                                         className={styles.tooltip}
                                         initial={{ opacity: 0 }}
                                         whileHover={{ opacity: 1 }}
-                                    />
+                                    >
+                                        GHS {(val * 2400).toLocaleString()}
+                                    </motion.div>
                                 </motion.div>
                             ))}
                         </div>
