@@ -30,8 +30,21 @@
   --font-sans: 'Inter', sans-serif;
   
   /* Spacing */
-  --section-padding: 5.5rem;
+  --section-padding: 4.5rem; /* Reduced from 5.5rem to minimize white space */
   --container-max: 1440px;
+}
+
+.maroon-section {
+  background-color: var(--burgundy);
+  color: #FFFFFF;
+}
+
+.maroon-section .gold-accent {
+  color: var(--gold-light);
+}
+
+.maroon-section p {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme='dark'] {

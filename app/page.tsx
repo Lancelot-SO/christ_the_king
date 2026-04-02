@@ -27,19 +27,11 @@ export default function Home() {
             <div className={styles.chapterVisuals}>
                 <div className={styles.mainImageWrapper}>
                     <Image 
-                        src="/official_tie_silk_1769187839635.png" 
-                        alt="CTK Heritage" 
+                        src="/Asset 2only.png" 
+                        alt="Christ the King Logo" 
                         fill 
                         className={styles.img} 
-                    />
-                </div>
-                <div className={styles.accentCrest}>
-                    <Image 
-                        src="/Asset 2only.png"
-                        alt="Christ the King" 
-                        width={240} 
-                        height={120} 
-                        style={{ height: 'auto' }}
+                        style={{ objectFit: 'contain', padding: '15%' }}
                     />
                 </div>
             </div>

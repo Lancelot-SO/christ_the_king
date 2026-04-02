@@ -65,7 +65,7 @@ export default function Header() {
 
                 {/* Right: Actions */}
                 <div className={styles.actions}>
-                    <Link href="/dues" className={styles.navLink}>Contribute</Link>
+                    <Link href="/dues" className={`${styles.navLink} ${styles.desktopOnly}`}>Contribute</Link>
                     <div className={styles.iconButtons}>
                         <Link href="/wishlist" className={styles.iconBtn}>
                             <Heart size={20} />

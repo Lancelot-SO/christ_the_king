@@ -4,8 +4,10 @@
 
 /* Heritage Chapter */
 .heritageChapter {
-    padding: var(--section-padding) 0;
+    padding: calc(var(--section-padding) * 1.5) 0;
     overflow: hidden;
+    background-color: var(--burgundy);
+    color: #FFFFFF;
 }
 
 .chapterGrid {
@@ -22,28 +24,33 @@
 .mainImageWrapper {
     position: relative;
     aspect-ratio: 4/5;
-    background-color: var(--muted);
-    border-radius: 2rem; /* Modular Elegance Standard */
+    background-color: rgba(255, 255, 255, 0.05); /* Transparent glass for logo */
+    border-radius: 2rem; 
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .accentCrest {
     position: absolute;
-    bottom: -3rem;
-    right: -3rem;
-    background-color: var(--burgundy);
-    padding: 2.5rem;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    bottom: -1rem;
+    right: -1rem;
+    background-color: var(--gold);
+    padding: 1.25rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2rem; /* Modular Standard */
+    border-radius: 1.5rem;
+    z-index: 5;
 }
 
 .accentCrest img {
-    width: 120px;
+    width: 70px;
     height: auto;
     object-fit: contain;
+    filter: brightness(0) invert(1); /* Make it white icon on gold background if it's a crest */
 }
 
 .preTitle {
@@ -62,7 +69,7 @@
 .chapterText {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: var(--muted-foreground);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 4rem;
     max-width: 50ch;
 }
@@ -78,7 +85,7 @@
     font-family: var(--font-serif);
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--burgundy);
+    color: var(--gold);
     margin-bottom: 0.5rem;
 }
 
@@ -86,7 +93,7 @@
     font-size: 0.625rem;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--muted-foreground);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .editorialLink {
@@ -97,7 +104,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--foreground);
+    color: #FFFFFF;
     transition: all 0.3s ease;
 }
 
@@ -114,14 +121,19 @@
 
 /* Society Section */
 .societySection {
-    padding-bottom: var(--section-padding);
+    background-color: var(--burgundy); /* Matches heritage chapter to prevent gaps */
+    padding: calc(var(--section-padding) * 1.5) 0;
 }
 
 .societyWrapper {
-    background-color: var(--muted);
+    background-color: rgba(255, 255, 255, 0.03); /* Lighter glass */
     padding: 7rem 4rem;
     text-align: center;
-    border-radius: 2rem; /* Modular Hub */
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08); /* More subtle border */
+    backdrop-filter: blur(10px); /* Add glass blur */
+    -webkit-backdrop-filter: blur(10px);
+    color: #FFFFFF;
 }
 
 .societyContent {
@@ -131,15 +143,17 @@
 
 .societyTitle {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 6vw, 4rem); 
     font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--foreground);
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .societySub {
     font-size: 1.125rem;
-    color: var(--muted-foreground);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 4rem;
     line-height: 1.6;
 }
@@ -155,16 +169,21 @@
     flex: 1;
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding: 1rem 0;
     font-size: 0.875rem;
     letter-spacing: 0.1em;
     outline: none;
     transition: border-color 0.3s ease;
+    color: #FFFFFF;
+}
+
+.societyInput::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .societyInput:focus {
-    border-color: var(--burgundy);
+    border-color: var(--gold);
 }
 
 .societyLabel {
@@ -172,14 +191,14 @@
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.3em;
-    color: var(--gold);
+    color: var(--gold-light);
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
 
 .societyBtn {
-    background-color: var(--burgundy);
-    color: white;
+    background-color: var(--gold);
+    color: var(--burgundy-dark);
     padding: 1.25rem 3.5rem;
     font-size: 0.75rem;
     font-weight: 800;
@@ -188,13 +207,13 @@
     border: none;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.13, 0.67, 0.41, 0.95);
-    box-shadow: 0 10px 30px rgba(124, 25, 54, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .societyBtn:hover {
-    background-color: var(--burgundy-dark);
+    background-color: var(--gold-light);
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(124, 25, 54, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 1024px) {

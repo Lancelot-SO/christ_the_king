@@ -13,22 +13,22 @@ const MOCK_PRODUCTS = [
         id: "1",
         name: "Heritage Wool Blazer",
         price: 1200,
-        images: ["/ctk_blazer_luxury_1775074607371.png"],
+        images: ["/products/blazer_new.png"],
         categories: { name: "Apparel" },
         featured: true
     },
     {
         id: "2",
-        name: "Gold Crest Signet Ring",
-        price: 2500,
-        images: ["/luxury_watch_gold_1769187808007.png"],
+        name: "Gold Signet Cufflinks",
+        price: 850,
+        images: ["/products/cufflinks.png"],
         categories: { name: "Accessories" }
     },
     {
         id: "3",
-        name: "The Founder's Portfolio",
+        name: "Director's Portfolio",
         price: 450,
-        images: ["/commemorative_coin_1769187825033.png"],
+        images: ["/products/portfolio.png"],
         categories: { name: "Leather" }
     },
     {
