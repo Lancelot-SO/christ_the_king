@@ -121,8 +121,8 @@ export default function OrderDetailsModal({ isOpen, onClose, order, onUpdateStat
                             {/* Status Update Actions */}
                             {onUpdateStatus && order.order_status !== 'delivered' && order.order_status !== 'cancelled' && (
                                 <div className={styles.statusUpdateArea}>
-                                    <h3 className={styles.sectionTitle} style={{ marginBottom: '0.5rem' }}>Update Order Status</h3>
-                                    <p className={styles.infoValue} style={{ fontSize: '0.8125rem', color: '#6b7280', fontWeight: 400 }}>
+                                    <h3 className={styles.sectionTitle}>Update Order Status</h3>
+                                    <p className={styles.statusUpdateDesc}>
                                         Move this order to the next stage of fulfillment.
                                     </p>
                                     <div className={styles.statusButtons}>

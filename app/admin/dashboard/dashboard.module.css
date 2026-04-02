@@ -455,3 +455,68 @@
         margin-bottom: 0.5rem;
     }
 }
+
+.dateFilterWrapper {
+    position: relative;
+    z-index: 50;
+}
+
+.dateFilter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--foreground);
+}
+
+.dateFilter:hover {
+    border-color: var(--burgundy);
+    background: var(--muted);
+}
+
+.dateDropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 200px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 0.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.dateOption {
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--muted-foreground);
+}
+
+.dateOption:hover {
+    background: var(--muted);
+    color: var(--burgundy);
+}
+
+.dateOptionActive {
+    background: var(--burgundy);
+    color: white !important;
+}
