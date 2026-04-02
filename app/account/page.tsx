@@ -128,9 +128,9 @@ export default function AccountPage() {
     return (
         <main className={styles.page}>
             <Header />
-            <div className="container">
+            <div className="container" style={{ flex: 1, paddingBottom: '3rem' }}>
                 {/* Welcome */}
-                <div className={styles.welcome}>
+                <div className={`${styles.welcome} animate-fade-up`}>
                     <div className={styles.welcomeHeader}>
                         <div>
                             <h1>
@@ -138,45 +138,46 @@ export default function AccountPage() {
                             </h1>
                             <p>Here&apos;s an overview of your account and recent orders.</p>
                         </div>
-                        <Link href="/catalog" className={styles.shopBtn}>
-                            <Store size={18} />
-                            View Shop
-                        </Link>
+                        <div className={styles.welcomeActions}>
+                            <div className={styles.headerQuickLinks}>
+                                <Link href="/wishlist">
+                                    <Heart size={16} /> My Wishlist
+                                </Link>
+                                <Link href="/contact">
+                                    <Settings size={16} /> Support
+                                </Link>
+                            </div>
+                            <Link href="/catalog" className={styles.shopBtn}>
+                                <Store size={18} />
+                                View Shop
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
                 {/* Stats */}
                 <div className={styles.statsRow}>
-                    <div className={styles.statCard}>
-                        <div
-                            className={styles.statIcon}
-                            style={{ background: "#fef3c7", color: "#d4af37" }}
-                        >
-                            <ShoppingBag size={22} />
+                    <div className={`${styles.statCard} animate-fade-up`} style={{ animationDelay: '0.1s' }}>
+                        <div className={`${styles.statIcon} ${styles.statIconPrimary}`}>
+                            <ShoppingBag size={24} />
                         </div>
                         <div className={styles.statContent}>
                             <span>Total Orders</span>
                             <h3>{orders.length}</h3>
                         </div>
                     </div>
-                    <div className={styles.statCard}>
-                        <div
-                            className={styles.statIcon}
-                            style={{ background: "#dcfce7", color: "#166534" }}
-                        >
-                            <DollarSign size={22} />
+                    <div className={`${styles.statCard} animate-fade-up`} style={{ animationDelay: '0.2s' }}>
+                        <div className={`${styles.statIcon} ${styles.statIconSecondary}`}>
+                            <DollarSign size={24} strokeWidth={2.5} />
                         </div>
                         <div className={styles.statContent}>
                             <span>Total Spent</span>
                             <h3>GH₵ {totalSpent.toLocaleString()}</h3>
                         </div>
                     </div>
-                    <div className={styles.statCard}>
-                        <div
-                            className={styles.statIcon}
-                            style={{ background: "#dbeafe", color: "#1e40af" }}
-                        >
-                            <Package size={22} />
+                    <div className={`${styles.statCard} animate-fade-up`} style={{ animationDelay: '0.3s' }}>
+                        <div className={`${styles.statIcon} ${styles.statIconTertiary}`}>
+                            <Package size={24} />
                         </div>
                         <div className={styles.statContent}>
                             <span>Active Orders</span>
@@ -194,7 +195,7 @@ export default function AccountPage() {
                 </div>
 
                 {/* Main Grid */}
-                <div className={styles.grid}>
+                <div className={`${styles.grid} animate-fade-up`} style={{ animationDelay: '0.4s' }}>
                     {/* Orders Table */}
                     <div className={styles.card}>
                         <div className={styles.cardHeader}>
@@ -285,7 +286,7 @@ export default function AccountPage() {
                     {/* Sidebar */}
                     <div>
                         {/* Account Info */}
-                        <div className={styles.card} style={{ marginBottom: "1.5rem" }}>
+                        <div className={styles.card}>
                             <div className={styles.cardHeader}>
                                 <h2>Account Info</h2>
                             </div>
@@ -321,34 +322,6 @@ export default function AccountPage() {
                                             : "—"}
                                     </span>
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* Quick Links */}
-                        <div className={styles.card}>
-                            <div className={styles.cardHeader}>
-                                <h2>Quick Links</h2>
-                            </div>
-                            <div className={styles.quickLinks}>
-                                <Link href="/catalog" className={styles.quickLink}>
-                                    <Store size={18} />
-                                    View Shop
-                                </Link>
-                                <Link href="/wishlist" className={styles.quickLink}>
-                                    <Heart size={18} />
-                                    My Wishlist
-                                </Link>
-                                <Link href="/contact" className={styles.quickLink}>
-                                    <Settings size={18} />
-                                    Contact Support
-                                </Link>
-                                <button
-                                    className={styles.signOutBtn}
-                                    onClick={signOut}
-                                >
-                                    <LogOut size={16} />
-                                    Sign Out
-                                </button>
                             </div>
                         </div>
                     </div>
