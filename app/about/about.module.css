@@ -1,22 +1,24 @@
 .hero {
-    background-color: var(--muted);
-    padding: 12rem 4rem 6rem;
+    background-color: var(--burgundy);
+    padding: 12rem 4rem 8rem;
     text-align: center;
+    color: #FFFFFF;
 }
 
 .hero h1 {
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: var(--burgundy);
-    margin-top: 2rem;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: #FFFFFF;
+    margin-top: 2.5rem;
     line-height: 1;
+    letter-spacing: -0.02em;
 }
 
 .chapterTitle {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 800;
-    letter-spacing: 0.4em;
-    color: var(--gold);
+    letter-spacing: 0.5em;
+    color: var(--gold-light);
     text-transform: uppercase;
 }
 

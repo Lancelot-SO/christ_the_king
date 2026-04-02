@@ -3,9 +3,9 @@
 }
 
 .heroSection {
-    padding: 8rem 0 4rem;
-    background-color: var(--muted);
-    border-bottom: 1px solid var(--border);
+    padding: 10rem 0 6rem;
+    background-color: var(--burgundy);
+    color: #FFFFFF;
 }
 
 .heroContent {
@@ -14,17 +14,18 @@
 
 .heroTitle {
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    color: var(--foreground);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
 }
 
 .heroLead {
-    font-size: 1.125rem;
-    color: var(--muted-foreground);
-    line-height: 1.5;
-    max-width: 60ch;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    max-width: 55ch;
 }
 
 .contactGrid {

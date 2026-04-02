@@ -3,8 +3,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--muted);
-    padding: 1.5rem;
+    background-color: var(--burgundy);
+    background-image: radial-gradient(circle at center, var(--burgundy-light) 0%, var(--burgundy-dark) 100%);
+    padding: 2rem;
 }
 
 .loginCard {

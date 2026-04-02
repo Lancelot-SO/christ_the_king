@@ -80,7 +80,7 @@ export default function DuesPage() {
 
     return (
         <main className={styles.main}>
-            <Header />
+            <Header light />
             
             <header id="hero-section" className={styles.pageHeader}>
                 <span className={styles.subtitle}>INSTITUTIONAL GOVERNANCE</span>

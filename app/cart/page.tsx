@@ -14,7 +14,7 @@ export default function CartPage() {
     if (cart.length === 0) {
         return (
             <main>
-                <Header />
+                <Header light />
                 <div className={styles.emptyCart}>
                     <div className="container animate-fade-up">
                         <ShoppingBag size={72} className={styles.emptyIcon} />
@@ -32,7 +32,7 @@ export default function CartPage() {
 
     return (
         <main>
-            <Header />
+            <Header light />
             <div className="container">
                 <header id="hero-section" className={styles.cartHeader}>
                     <h1 className={styles.title}>Archival Review</h1>

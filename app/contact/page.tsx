@@ -22,7 +22,7 @@ export default function ContactPage() {
 
     return (
         <main className={styles.main}>
-            <Header />
+            <Header light />
             
             {/* Editorial Hero */}
             <section className={styles.heroSection}>

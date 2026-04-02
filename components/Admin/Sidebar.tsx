@@ -84,11 +84,12 @@ export default function Sidebar() {
                 <motion.aside 
                     className={`${styles.sidebar} ${isMobileOpen ? styles.sidebarOpen : ""}`}
                     initial={false}
-                    animate={{ x: (isDesktop || isMobileOpen) ? 0 : "-100%" }}
+                    animate={{ x: (isDesktop || isMobileOpen) ? 0 : "-320px" }}
                     transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 >
                     <div className={styles.logo}>
-                        <Image src="/Logo_new.png" alt="Christ the King Logo" width={50} height={50} priority />
+                        <Image src="/Asset 2only.png" alt="Christ the King Logo" width={60} height={60} priority />
+                        <span>Christ the King</span>
                     </div>
 
                     <nav className={styles.nav}>

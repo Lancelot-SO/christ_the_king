@@ -1,16 +1,17 @@
 .cartHeader {
-    padding: 8rem 0 2rem;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 3rem;
-    text-align: left;
+    padding: 10rem 0 4rem;
+    background-color: var(--burgundy);
+    color: #FFFFFF;
+    margin-bottom: 5rem;
+    text-align: center;
 }
 
 .title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-    color: var(--burgundy);
+    font-size: 3.5rem;
+    color: #FFFFFF;
     margin: 0;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
 }
 
 .cartGrid {

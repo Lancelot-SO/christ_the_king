@@ -134,6 +134,7 @@ export default function ProductDetailsModal({ isOpen, onClose, product, onEdit }
 
                             {/* Pricing */}
                             <div className={styles.priceSection}>
+                                <span className={styles.sectionLabel}>CURRENT VALUATION</span>
                                 <div className={styles.priceMain}>
                                     {product.sale_price ? (
                                         <>

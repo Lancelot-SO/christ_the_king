@@ -497,8 +497,27 @@
     color: var(--primary);
 }
 
+.payBtn {
+    background: var(--burgundy);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 15px rgba(124, 25, 54, 0.15);
+}
+
 .payDuesBtn {
-    background: var(--primary);
+    /* Legacy mapping if still used elsewhere, but payBtn is primary */
+    background: var(--burgundy);
     color: white;
     padding: 0.625rem 1.25rem;
     border-radius: 8px;
@@ -512,10 +531,11 @@
     gap: 0.5rem;
 }
 
-.payDuesBtn:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+.payBtn:hover:not(:disabled),
+.payDuesBtn:hover:not(:disabled) {
+    background: var(--burgundy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(124, 25, 54, 0.25);
 }
 
 .duesPaidBadge {
