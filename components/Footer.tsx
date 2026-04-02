@@ -35,14 +35,20 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div className={styles.brandingSection}>
-                    <h1 className={styles.massiveBranding}>CHRIST THE KING</h1>
-                </div>
+            <div className={styles.brandingSection}>
+                <h1 className={styles.massiveBranding}>
+                    {"CHRIST THE KING".split("").map((char, index) => (
+                        <span key={index}>{char === " " ? "\u00A0" : char}</span>
+                    ))}
+                </h1>
+            </div>
 
+            <div className="container">
                 <div className={styles.bottomBar}>
                     <span>&copy; 2026 CHRIST THE KING HERITAGE</span>
-                    <span>ESTABLISHED 1958</span>
+                    <span>ESTABLISHED 1956</span>
                 </div>
             </div>
         </footer>

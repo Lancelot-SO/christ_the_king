@@ -34,7 +34,7 @@ export default function AboutPage() {
                         <div className={styles.textContent}>
                             <h2>A Sanctuary of Knowledge & Faith</h2>
                             <p>
-                                Founded on the bedrock of Catholic values, Christ the King School stands as an 
+                                Founded in 1956 on the bedrock of Catholic values, Christ the King School stands as an 
                                 architectural and spiritual landmark in Accra. Our institution is not merely a 
                                 school, but a sanctuary where young minds are sculpted through the dual lenses of 
                                 academic rigor and moral fortitude.

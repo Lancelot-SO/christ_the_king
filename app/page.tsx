@@ -44,7 +44,7 @@ export default function Home() {
             </div>
             
             <div className={styles.chapterContent}>
-              <span className={styles.preTitle}>SINCE 1958</span>
+              <span className={styles.preTitle}>SINCE 1956</span>
               <h2 className={styles.chapterHeading}>
                 A Legacy of <br />
                 <span className="gold-accent">Excellence & Faith.</span>
@@ -57,7 +57,7 @@ export default function Home() {
               
               <div className={styles.metrics}>
                 <div className={styles.metricItem}>
-                  <span className={styles.metricValue}>1958</span>
+                  <span className={styles.metricValue}>1956</span>
                   <span className={styles.metricLabel}>ESTABLISHED</span>
                 </div>
                 <div className={styles.metricItem}>

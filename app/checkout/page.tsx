@@ -124,7 +124,7 @@ export default function CheckoutPage() {
     return (
         <main>
             <Header />
-            <div className="container" style={{ paddingTop: '120px' }}>
+            <div className="container" style={{ paddingTop: '80px' }}>
                 <h1 className={styles.title}>Checkout</h1>
 
                 <form onSubmit={handleSubmit} className={styles.checkoutGrid}>

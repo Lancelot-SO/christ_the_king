@@ -1,7 +1,7 @@
 .footer {
     background-color: var(--burgundy);
     color: white;
-    padding: var(--section-padding) 0 4rem 0;
+    padding: 3rem 0 2rem 0;
     overflow: hidden;
 }
 
@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 8vw;
-    margin-bottom: 8rem;
+    margin-bottom: 2rem;
 }
 
 .title {
@@ -17,7 +17,7 @@
 }
 
 .desc {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     opacity: 0.7;
     max-width: 40ch;
     line-height: 1.6;
@@ -56,31 +56,35 @@
     transform: translateX(5px);
 }
 
-/* Massive Branding */
 .brandingSection {
-    margin-top: 10rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 5rem;
+    margin-top: 1rem;
     overflow: visible;
 }
 
 .massiveBranding {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0 2vw;
     font-family: var(--font-sans);
     font-weight: 900;
-    font-size: 15vw;
-    line-height: 0.8;
-    margin: 0;
-    letter-spacing: -0.05em;
-    color: rgba(255, 255, 255, 0.05);
+    font-size: 9.5vw;
+    line-height: 1;
+    margin: 1.5rem 0;
+    color: rgba(255, 255, 255, 0.03);
     white-space: nowrap;
     user-select: none;
-    text-align: center;
+    transform: scaleY(1.1);
+    transform-origin: center;
 }
 
-/* Bottom Bar */
+.massiveBranding span {
+    flex-shrink: 0;
+}
+
 .bottomBar {
-    margin-top: 5rem;
-    padding-top: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
@@ -95,7 +99,7 @@
         grid-template-columns: 1fr;
         gap: 5rem;
     }
-    
+
     .navGrid {
         grid-template-columns: repeat(2, 1fr);
         gap: 3rem;

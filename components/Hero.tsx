@@ -26,7 +26,7 @@ export default function Hero() {
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className={styles.textContent}
                 >
-                    <span className={styles.label}>ESTABLISHED HERITAGE</span>
+                    <span className={styles.label}>ESTABLISHED 1956</span>
                     <h1 className={styles.title}>
                         Your Year.<br />
                         <span className="gold-accent">Your Legacy.</span>
@@ -46,13 +46,6 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            <div className={styles.sidebarSection}>
-                <div className={styles.verticalTitle}>CHRIST THE KING</div>
-                <div className={styles.scrollInvite}>
-                    <span>SCROLL TO BEGIN</span>
-                    <div className={styles.dot}></div>
-                </div>
-            </div>
         </section>
     );
 }
