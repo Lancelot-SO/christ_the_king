@@ -31,20 +31,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     try {
       const { data, error } = await supabase
-        .from("admin_users")
+        .from("profiles")
         .select("role")
         .eq("id", userId)
-        .eq("is_active", true)
         .maybeSingle();
 
       if (error) {
         console.error("Error fetching user role:", error);
-        // On error, default to non-admin
         setIsAdmin(false);
         setRole(null);
       } else if (data) {
-        setIsAdmin(true);
-        setRole(data.role);
+        const userRole = data.role;
+        setIsAdmin(userRole === "Admin");
+        setRole(userRole);
       } else {
         setIsAdmin(false);
         setRole(null);

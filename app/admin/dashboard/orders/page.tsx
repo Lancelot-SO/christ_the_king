@@ -154,21 +154,20 @@ export default function OrdersPage() {
         };
     }, [fetchOrders]);
 
-    // Update order status in database
-    const updateOrderStatus = async (orderId: string, paymentStatus: string, orderStatus: string) => {
-        const { error } = await supabase
-            .from('orders')
-            .update({
-                payment_status: paymentStatus,
-                order_status: orderStatus,
-                updated_at: new Date().toISOString()
-            })
-            .eq('id', orderId);
+    // Update order status via server API
+    const updateOrderStatus = async (orderId: string, status: string) => {
+        const response = await fetch('/api/orders/status', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ orderId, status })
+        });
 
-        if (error) {
-            console.error('Error updating order:', error);
-            throw error;
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to update order status');
         }
+
+        return await response.json();
     };
 
 
@@ -423,7 +422,15 @@ export default function OrdersPage() {
                     setSelectedOrder(null);
                 }}
                 order={selectedOrder}
+                onUpdateStatus={async (orderId, newStatus) => {
+                    if (!selectedOrder) return;
+                    await updateOrderStatus(orderId, newStatus);
+                    // Update local state for immediate feedback
+                    setOrders(prev => prev.map(o => o.id === orderId ? { ...o, order_status: newStatus } : o));
+                    setSelectedOrder(prev => prev ? { ...prev, order_status: newStatus } : null);
+                }}
             />
         </motion.div>
     );
 }
+

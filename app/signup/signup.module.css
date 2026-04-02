@@ -95,6 +95,14 @@
     color: var(--burgundy);
 }
 
+.optionalLabel {
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: var(--muted-foreground);
+    text-transform: none;
+    margin-left: 0.25rem;
+}
+
 .signupBtn {
     margin-top: 1rem;
     background: var(--burgundy);

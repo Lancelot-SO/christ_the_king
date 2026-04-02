@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin as supabase } from '@/lib/supabaseServer';
 import { Resend } from 'resend';
 
 // Initialise Resend with API key from environment
@@ -78,17 +78,17 @@ export async function POST(req: NextRequest) {
                 const outOfStockItems = lowStockNotifications.filter(item => item.stock === 0);
                 const itemsLowStock = lowStockNotifications.filter(item => item.stock > 0);
                 
-                let subject = '⚠️ Stock Alert - AOO Ecommerce';
+                let subject = '⚠️ Stock Alert - Christ The King';
                 if (outOfStockItems.length > 0 && itemsLowStock.length === 0) {
-                    subject = '🚫 Out of Stock Alert - AOO Ecommerce';
+                    subject = '🚫 Out of Stock Alert - Christ The King';
                 } else if (outOfStockItems.length > 0) {
-                    subject = '⚠️ Stock Alert: Some items Sold Out - AOO Ecommerce';
+                    subject = '⚠️ Stock Alert: Some items Sold Out - Christ The King';
                 } else {
-                    subject = '⚠️ Low Stock Alert - AOO Ecommerce';
+                    subject = '⚠️ Low Stock Alert - Christ The King';
                 }
 
                 await resend.emails.send({
-                    from: 'aoo-ecommerce <notifications@resend.dev>',
+                    from: 'Christ The King <notifications@resend.dev>',
                     to: recipientEmail,
                     subject: subject,
                     html: `

@@ -38,36 +38,17 @@ export default function LoginPage() {
             }
 
             if (user) {
-                // Ensure a profile exists for this user (auto-create with 'Customer' role if missing)
-                const { data: existingProfile } = await supabase
+                // Fetch user's role from the profiles table
+                const { data: profileData } = await supabase
                     .from("profiles")
-                    .select("id")
-                    .eq("id", user.id)
-                    .maybeSingle();
-
-                if (!existingProfile) {
-                    await supabase.from("profiles").insert([
-                        {
-                            id: user.id,
-                            email: user.email,
-                            name: user.email?.split("@")[0] || "User",
-                            role: "Customer",
-                        },
-                    ]);
-                }
-
-                // Check if user is admin
-                const { data: adminData } = await supabase
-                    .from("admin_users")
                     .select("role")
                     .eq("id", user.id)
-                    .eq("is_active", true)
-                    .single();
+                    .maybeSingle();
 
                 // Refresh context to ensure global state is up to date
                 await refreshSession();
 
-                if (adminData) {
+                if (profileData?.role === "Admin") {
                     router.push("/admin/dashboard");
                 } else {
                     router.push("/account");
