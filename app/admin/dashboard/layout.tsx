@@ -57,26 +57,43 @@ export default function AdminLayout({
     }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', background: 'var(--background)', minHeight: '100vh' }}>
             <Sidebar />
-            <main style={{ 
-                flex: 1, 
-                minHeight: '100vh', 
-                background: '#f9f9f9', 
-                position: 'relative',
-                transition: 'padding-left 0.3s ease'
-            }} className="admin-main">
+            <main className="admin-main">
+                <div className="admin-content-inner">
+                    {children}
+                </div>
                 <style jsx>{`
                     .admin-main {
-                        padding-left: 0;
+                        flex: 1;
+                        min-height: 100vh;
+                        background: var(--muted);
+                        position: relative;
+                        transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                        padding: 1rem;
                     }
+
+                    .admin-content-inner {
+                        background: var(--background);
+                        min-height: calc(100vh - 2rem);
+                        border-radius: var(--radius);
+                        padding: 1.5rem 3vw;
+                        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+                        border: 1px solid var(--border);
+                    }
+
                     @media (min-width: 1025px) {
                         .admin-main {
-                            padding-left: 260px;
+                            padding-left: 272px; /* 240px width + 16px left + 16px gap */
+                        }
+                    }
+
+                    @media (max-width: 1024px) {
+                        .admin-main {
+                            padding-top: 5rem; /* Space for mobile toggle */
                         }
                     }
                 `}</style>
-                {children}
             </main>
         </div>
     );
