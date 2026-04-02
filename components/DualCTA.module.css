@@ -1,0 +1,64 @@
+.ctaContainer {
+  display: flex;
+  width: 100%;
+}
+
+.ctaSide {
+  flex: 1;
+  padding: 8rem 4rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopSide {
+  background: var(--primary);
+  color: var(--white);
+  border-right: var(--border);
+}
+
+.duesSide {
+  background: var(--accent);
+  color: var(--dark);
+}
+
+.content {
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.title {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.ctaSide:hover {
+  opacity: 0.9;
+  filter: brightness(1.1);
+}
+
+@media (max-width: 1024px) {
+  .ctaContainer {
+    flex-direction: column;
+  }
+  .ctaSide {
+    padding: 6rem 2rem;
+    border-right: none;
+    border-bottom: var(--border);
+  }
+  .title {
+    font-size: 4rem;
+  }
+}

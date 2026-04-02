@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { Filter, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import styles from "./catalog.module.css";
 
@@ -43,7 +43,6 @@ export default function Catalog() {
                     query = query.ilike('name', `%${searchQuery}%`);
                 }
 
-                // Price filters applied at database level
                 if (minPrice !== "") {
                     const min = parseFloat(minPrice);
                     if (!isNaN(min)) {
@@ -58,7 +57,6 @@ export default function Catalog() {
                     }
                 }
 
-                // Sort at database level
                 if (sortOption === "Price: Low to High") {
                     query = query.order('price', { ascending: true });
                 } else if (sortOption === "Price: High to Low") {
@@ -75,15 +73,7 @@ export default function Catalog() {
                 }
             } catch (error: any) {
                 if (isMounted) {
-                    if (error.name === 'AbortError' || error.message?.includes('aborted')) {
-                        return;
-                    }
-                    console.error('Error fetching products:', {
-                        message: error.message,
-                        details: error.details,
-                        hint: error.hint,
-                        code: error.code
-                    });
+                    console.error('Error fetching products:', error.message);
                 }
             } finally {
                 if (isMounted) {
@@ -119,20 +109,21 @@ export default function Catalog() {
     return (
         <main>
             <Header />
-            <div className={styles.hero}>
+            <header id="hero-section" className={styles.hero}>
                 <div className="container">
-                    <h1>Catalog</h1>
-                    <p>Explore the full range of centenary merchandise.</p>
+                    <span className="editorial-kicker">THE ARCHIVE</span>
+                    <h1>The Collection</h1>
+                    <p>A catalog of heritage, tradition, and exclusive artifacts for the CTK community.</p>
                 </div>
-            </div>
+            </header>
 
             <div className="container">
                 <div className={styles.controls}>
                     <div className={styles.searchWrapper}>
-                        <Search size={18} className={styles.searchIcon} />
+                        <Search size={24} className={styles.searchIcon} />
                         <input
                             type="text"
-                            placeholder="Search products..."
+                            placeholder="SEARCH THE COLLECTION"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className={styles.searchInput}
@@ -141,7 +132,7 @@ export default function Catalog() {
 
                     <div className={styles.filters}>
                         <div className={styles.filterGroup}>
-                            <span className={styles.filterLabel}>Category</span>
+                            <span className={styles.filterLabel}>Artifact Type</span>
                             <div className={styles.categoryChips}>
                                 <button
                                     className={`${styles.chip} ${activeCategory === "All" ? styles.chipActive : ""}`}
@@ -162,7 +153,7 @@ export default function Catalog() {
                         </div>
 
                         <div className={styles.sortWrapper}>
-                            <Filter size={18} />
+                            <span>SORT BY</span>
                             <select
                                 className={styles.sortSelect}
                                 value={sortOption}
@@ -175,35 +166,30 @@ export default function Catalog() {
                         </div>
                     </div>
 
-                    {/* Price Filter */}
                     <div className={styles.priceFilter}>
-                        <span className={styles.filterLabel}>Price Range (GHS)</span>
+                        <span className={styles.filterLabel}>VALUATION (GHS)</span>
                         <div className={styles.priceInputs}>
                             <input
                                 type="number"
-                                placeholder="Min"
+                                placeholder="MIN"
                                 value={minPrice}
                                 onChange={(e) => setMinPrice(e.target.value)}
                                 className={styles.priceInput}
-                                min="0"
-                                step="0.01"
                             />
                             <span className={styles.priceSeparator}>—</span>
                             <input
                                 type="number"
-                                placeholder="Max"
+                                placeholder="MAX"
                                 value={maxPrice}
                                 onChange={(e) => setMaxPrice(e.target.value)}
                                 className={styles.priceInput}
-                                min="0"
-                                step="0.01"
                             />
                             {hasPriceFilter && (
                                 <button
                                     className={styles.clearPriceBtn}
                                     onClick={clearPriceFilter}
                                 >
-                                    Clear
+                                    CLEAR FILTERS
                                 </button>
                             )}
                         </div>
@@ -211,13 +197,11 @@ export default function Catalog() {
                 </div>
 
                 <div className={styles.resultsInfo}>
-                    {loading ? "Updating results..." : `Showing ${products.length} products`}
+                    {loading ? "SEARCHING..." : `${products.length} ARTIFACTS FOUND`}
                 </div>
 
                 <div className={styles.grid}>
-                    {loading && products.length === 0 ? (
-                        <div style={{ textAlign: 'center', gridColumn: '1/-1', padding: '40px' }}>Loading catalog...</div>
-                    ) : products.length > 0 ? (
+                    {products.length > 0 ? (
                         products.map(product => (
                             <ProductCard
                                 key={product.id}
@@ -229,9 +213,9 @@ export default function Catalog() {
                                 stock_quantity={product.stock_quantity}
                             />
                         ))
-                    ) : (
-                        <div style={{ textAlign: 'center', gridColumn: '1/-1', padding: '60px', color: '#6b7280' }}>
-                            No products found matching your criteria.
+                    ) : !loading && (
+                        <div style={{ textAlign: 'center', gridColumn: '1/-1', padding: '100px', color: 'var(--muted-foreground)' }}>
+                            No artifacts matching your criteria were discovered in the archive.
                         </div>
                     )}
                 </div>

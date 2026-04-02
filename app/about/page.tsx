@@ -1,50 +1,66 @@
+"use client";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "./about.module.css";
+import Image from "next/image";
 
 export default function AboutPage() {
     return (
         <main>
             <Header />
-            <div className={styles.hero}>
+            
+            <header id="hero-section" className={styles.hero}>
                 <div className="container">
-                    <span className="premium-gold-text" style={{ fontWeight: 700, letterSpacing: '0.3em' }}>OUR STORY</span>
-                    <h1>A Century of Excellence</h1>
+                    <span className={styles.chapterTitle}>CHAPTER I</span>
+                    <h1>Our Heritage</h1>
                 </div>
-            </div>
+            </header>
 
-            <div className="container" style={{ padding: '8rem 1.5rem' }}>
-                <div className={styles.contentGrid}>
-                    <div className={styles.textContent}>
-                        <h2>Achimota School Centenary</h2>
-                        <p>
-                            Founded in 1927 by Sir Frederick Gordon Guggisberg, Dr. James Emman Kwegyir Aggrey and Rev. Alec Garden Fraser,
-                            Achimota School was established as a co-educational secondary boarding school, the first of its kind in Ghana.
-                        </p>
-                        <p>
-                            For 100 years, Achimota has been a beacon of academic excellence, leadership, and national unity.
-                            The motto, &quot;Ut Omnes Unum Sint&quot; (That All May Be One), reflected the founders&apos; vision of a school
-                            that would train the whole person - body, soul, and spirit.
-                        </p>
-                        <p>
-                            The centenary celebration is a testimony to the resilience and progress of this great institution.
-                            The merchandise collection offered here aims to preserve this legacy and support the future of the school.
-                        </p>
-                    </div>
-                    <div className={styles.imageContent}>
-                        <img 
-                            src="https://i.pinimg.com/1200x/6f/a2/cb/6fa2cb3df1b7c0c99b3d22c032f69f7e.jpg" 
-                            alt="Historic Achimota School"
-                            style={{ 
-                                width: '100%', 
-                                height: '500px', 
-                                objectFit: 'cover', 
-                                borderRadius: 'var(--radius)' 
-                            }}
-                        />
+            <section className={styles.contentContainer}>
+                <div className="container">
+                    <div className={styles.aboutGrid}>
+                        <div className={styles.visuals}>
+                            <div className={styles.imageWrapper}>
+                                <Image 
+                                    src="/ctk-school.png" 
+                                    alt="Christ the King School Campus"
+                                    fill
+                                    className={styles.img}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.textContent}>
+                            <h2>A Sanctuary of Knowledge & Faith</h2>
+                            <p>
+                                Founded in 1956 on the bedrock of Catholic values, Christ the King School stands as an 
+                                architectural and spiritual landmark in Accra. Our institution is not merely a 
+                                school, but a sanctuary where young minds are sculpted through the dual lenses of 
+                                academic rigor and moral fortitude.
+                            </p>
+                            <p>
+                                For decades, CTK has nurtured the leaders of tomorrow, instilling a sense of purpose 
+                                that transcends the classroom. The burgundy and gold we wear are more than colors; 
+                                they are symbols of a standard that we uphold in every endeavor—be it intellectual, 
+                                spiritual, or social.
+                            </p>
+                            <p>
+                                The artifacts found within this digital archive are curated to represent this 
+                                legacy. Each piece of merchandise is a thread in the rich tapestry of our community, 
+                                designed to be worn with pride and preserved as a part of our collective history.
+                            </p>
+                            
+                            <h2 style={{ marginTop: '4rem' }}>Our Mission</h2>
+                            <p>
+                                To develop the whole person, preparing students to lead with integrity and serve 
+                                with compassion. We believe in an education that empowers, a faith that inspires, 
+                                and a community that lasts a lifetime.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <Footer />
         </main>

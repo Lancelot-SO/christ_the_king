@@ -234,7 +234,7 @@ export default function AddProductModal({ isOpen, onClose, onSuccess }: AddProdu
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        placeholder="e.g. Centenary Blazer"
+                                        placeholder="e.g. School Blazer"
                                     />
                                 </div>
                                 <div className={styles.inputGroup}>

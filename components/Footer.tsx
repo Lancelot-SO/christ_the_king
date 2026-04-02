@@ -5,40 +5,50 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className="container">
-                <div className={styles.footerGrid}>
-                    <div className={styles.footerBrand}>
-                        <h3>OAA Store</h3>
-                        <p>The official marketplace for the Achimota Old Students Association Centenary.</p>
+                <div className={styles.topSection}>
+                    <div className={styles.statement}>
+                        <h2 className={styles.title}>A Legacy of <span className="gold-accent">Excellence.</span></h2>
+                        <p className={styles.desc}>
+                            Preserving the traditions, celebrating the achievements, 
+                            and building the future of the Christ the King community.
+                        </p>
                     </div>
-                    <div className={styles.footerLinks}>
-                        <div>
-                            <h4>Shop</h4>
-                            <ul>
-                                <li><Link href="/catalog">Apparel</Link></li>
-                                <li><Link href="/catalog">Accessories</Link></li>
-                                <li><Link href="/catalog">Collectibles</Link></li>
-                            </ul>
+                    
+                    <div className={styles.navGrid}>
+                        <div className={styles.navCol}>
+                            <span className={styles.label}>EXPLORE</span>
+                            <Link href="/catalog">The Collection</Link>
+                            <Link href="/about">Our Legacy</Link>
+                            <Link href="/dues">Contribution</Link>
                         </div>
-                        <div>
-                            <h4>Legacy</h4>
-                            <ul>
-                                <li><Link href="/about">Our Story</Link></li>
-                                <li>Centenary Events</li>
-                                <li>Foundation</li>
-                            </ul>
+                        <div className={styles.navCol}>
+                            <span className={styles.label}>SUPPORT</span>
+                            <Link href="/contact">Inquiries</Link>
+                            <Link href="/catalog">Shipping</Link>
+                            <Link href="/catalog">Terms</Link>
                         </div>
-                        <div>
-                            <h4>Support</h4>
-                            <ul>
-                                <li>Shipping</li>
-                                <li><Link href="/contact">Inquiries</Link></li>
-                                <li>Terms</li>
-                            </ul>
+                        <div className={styles.navCol}>
+                            <span className={styles.label}>SOCIAL</span>
+                            <a href="#">Instagram</a>
+                            <a href="#">LinkedIn</a>
+                            <a href="#">Twitter</a>
                         </div>
                     </div>
                 </div>
-                <div className={styles.copyright}>
-                    <p>&copy; 2026 Old Achimotans Association. <span className="text-gold-footer">UT OMNES UNUM SINT</span></p>
+            </div>
+
+            <div className={styles.brandingSection}>
+                <h1 className={styles.massiveBranding}>
+                    {"CHRIST THE KING".split("").map((char, index) => (
+                        <span key={index}>{char === " " ? "\u00A0" : char}</span>
+                    ))}
+                </h1>
+            </div>
+
+            <div className="container">
+                <div className={styles.bottomBar}>
+                    <span>&copy; 2026 CHRIST THE KING HERITAGE</span>
+                    <span>ESTABLISHED 1956</span>
                 </div>
             </div>
         </footer>
