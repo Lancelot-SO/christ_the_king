@@ -1,19 +1,82 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { supabase } from "@/lib/supabase";
+import dynamic from "next/dynamic";
 import styles from "./dues.module.css";
+
+const PaymentButton = dynamic(() => import("@/components/PaymentButton"), { 
+    ssr: false,
+    loading: () => (
+        <button className={styles.payBtn} disabled>
+            Loading...
+        </button>
+    )
+});
+
+interface DuesFee {
+    year_group: string;
+    amount: number;
+}
 
 export default function DuesPage() {
     const [step, setStep] = useState(1);
+    const [fees, setFees] = useState<DuesFee[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [isPaying, setIsPaying] = useState(false);
     const [formData, setFormData] = useState({
+        email: "", // Added email for payment
         yearGroup: "",
         subscription: "annual",
         amount: 250,
     });
 
-    const yearGroups = ["Class of 1990", "Class of 1995", "Class of 2000", "Class of 2005", "Class of 2010", "Class of 2015", "Class of 2020", "Class of 2024"];
+    useEffect(() => {
+        const fetchFees = async () => {
+            try {
+                setLoading(true);
+                const { data, error } = await supabase
+                    .from('dues_fees')
+                    .select('year_group, amount')
+                    .order('year_group', { ascending: false });
+
+                if (data) {
+                    setFees(data);
+                }
+            } catch (err) {
+                console.error("Error fetching dues fees:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFees();
+    }, []);
+
+    const getYearGroups = () => {
+        if (fees.length > 0) {
+            return fees.map((f: DuesFee) => `Class of ${f.year_group}`);
+        }
+        return ["Class of 1990", "Class of 1995", "Class of 2000", "Class of 2005", "Class of 2010", "Class of 2015", "Class of 2020", "Class of 2024"];
+    };
+
+    const getAnnualPrice = () => {
+        if (!formData.yearGroup) return 250;
+        const year = formData.yearGroup.split(" ").pop();
+        const fee = fees.find((f: DuesFee) => f.year_group === year);
+        return fee ? fee.amount : 250;
+    };
+
+    // Update amount when year group changes to reflect admin settings
+    useEffect(() => {
+        if (formData.yearGroup && formData.subscription === "annual") {
+            const price = getAnnualPrice();
+            setFormData((prev: any) => ({ ...prev, amount: price }));
+        }
+    }, [formData.yearGroup]);
 
     return (
         <main className={styles.main}>
@@ -42,15 +105,19 @@ export default function DuesPage() {
                             <h2 className={styles.stepTitle}>Identify Year Group</h2>
                             <p className={styles.stepDesc}>Select the class year group you are registering your dues for.</p>
                             <div className={styles.grid}>
-                                {yearGroups.map((yg) => (
-                                    <button 
-                                        key={yg}
-                                        className={`${styles.selectionBtn} ${formData.yearGroup === yg ? styles.selected : ""}`}
-                                        onClick={() => setFormData({...formData, yearGroup: yg})}
-                                    >
-                                        {yg}
-                                    </button>
-                                ))}
+                                {loading ? (
+                                    <p className={styles.loadingText}>Fetching year groups...</p>
+                                ) : (
+                                    getYearGroups().map((yg: string) => (
+                                        <button 
+                                            key={yg}
+                                            className={`${styles.selectionBtn} ${formData.yearGroup === yg ? styles.selected : ""}`}
+                                            onClick={() => setFormData({...formData, yearGroup: yg})}
+                                        >
+                                            {yg}
+                                        </button>
+                                    ))
+                                )}
                             </div>
                             <button 
                                 disabled={!formData.yearGroup}
@@ -68,9 +135,9 @@ export default function DuesPage() {
                             <p className={styles.stepDesc}>Choose your contribution schedule for the {formData.yearGroup}.</p>
                             <div className={styles.grid}>
                                 {[
-                                    {id: "monthly", label: "Monthly", price: 25},
-                                    {id: "annual", label: "Annual", price: 250},
-                                    {id: "lifetime", label: "Lifetime", price: 5000},
+                                    {id: "monthly", label: "Monthly", price: Math.round(getAnnualPrice() / 10)},
+                                    {id: "annual", label: "Annual", price: getAnnualPrice()},
+                                    {id: "lifetime", label: "Lifetime", price: getAnnualPrice() * 20},
                                 ].map((plan) => (
                                     <button 
                                         key={plan.id}
@@ -107,8 +174,38 @@ export default function DuesPage() {
                                     <span>GHS {formData.amount.toLocaleString()}</span>
                                 </div>
                             </div>
-                            <button className={styles.payBtn}>AUTHORIZE PAYMENT</button>
-                            <button className={styles.backBtn} style={{ display: 'block', margin: '0 auto' }} onClick={() => setStep(2)}>RETURN TO SCHEDULE</button>
+                            
+                            <div className={styles.formGroup} style={{ marginBottom: '2rem' }}>
+                                <label style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--muted-foreground)', display: 'block', marginBottom: '0.5rem' }}>RECEIPT EMAIL</label>
+                                <input 
+                                    type="email" 
+                                    placeholder="your@email.com"
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                    style={{ width: '100%', background: 'var(--muted)', border: '1px solid var(--border)', padding: '1rem', borderRadius: '2rem', fontSize: '0.875rem' }}
+                                />
+                            </div>
+
+                            <PaymentButton 
+                                config={{
+                                    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+                                    email: formData.email,
+                                    amount: Math.round(formData.amount * 100),
+                                    currency: 'GHS',
+                                    reference: `CONTRIB-${formData.yearGroup.split(" ").pop()}-${Date.now()}`
+                                }}
+                                onSuccess={(response: any) => {
+                                    alert("Thank you for your contribution!");
+                                    window.location.href = "/checkout/success";
+                                }}
+                                onClose={() => setIsPaying(false)}
+                                loading={isPaying}
+                                setLoading={setIsPaying}
+                                styles={{ payBtn: styles.payBtn }}
+                                label="AUTHORIZE CONTRIBUTION"
+                                skipCartCheck={true}
+                            />
+                            <button className={styles.backBtn} style={{ display: 'block', margin: '0 auto', border: 'none', background: 'none', color: 'var(--muted-foreground)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', marginTop: '1.5rem', cursor: 'pointer' }} onClick={() => setStep(2)}>RETURN TO SCHEDULE</button>
                         </div>
                     )}
                 </div>
