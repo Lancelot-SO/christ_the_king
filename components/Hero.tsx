@@ -9,10 +9,10 @@ export default function Hero() {
     return (
         <section id="hero-section" className={styles.hero}>
             <div className={styles.imageWrapper}>
-                <Image 
-                    src="/ctk_blazer_luxury_1775074607371.png" 
-                    alt="Christ the King Alumni Heritage" 
-                    fill 
+                <Image
+                    src="/blazer+lapel pin.png"
+                    alt="Christ the King Alumni Heritage"
+                    fill
                     className={styles.image}
                     priority
                 />
@@ -32,7 +32,7 @@ export default function Hero() {
                         <span className="gold-accent">Your Legacy.</span>
                     </h1>
                     <p className={styles.description}>
-                        A premium digital experience for the Christ the King community. 
+                        A premium digital experience for the Christ the King community.
                         Celebrate your journey, contribute to the future, and wear your identity.
                     </p>
                     <div className={styles.actions}>

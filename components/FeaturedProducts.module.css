@@ -1,6 +1,6 @@
 .boutiqueSection {
     padding: var(--section-padding) 0;
-    background-color: var(--background);
+    background-color: #fef9fa; /* Very subtle burgundy tint */
 }
 
 .header {
@@ -29,7 +29,7 @@
     font-size: clamp(3rem, 6vw, 4.5rem);
     line-height: 1;
     font-family: var(--font-serif);
-    color: var(--foreground);
+    color: var(--burgundy);
     letter-spacing: -0.01em;
 }
 
@@ -59,9 +59,14 @@
 }
 
 .tabActive {
-    background: #111111;
+    background: var(--burgundy);
     color: #FFFFFF;
-    border-color: #111111;
+    border-color: var(--burgundy);
+}
+
+.tab:hover:not(.tabActive) {
+    border-color: var(--burgundy);
+    color: var(--burgundy);
 }
 
 /* Grid */

@@ -93,14 +93,19 @@
 }
 
 .selectionBtn {
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1rem; /* Reduced from 2.5rem to be more compact */
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.875rem; /* Slightly smaller font */
+    font-weight: 700;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     background: transparent;
     color: var(--foreground);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .selectionBtn:hover:not(.selected) {
@@ -224,7 +229,8 @@
 
 @media (max-width: 768px) {
     .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile for better space usage */
+        gap: 1rem;
     }
 
     .stepsNav {
