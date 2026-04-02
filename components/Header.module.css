@@ -118,9 +118,17 @@
 
 .iconBtn {
     position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
     color: var(--foreground);
     opacity: 0.8;
     transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .iconBtn:hover {
@@ -213,6 +221,87 @@
     border-bottom-color: var(--gold);
 }
 
+.userWrapper {
+    position: relative;
+}
+
+.userDropdown {
+    position: absolute;
+    top: calc(100% + 1rem);
+    right: 0;
+    width: 240px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+[data-theme='dark'] .userDropdown {
+    background: rgba(20, 20, 20, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdownHeader {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+}
+
+.dropdownHeader span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdownItem, .signOutItem {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 1rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--foreground);
+    font-family: inherit;
+}
+
+.dropdownItem:hover {
+    background: var(--muted);
+    color: var(--burgundy);
+}
+
+.signOutItem {
+    color: #dc2626;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    border-radius: 0;
+}
+
+.signOutItem:hover {
+    color: #991b1b;
+    opacity: 0.8;
+}
+
+.activeIcon {
+    color: var(--burgundy) !important;
+    opacity: 1 !important;
+}
+
 @media (max-width: 1024px) {
     .nav, .navLink:first-of-type {
         display: none;
@@ -228,5 +317,9 @@
     
     .logoArea {
         justify-content: flex-start;
+    }
+
+    .userDropdown {
+        right: -1rem;
     }
 }
