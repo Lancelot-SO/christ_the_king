@@ -10,7 +10,11 @@ import { useAuth } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Header.module.css";
 
-export default function Header() {
+interface HeaderProps {
+    light?: boolean;
+}
+
+export default function Header({ light = false }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { cartCount } = useCart();
@@ -41,7 +45,7 @@ export default function Header() {
 
     return (
         <header 
-            className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
+            className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${light && !isScrolled ? styles.light : ""}`}
         >
             <div className={styles.pillContainer}>
                 {/* Left: Nav */}
@@ -53,10 +57,10 @@ export default function Header() {
                 {/* Center: Logo */}
                 <Link href="/" className={styles.logoArea}>
                     <Image
-                        src="/Logo_new.png"
+                        src={light && !isScrolled ? "/Asset 2only.png" : "/Logo_new.png"}
                         alt="Christ the King"
-                        width={120}
-                        height={40}
+                        width={140}
+                        height={46}
                         className={styles.logo}
                         priority
                     />

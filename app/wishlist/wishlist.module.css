@@ -1,21 +1,21 @@
 .hero {
-    padding: 12rem 0 2rem;
-    background: #fdfdfd;
+    padding: 12rem 0 6rem;
+    background: var(--burgundy);
     text-align: center;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 2rem;
+    color: #FFFFFF;
+    margin-bottom: 5rem;
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(3rem, 8vw, 4.5rem);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-    color: var(--burgundy);
+    color: #FFFFFF;
 }
 
 .hero p {
-    color: var(--muted-foreground);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 1.125rem;
     max-width: 65ch;
     margin: 0 auto;

@@ -108,7 +108,7 @@ export default function Catalog() {
 
     return (
         <main>
-            <Header />
+            <Header light />
             <header id="hero-section" className={styles.hero}>
                 <div className="container">
                     <span className="editorial-kicker">THE ARCHIVE</span>
@@ -153,16 +153,23 @@ export default function Catalog() {
                         </div>
 
                         <div className={styles.sortWrapper}>
-                            <span>SORT BY</span>
-                            <select
-                                className={styles.sortSelect}
-                                value={sortOption}
-                                onChange={(e) => setSortOption(e.target.value)}
-                            >
-                                {SORT_OPTIONS.map(opt => (
-                                    <option key={opt}>{opt}</option>
-                                ))}
-                            </select>
+                            <span className={styles.filterLabel}>SORT BY</span>
+                            <div className={styles.selectWrapper}>
+                                <select
+                                    className={styles.sortSelect}
+                                    value={sortOption}
+                                    onChange={(e) => setSortOption(e.target.value)}
+                                >
+                                    {SORT_OPTIONS.map(opt => (
+                                        <option key={opt}>{opt}</option>
+                                    ))}
+                                </select>
+                                <div className={styles.selectArrow}>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

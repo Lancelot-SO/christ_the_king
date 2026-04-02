@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function AboutPage() {
     return (
         <main>
-            <Header />
+            <Header light />
             
             <header id="hero-section" className={styles.hero}>
                 <div className="container">
