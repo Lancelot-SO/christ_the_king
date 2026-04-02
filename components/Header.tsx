@@ -117,20 +117,67 @@ export default function Header() {
                 {isMenuOpen && (
                     <motion.div 
                         className={styles.mobileOverlay}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <div className={styles.overlayHeader}>
                             <span className={styles.overlayBrand}>CHRIST THE KING</span>
-                            <button onClick={() => setIsMenuOpen(false)}><X size={32} /></button>
+                            <button onClick={() => setIsMenuOpen(false)} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
+                                <X size={32} />
+                            </button>
                         </div>
-                        <nav className={styles.overlayNav}>
-                            <Link href="/catalog" onClick={() => setIsMenuOpen(false)}>THE COLLECTION</Link>
-                            <Link href="/about" onClick={() => setIsMenuOpen(false)}>OUR LEGACY</Link>
-                            <Link href="/dues" onClick={() => setIsMenuOpen(false)}>CONTRIBUTION</Link>
-                            <Link href="/account" onClick={() => setIsMenuOpen(false)}>MY ACCOUNT</Link>
-                        </nav>
+                        
+                        <motion.nav 
+                            className={styles.overlayNav}
+                            initial="initial"
+                            animate="animate"
+                            variants={{
+                                animate: {
+                                    transition: {
+                                        staggerChildren: 0.1
+                                    }
+                                }
+                            }}
+                        >
+                            {[
+                                { label: "THE COLLECTION", href: "/catalog", id: "01" },
+                                { label: "OUR LEGACY", href: "/about", id: "02" },
+                                { label: "CONTRIBUTION", href: "/dues", id: "03" },
+                                { label: "MY ACCOUNT", href: "/account", id: "04" },
+                            ].map((item) => (
+                                <motion.div
+                                    key={item.id}
+                                    variants={{
+                                        initial: { opacity: 0, x: -20 },
+                                        animate: { opacity: 1, x: 0 }
+                                    }}
+                                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                >
+                                    <Link 
+                                        href={item.href} 
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        <span>{item.id} /</span> {item.label}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </motion.nav>
+
+                        <motion.div 
+                            className={styles.overlayFooter}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            <span className={styles.motto}>EXCELLENCE & FAITH</span>
+                            <div className={styles.socialLinks}>
+                                <span>INSTAGRAM</span>
+                                <span>LINKEDIN</span>
+                                <span>X.COM</span>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

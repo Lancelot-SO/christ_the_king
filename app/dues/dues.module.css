@@ -226,8 +226,43 @@
     .grid {
         grid-template-columns: 1fr;
     }
-    
+
     .stepsNav {
         gap: 2rem;
+    }
+
+    .nextBtn {
+        margin: 2rem auto 0;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .btnRow {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .btnRow .nextBtn {
+        margin: 0;
+        width: 100%;
+        order: 1;
+    }
+
+    .btnRow .backBtn {
+        margin: 0;
+        order: 2;
+    }
+
+    .summaryBox {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .totalRow {
+        font-size: 1.5rem;
+    }
+
+    .pageHeader {
+        padding-top: 10rem;
     }
 }

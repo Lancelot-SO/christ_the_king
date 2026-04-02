@@ -31,17 +31,19 @@
 .headerTools {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .searchWrapper {
     position: relative;
+    flex: 1;
+    min-width: 280px;
     display: flex;
     align-items: center;
     background: var(--muted);
     border-radius: 2rem;
     padding: 0 1rem;
-    width: 220px;
     border: 1px solid var(--border);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -117,20 +119,20 @@
 
 .statsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 .statCard {
-    background: var(--background);
-    padding: 1.25rem;
-    border-radius: 1.5rem;
-    border: 1px solid var(--border);
+    background: white;
+    padding: 1.75rem;
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 1.5rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
 }
@@ -180,9 +182,9 @@
 .topGrid,
 .mainGrid {
     display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
+    grid-template-columns: 1fr 340px;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 .chartCard,
@@ -227,24 +229,83 @@
     margin-top: 0.2rem;
 }
 
+.chartWrapper {
+    position: relative;
+    height: 350px;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.chartGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.gridLine {
+    border-top: 1px dashed var(--border);
+    position: relative;
+    width: 100%;
+}
+
+.gridLine span {
+    position: absolute;
+    top: -8px;
+    right: 0;
+    font-size: 0.6rem;
+    color: var(--muted-foreground);
+    font-weight: 700;
+    background: var(--background);
+    padding: 0 4px;
+}
+
 .chartPlaceholder {
-    height: 180px;
+    position: relative;
+    height: 280px;
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1;
+}
+
+.barContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
     gap: 0.75rem;
-    padding-top: 1rem;
 }
 
 .bar {
-    flex: 1;
+    width: 32px;
     background: var(--muted);
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 0.5rem 0.5rem 0 0;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
 }
 
 .bar:hover,
 .barActive {
     background: var(--burgundy);
+    box-shadow: 0 4px 15px rgba(124, 25, 54, 0.15);
+}
+
+.xAxisLabel {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: var(--muted-foreground);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .tooltip {
@@ -425,11 +486,39 @@
     letter-spacing: 0.1em;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
+    .topGrid, .mainGrid {
+        grid-template-columns: 1fr 300px;
+    }
+}
 
-    .topGrid,
-    .mainGrid {
+@media (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .headerTools {
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .searchWrapper {
+        min-width: 100%;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .topGrid, .mainGrid {
         grid-template-columns: 1fr;
+    }
+
+    .sideColumn {
+        order: 2;
     }
 }
 
@@ -519,4 +608,37 @@
 .dateOptionActive {
     background: var(--burgundy);
     color: white !important;
+}
+
+.elevationSearch {
+    margin-bottom: 1rem;
+}
+
+.elevationResult {
+    background: var(--muted);
+    padding: 1rem;
+    border-radius: 1.25rem;
+    border: 1px solid var(--border);
+    margin-top: 1rem;
+}
+
+.resultProfile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.adminStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    justify-content: center;
 }

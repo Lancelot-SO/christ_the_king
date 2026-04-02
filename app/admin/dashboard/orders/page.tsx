@@ -360,9 +360,7 @@ export default function OrdersPage() {
                                             transition={{ duration: 0.3 }}
                                         >
                                             <td data-label="Order ID">
-                                                <span style={{ fontWeight: 700 }}>
-                                                    #{order.order_number}
-                                                </span>
+                                                <h3>#{order.order_number}</h3>
                                             </td>
                                             <td data-label="Customer">
                                                 <div className={styles.customerCell}>

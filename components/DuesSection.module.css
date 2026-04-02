@@ -1,7 +1,7 @@
 .duesSection {
     background-color: var(--muted);
     overflow: hidden;
-    padding: 10rem 0;
+    padding: var(--section-padding) 0;
 }
 
 .grid {

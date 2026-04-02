@@ -11,7 +11,7 @@
 .chapterGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8rem;
+    gap: 5rem;
     align-items: center;
 }
 
@@ -119,7 +119,7 @@
 
 .societyWrapper {
     background-color: var(--muted);
-    padding: 10rem 4rem;
+    padding: 7rem 4rem;
     text-align: center;
     border-radius: 2rem; /* Modular Hub */
 }
@@ -204,30 +204,52 @@
     }
     
     .chapterVisuals {
-        max-width: 80%;
+        max-width: 100%;
+        margin-bottom: 2rem;
     }
     
     .societyTitle {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 10vw, 3rem);
     }
 }
 
 @media (max-width: 768px) {
+    .heritageChapter {
+        padding: 5rem 0;
+    }
+
+    .chapterHeading {
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .chapterText {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+
     .metrics {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 2rem;
+        justify-content: center;
+        margin-bottom: 4rem;
     }
-    
-    .societyForm {
-        flex-direction: column;
-        gap: 2rem;
+
+    .metricItem {
+        min-width: 120px;
+        text-align: center;
     }
-    
-    .societyBtn {
-        padding: 1.25rem 0;
+
+    .metricValue {
+        font-size: 1.75rem;
     }
-    
-    .accentCrest {
-        display: none;
+
+    .societyWrapper {
+        padding: 5rem 1.5rem;
+    }
+
+    .societyTitle {
+        font-size: 2rem;
     }
 }
