@@ -51,7 +51,7 @@ function SuccessContent() {
         
         doc.setFontSize(10);
         doc.setTextColor(107, 114, 128); // Gray-500
-        doc.text("Official Alumni & Student Association Store", 14, 26);
+        doc.text("Official Christ The King School Store", 14, 26);
         doc.text("Accra, Ghana", 14, 31);
         doc.text("support@christtheking.store", 14, 36);
 
@@ -115,7 +115,7 @@ function SuccessContent() {
         doc.setTextColor(107, 114, 128);
         doc.text(`Payment Reference: ${order.payment_reference || 'N/A'}`, 14, finalY + 35);
         doc.text("Thank you for choosing Christ the King Store!", 14, finalY + 45);
-
+        
         doc.save(`Invoice-${order.order_number}.pdf`);
     };
 

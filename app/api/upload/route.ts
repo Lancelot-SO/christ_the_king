@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       cloudinary.uploader.upload_stream(
         {
           resource_type: 'auto',
-          folder: 'aoo-ecommerce', // Organize uploads in a folder
+          folder: 'christ_king', // Organize uploads in a folder
         },
         (error, result) => {
           if (error) reject(error);

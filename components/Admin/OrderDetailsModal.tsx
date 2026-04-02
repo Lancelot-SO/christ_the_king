@@ -1,8 +1,7 @@
-"use client";
-
-import { X, Package, User, Mail, Phone, MapPin, Calendar, CreditCard, ShoppingBag, Truck } from "lucide-react";
+import { X, Package, User, Mail, Phone, MapPin, Calendar, CreditCard, ShoppingBag, Truck, Check, AlertCircle, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./OrderDetailsModal.module.css";
+import { useState } from "react";
 
 interface OrderItem {
     product_id: string;
@@ -35,10 +34,25 @@ interface OrderDetailsModalProps {
     isOpen: boolean;
     onClose: () => void;
     order: Order | null;
+    onUpdateStatus?: (orderId: string, status: string) => Promise<void>;
 }
 
-export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetailsModalProps) {
+export default function OrderDetailsModal({ isOpen, onClose, order, onUpdateStatus }: OrderDetailsModalProps) {
+    const [updating, setUpdating] = useState<string | null>(null);
+
     if (!order) return null;
+
+    const handleStatusUpdate = async (newStatus: string) => {
+        if (!onUpdateStatus || !order) return;
+        setUpdating(newStatus);
+        try {
+            await onUpdateStatus(order.id, newStatus);
+        } catch (error) {
+            console.error("Failed to update status:", error);
+        } finally {
+            setUpdating(null);
+        }
+    };
 
     const formatDate = (dateString: string) => {
         return new Date(dateString).toLocaleDateString('en-US', {
@@ -103,6 +117,50 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
                                     <span>{formatDate(order.created_at)}</span>
                                 </div>
                             </div>
+
+                            {/* Status Update Actions */}
+                            {onUpdateStatus && order.order_status !== 'delivered' && order.order_status !== 'cancelled' && (
+                                <div className={styles.statusUpdateArea}>
+                                    <h3 className={styles.sectionTitle} style={{ marginBottom: '0.5rem' }}>Update Order Status</h3>
+                                    <p className={styles.infoValue} style={{ fontSize: '0.8125rem', color: '#6b7280', fontWeight: 400 }}>
+                                        Move this order to the next stage of fulfillment.
+                                    </p>
+                                    <div className={styles.statusButtons}>
+                                        {order.order_status === 'processing' && (
+                                            <button 
+                                                className={`${styles.statusBtn} ${styles.shipBtn}`}
+                                                onClick={() => handleStatusUpdate('shipped')}
+                                                disabled={!!updating}
+                                            >
+                                                {updating === 'shipped' ? <Loader2 size={16} className={styles.spinner} /> : <Truck size={16} />}
+                                                Mark as Shipped
+                                            </button>
+                                        )}
+                                        {(order.order_status === 'processing' || order.order_status === 'shipped') && (
+                                            <button 
+                                                className={`${styles.statusBtn} ${styles.deliverBtn}`}
+                                                onClick={() => handleStatusUpdate('delivered')}
+                                                disabled={!!updating}
+                                            >
+                                                {updating === 'delivered' ? <Loader2 size={16} className={styles.spinner} /> : <Check size={16} />}
+                                                Mark as Delivered
+                                            </button>
+                                        )}
+                                        <button 
+                                            className={`${styles.statusBtn} ${styles.cancelBtn}`}
+                                            onClick={() => {
+                                                if (confirm('Are you sure you want to cancel this order?')) {
+                                                    handleStatusUpdate('cancelled');
+                                                }
+                                            }}
+                                            disabled={!!updating}
+                                        >
+                                            {updating === 'cancelled' ? <Loader2 size={16} className={styles.spinner} /> : <AlertCircle size={16} />}
+                                            Cancel Order
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
 
                             {/* Customer Information */}
                             <div className={styles.section}>

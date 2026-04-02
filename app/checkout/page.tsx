@@ -95,7 +95,7 @@ export default function CheckoutPage() {
                 payment_method: paymentMethod,
                 payment_status: 'paid',
                 payment_reference: reference,
-                order_status: 'pending'
+                order_status: 'processing'
             };
 
             const { error: apiError } = await fetch('/api/orders', {

@@ -37,7 +37,7 @@ export default function ImageUpload({ images, onChange, maxImages = 5 }: ImageUp
         formData.append("api_key", signData.api_key);
         formData.append("timestamp", signData.timestamp.toString());
         formData.append("signature", signData.signature);
-        formData.append("folder", "aoo-ecommerce");
+        formData.append("folder", "christ_king");
 
         const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${signData.cloud_name}/image/upload`;
         

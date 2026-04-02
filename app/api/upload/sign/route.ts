@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const timestamp = Math.round(new Date().getTime() / 1000);
     const params_to_sign = {
       timestamp: timestamp,
-      folder: 'aoo-ecommerce',
+      folder: 'christ_king',
     };
 
     const signature = cloudinary.utils.api_sign_request(
