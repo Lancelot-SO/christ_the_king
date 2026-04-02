@@ -10,7 +10,7 @@ export default function Hero() {
         <section id="hero-section" className={styles.hero}>
             <div className={styles.imageWrapper}>
                 <Image 
-                    src="/ctk_hero_editorial_1775074466912.png" 
+                    src="/ctk_blazer_luxury_1775074607371.png" 
                     alt="Christ the King Alumni Heritage" 
                     fill 
                     className={styles.image}

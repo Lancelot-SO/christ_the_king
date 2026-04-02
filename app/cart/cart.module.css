@@ -24,24 +24,53 @@
 .emptyCart {
     padding: 15rem 0;
     text-align: center;
+    background: radial-gradient(circle at center, #fafafa 0%, white 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emptyIcon {
+    margin-bottom: 3rem;
+    opacity: 0.15;
+    color: var(--burgundy);
+    stroke-width: 1px;
 }
 
 .emptyCart h1 {
     font-family: var(--font-serif);
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+    color: var(--burgundy);
+    letter-spacing: -0.01em;
+}
+
+.emptyCart p {
+    margin: 0 auto 3.5rem;
+    color: var(--muted-foreground);
+    font-size: 1.125rem;
+    font-weight: 400;
 }
 
 .continueBtn {
     display: inline-block;
-    padding: 1.5rem 4rem;
+    padding: 1.25rem 3.5rem;
     background-color: var(--burgundy);
     color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     border-radius: 2rem; /* Modular Elegance 32px */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(124, 25, 54, 0.1);
+}
+
+.continueBtn:hover {
+    background-color: var(--burgundy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(124, 25, 54, 0.2);
 }
 
 .itemsList {

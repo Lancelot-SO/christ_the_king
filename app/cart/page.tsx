@@ -16,8 +16,8 @@ export default function CartPage() {
             <main>
                 <Header />
                 <div className={styles.emptyCart}>
-                    <div className="container">
-                        <ShoppingBag size={64} style={{ marginBottom: '3rem', opacity: 0.1 }} />
+                    <div className="container animate-fade-up">
+                        <ShoppingBag size={72} className={styles.emptyIcon} />
                         <h1>Your collection is currently empty.</h1>
                         <p>Discover heritage artifacts in the Boutique Collection.</p>
                         <Link href="/catalog" className={styles.continueBtn}>

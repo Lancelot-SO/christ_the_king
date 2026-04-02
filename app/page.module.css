@@ -167,13 +167,34 @@
     border-color: var(--burgundy);
 }
 
+.societyLabel {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
 .societyBtn {
     background-color: var(--burgundy);
     color: white;
-    padding: 0 3rem;
+    padding: 1.25rem 3.5rem;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.2em;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.13, 0.67, 0.41, 0.95);
+    box-shadow: 0 10px 30px rgba(124, 25, 54, 0.1);
+}
+
+.societyBtn:hover {
+    background-color: var(--burgundy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(124, 25, 54, 0.2);
 }
 
 @media (max-width: 1024px) {

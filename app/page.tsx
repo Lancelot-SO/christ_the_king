@@ -26,7 +26,7 @@ export default function Home() {
             <div className={styles.chapterVisuals}>
                 <div className={styles.mainImageWrapper}>
                     <Image 
-                        src="/ctk_hero_editorial_1775074466912.png" 
+                        src="/official_tie_silk_1769187839635.png" 
                         alt="CTK Heritage" 
                         fill 
                         className={styles.img} 
