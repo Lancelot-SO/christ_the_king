@@ -1,10 +1,11 @@
 "use client";
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { useCart, MAX_CART_ITEMS, MAX_ITEM_QUANTITY } from "@/context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
-import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, XCircle } from "lucide-react";
+import { Trash2, Plus, Minus, ArrowRight, ShoppingBag } from "lucide-react";
 import styles from "./cart.module.css";
 
 export default function CartPage() {
@@ -14,16 +15,17 @@ export default function CartPage() {
         return (
             <main>
                 <Header />
-                <div className="container" style={{ paddingTop: '150px', textAlign: 'center' }}>
-                    <div className={styles.emptyCart}>
-                        <ShoppingBag size={64} style={{ marginBottom: '2rem', opacity: 0.2 }} />
-                        <h1>Your cart is empty</h1>
-                        <p>Looks like you haven't added any centenary items yet.</p>
+                <div className={styles.emptyCart}>
+                    <div className="container animate-fade-up">
+                        <ShoppingBag size={72} className={styles.emptyIcon} />
+                        <h1>Your collection is currently empty.</h1>
+                        <p>Discover heritage artifacts in the Boutique Collection.</p>
                         <Link href="/catalog" className={styles.continueBtn}>
-                            Start Shopping
+                            THE COLLECTION
                         </Link>
                     </div>
                 </div>
+                <Footer />
             </main>
         );
     }
@@ -31,14 +33,10 @@ export default function CartPage() {
     return (
         <main>
             <Header />
-            <div className="container" style={{ paddingTop: '120px' }}>
-                <div className={styles.cartHeader}>
-                    <h1 className={styles.title}>Shopping Cart</h1>
-                    <button className={styles.clearAllBtn} onClick={() => clearCart()}>
-                        <XCircle size={16} />
-                        Clear All
-                    </button>
-                </div>
+            <div className="container">
+                <header id="hero-section" className={styles.cartHeader}>
+                    <h1 className={styles.title}>Your Collection</h1>
+                </header>
 
                 <div className={styles.cartGrid}>
                     <div className={styles.itemsList}>
@@ -48,64 +46,67 @@ export default function CartPage() {
                                     <Image src={item.image} alt={item.name} fill />
                                 </div>
                                 <div className={styles.itemInfo}>
-                                    <h3>{item.name}</h3>
                                     <p className={styles.itemDetails}>
-                                        {item.size && `Size: ${item.size}`}
-                                        {item.color && ` • Color: ${item.color}`}
+                                        {item.size && `SIZE: ${item.size}`}
+                                        {item.color && ` • COLOR: ${item.color}`}
                                     </p>
+                                    <h3>{item.name}</h3>
                                     <p className={styles.itemPrice}>GHS {item.price.toLocaleString()}</p>
                                 </div>
                                 <div className={styles.itemActions}>
                                     <div className={styles.quantityControls}>
                                         <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1), item.size)}>
-                                            <Minus size={16} />
+                                            <Minus size={14} />
                                         </button>
                                         <span>{item.quantity}</span>
                                         <button 
                                             onClick={() => updateQuantity(item.id, item.quantity + 1, item.size)}
                                             disabled={item.quantity >= MAX_ITEM_QUANTITY || cartCount >= MAX_CART_ITEMS}
-                                            title={item.quantity >= MAX_ITEM_QUANTITY ? "Maximum quantity reached" : cartCount >= MAX_CART_ITEMS ? "Cart is full" : ""}
                                         >
-                                            <Plus size={16} />
+                                            <Plus size={14} />
                                         </button>
                                     </div>
                                     <button
                                         className={styles.removeBtn}
                                         onClick={() => removeFromCart(item.id, item.size)}
                                     >
-                                        <Trash2 size={20} />
+                                        <Trash2 size={18} />
                                     </button>
                                 </div>
                             </div>
                         ))}
+                        
+                        <button className={styles.clearAllBtn} onClick={() => clearCart()}>
+                            Clear Entire Review
+                        </button>
                     </div>
 
                     <div className={styles.summary}>
-                        <h3>Order Summary</h3>
+                        <h3>Archival Review</h3>
                         <div className={styles.summaryRow}>
                             <span>Subtotal</span>
-                            <span>GH₵ {cartTotal.toLocaleString()}</span>
+                            <span>GHS {cartTotal.toLocaleString()}</span>
                         </div>
                         <div className={styles.summaryRow}>
-                            <span>Delivery Fee</span>
-                            <span>GHS 0.00</span>
+                            <span>Logistics Fee</span>
+                            <span>COMPLIMENTARY</span>
                         </div>
-                        <div className={styles.divider}></div>
                         <div className={`${styles.summaryRow} ${styles.totalRow}`}>
-                            <span>Total</span>
-                            <span>GH₵ {cartTotal.toLocaleString()}</span>
+                            <span>Total Valuation</span>
+                            <span>GHS {cartTotal.toLocaleString()}</span>
                         </div>
 
                         <Link href="/checkout" className={styles.checkoutBtn}>
-                            Proceed to Checkout <ArrowRight size={20} />
+                            Secure Access to Checkout <ArrowRight size={16} />
                         </Link>
 
                         <p className={styles.secureText}>
-                            ✓ Secure checkout powered by Paystack
+                            ✓ Encrypted Transactional Security
                         </p>
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 }

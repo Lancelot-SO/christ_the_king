@@ -7,10 +7,12 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import styles from "./login.module.css";
 import { useAuth } from "@/context/AuthContext";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const { refreshSession } = useAuth();
@@ -64,7 +66,7 @@ export default function LoginPage() {
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="Achimota Logo" width={80} height={80} />
+                    <Image src="/Logo_new.png" alt="Christ the King Logo" width={180} height={90} style={{ objectFit: 'contain' }} />
                     <h1>Welcome Back</h1>
                     <p>Sign in to your account</p>
                 </div>
@@ -82,13 +84,22 @@ export default function LoginPage() {
                     </div>
                     <div className={styles.inputGroup}>
                         <label>Password</label>
-                        <input
-                            type="password"
-                            required
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="••••••••"
-                        />
+                        <div className={styles.passwordWrapper}>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="••••••••"
+                            />
+                            <button 
+                                type="button" 
+                                className={styles.toggleButton} 
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                        </div>
                         <div style={{ textAlign: 'right', marginTop: '0.5rem' }}>
                             <Link href="/forgot-password" className={styles.link} style={{ fontSize: '0.875rem' }}>
                                 Forgot Password?

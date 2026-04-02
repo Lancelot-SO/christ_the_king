@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { useWishlist } from "@/context/WishlistContext";
 import { supabase } from "@/lib/supabase";
@@ -45,16 +46,16 @@ export default function WishlistPage() {
     return (
         <main>
             <Header />
-            <div className={styles.hero}>
+            <div className={`${styles.hero} animate-fade-up`}>
                 <div className="container">
                     <h1>My Wishlist</h1>
                     <p>Keep track of the items you love.</p>
                 </div>
             </div>
 
-            <div className="container" style={{ minHeight: '50vh' }}>
+            <div className={`container ${styles.pageContent}`}>
                 {loading ? (
-                    <div style={{ textAlign: 'center', padding: '60px' }}>Loading your favorites...</div>
+                    <div style={{ textAlign: 'center', padding: '60px', fontStyle: 'italic', color: 'var(--muted-foreground)' }}>Loading your favorites...</div>
                 ) : products.length > 0 ? (
                     <div className={styles.grid}>
                         {products.map(product => (
@@ -70,8 +71,8 @@ export default function WishlistPage() {
                         ))}
                     </div>
                 ) : (
-                    <div className={styles.emptyState}>
-                        <Heart size={64} color="#e5e7eb" strokeWidth={1.5} />
+                    <div className={`${styles.emptyState} animate-fade-up`}>
+                        <Heart size={80} color="#7C1936" style={{ opacity: 0.1, marginBottom: '1rem' }} strokeWidth={1} />
                         <h2>Your wishlist is empty</h2>
                         <p>Discover something you like and save it for later.</p>
                         <Link href="/catalog" className={styles.shopBtn}>
@@ -81,9 +82,7 @@ export default function WishlistPage() {
                 )}
             </div>
 
-            <footer className={styles.simpleFooter}>
-                <p>&copy; 2026 Achimota Old Students Association</p>
-            </footer>
+            <Footer />
         </main>
     );
 }

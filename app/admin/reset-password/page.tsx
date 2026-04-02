@@ -52,7 +52,7 @@ export default function ResetPassword() {
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="AOSA Logo" width={80} height={80} />
+                    <Image src="/logo.png" alt="Christ the King Logo" width={80} height={80} />
                     <h1>Reset Password</h1>
                     <p>Create a new strong password for your account</p>
                 </div>
@@ -84,7 +84,7 @@ export default function ResetPassword() {
                 </form>
 
                 <div className={styles.footer}>
-                    <p>&copy; 2027 Achimota School</p>
+                    <p>&copy; 2027 Christ the King School</p>
                 </div>
             </div>
         </div>

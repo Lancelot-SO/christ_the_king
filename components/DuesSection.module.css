@@ -1,0 +1,190 @@
+.duesSection {
+    background-color: var(--muted);
+    overflow: hidden;
+    padding: 10rem 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 6vw;
+    align-items: center;
+}
+
+/* Storytelling Column */
+.kicker {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--burgundy);
+    margin-bottom: 2rem;
+}
+
+.title {
+    margin-bottom: 3rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: var(--muted-foreground);
+    margin-bottom: 5rem;
+    line-height: 1.6;
+}
+
+.impactGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    border-top: 1px solid var(--border);
+    padding-top: 3rem;
+}
+
+.impactItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.impactValue {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+}
+
+.impactLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+}
+
+/* Fintech Hub Column */
+.hubCard {
+    background-color: var(--background);
+    padding: 3.5rem;
+    box-shadow: 0 40px 100px -20px rgba(0,0,0,0.1);
+    position: relative;
+    border-radius: 2rem; /* Modular Elegance 32px */
+}
+
+.hubHeader {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.hubLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.hubTitle {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.statsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.statRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statLabel {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 1.25rem;
+    background-color: #FFF9E6;
+    color: #B38600;
+    border-radius: 100px; /* Fully rounded pill */
+}
+
+.progressSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.progressBar {
+    height: 4px;
+    background-color: var(--border);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.progressFill {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--gold);
+}
+
+.progressLabels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+}
+
+.amountDisplay {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.currency {
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0.3;
+}
+
+.amount {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.secureNote {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    text-align: center;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+    
+    .impactGrid {
+        grid-template-columns: 1fr;
+    }
+}

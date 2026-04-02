@@ -39,9 +39,9 @@ export default function AdminLogin() {
         <div className={styles.container}>
             <div className={styles.loginCard}>
                 <div className={styles.header}>
-                    <Image src="/logo.png" alt="AOSA Logo" width={80} height={80} />
+                    <Image src="/logo.png" alt="Christ the King Logo" width={80} height={80} />
                     <h1>Admin Portal</h1>
-                    <p>Sign in to manage the centenary store</p>
+                    <p>Sign in to manage the school store</p>
                 </div>
 
                 <form onSubmit={handleLogin} className={styles.form}>
@@ -52,7 +52,7 @@ export default function AdminLogin() {
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="admin@achimota.edu.gh"
+                            placeholder="admin@christtheking.edu.gh"
                         />
                     </div>
                     <div className={styles.inputGroup}>
@@ -76,7 +76,7 @@ export default function AdminLogin() {
                 </form>
 
                 <div className={styles.footer}>
-                    <p>&copy; 2027 Achimota School</p>
+                    <p>&copy; 2027 Christ the King School</p>
                 </div>
             </div>
         </div>

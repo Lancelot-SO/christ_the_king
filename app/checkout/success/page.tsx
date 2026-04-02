@@ -47,13 +47,13 @@ function SuccessContent() {
         // Add Header / Logo Workspace
         doc.setFontSize(22);
         doc.setTextColor(17, 24, 39); // Gray-900
-        doc.text("CHRIST THE KING", 14, 20);
+        doc.text("CHRIST THE KING STORE", 14, 20);
         
         doc.setFontSize(10);
         doc.setTextColor(107, 114, 128); // Gray-500
         doc.text("Official Christ The King School Store", 14, 26);
         doc.text("Accra, Ghana", 14, 31);
-        doc.text("support@aosa.store", 14, 36);
+        doc.text("support@christtheking.store", 14, 36);
 
         // Invoice Header Details
         doc.setFontSize(12);
@@ -114,8 +114,8 @@ function SuccessContent() {
         doc.setFont("helvetica", "normal");
         doc.setTextColor(107, 114, 128);
         doc.text(`Payment Reference: ${order.payment_reference || 'N/A'}`, 14, finalY + 35);
-        doc.text("Thank you for choosing Christ The King!", 14, finalY + 45);
-
+        doc.text("Thank you for choosing Christ the King Store!", 14, finalY + 45);
+        
         doc.save(`Invoice-${order.order_number}.pdf`);
     };
 
@@ -146,7 +146,7 @@ function SuccessContent() {
                 <CheckCircle size={64} color="#10b981" />
             </div>
             <h1>Order Confirmed!</h1>
-            <p className={styles.orderNumber}>Order #{orderNumber || "CK-ORDER"}</p>
+            <p className={styles.orderNumber}>Order #{orderNumber || "CTK-ORDER"}</p>
             <p className={styles.message}>
                 Thank you for your purchase, {order?.customer_name || 'Customer'}. We've sent a confirmation email with your order details.
             </p>

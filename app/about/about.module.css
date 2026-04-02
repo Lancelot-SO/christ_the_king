@@ -1,43 +1,85 @@
 .hero {
-    padding: 12rem 0 6rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/736x/b9/a4/43/b9a4435887987c89f61fb96964db89e3.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
+    background-color: var(--muted);
+    padding: 12rem 4rem 6rem;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 4rem;
-    margin-top: 1rem;
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--burgundy);
+    margin-top: 2rem;
+    line-height: 1;
 }
 
-.contentGrid {
+.chapterTitle {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+.contentContainer {
+    padding: var(--section-padding) 0;
+}
+
+.aboutGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 8vw;
+    align-items: start;
+}
+
+.visuals {
+    position: sticky;
+    top: 160px;
+}
+
+.imageWrapper {
+    position: relative;
+    aspect-ratio: 4/5;
+    background-color: var(--muted);
+    overflow: hidden;
+}
+
+.img {
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageWrapper:hover .img {
+    transform: scale(1.05);
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
 }
 
 .textContent h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--foreground);
 }
 
 .textContent p {
     font-size: 1.125rem;
-    line-height: 1.8;
+    line-height: 1.9;
     color: var(--muted-foreground);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    max-width: 50ch;
 }
 
 @media (max-width: 1024px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
-
-    .contentGrid {
+    .aboutGrid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 5rem;
+    }
+    
+    .visuals {
+        position: static;
+        width: 100%;
     }
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Globe, MessageSquare } from "lucide-react";
 import styles from "./contact.module.css";
 
 export default function ContactPage() {
@@ -17,130 +17,174 @@ export default function ContactPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Here you would typically send to an API
-        console.log("Form submitted:", formData);
         setSubmitted(true);
     };
 
     return (
-        <main>
+        <main className={styles.main}>
             <Header />
+            
+            {/* Editorial Hero */}
             <section className={styles.heroSection}>
                 <div className="container">
-                    <h1 className={styles.heroTitle}>Get in Touch</h1>
-                    <p className={styles.heroSub}>
-                        We value your opinion. Whether you have a question about the centenary store, 
-                        suggestions for new merchandise, or just want to say hello, we're here to listen.
-                    </p>
+                    <div className={`${styles.heroContent} animate-fade-up`}>
+                        <span className="editorial-kicker">Direct Channels</span>
+                        <h1 className={styles.heroTitle}>
+                            Global <br />
+                            <span className="gold-accent">Inquiries</span>
+                        </h1>
+                        <p className={styles.heroLead}>
+                            Connect with the Christ the King Governance & Secretariat. 
+                            Our team is dedicated to preserving our heritage and serving our global alumni community.
+                        </p>
+                    </div>
                 </div>
             </section>
 
-            <section className="section">
-                <div className={`container ${styles.contactGrid}`}>
-                    {/* Contact Info */}
-                    <div className={styles.infoColumn}>
-                        <div className={styles.infoCard}>
-                            <h3>Contact Information</h3>
-                            <p>Reach out to the OAA Secretariat directly.</p>
-                            
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconBox}><MapPin size={20} /></div>
-                                <div>
-                                    <h4>Visit Us</h4>
-                                    <p>Achimota School Campus<br/>Accra, Ghana</p>
-                                </div>
-                            </div>
+            <section className="container section">
+                <div className={`${styles.contactGrid}`}>
+                    {/* Information Module */}
+                    <div className={`${styles.infoColumn} animate-fade-up`} style={{ animationDelay: '0.2s' }}>
+                        <div className={styles.moduleCard}>
+                            <h3 className={styles.moduleTitle}>Institutional Contact</h3>
+                            <p className={styles.moduleDesc}>
+                                For institutional matters, archive access, or strategic partnerships, 
+                                please utilize our direct lines of communication.
+                            </p>
 
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconBox}><Mail size={20} /></div>
-                                <div>
-                                    <h4>Email Us</h4>
-                                    <p>store@achimota.edu.gh</p>
+                            <div className={styles.contactList}>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.iconWrapper}>
+                                        <MapPin size={20} />
+                                    </div>
+                                    <div>
+                                        <span className={styles.itemLabel}>LOCATE US</span>
+                                        <p className={styles.itemText}>Christ the King Campus, <br />P.O. Box CT 2200, Accra, Ghana</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className={styles.infoItem}>
-                                <div className={styles.iconBox}><Phone size={20} /></div>
-                                <div>
-                                    <h4>Call Us</h4>
-                                    <p>+233 20 123 4567</p>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.iconWrapper}>
+                                        <Mail size={20} />
+                                    </div>
+                                    <div>
+                                        <span className={styles.itemLabel}>SECURE ARCHIVE</span>
+                                        <p className={styles.itemText}>archive@christtheking.edu.gh</p>
+                                    </div>
+                                </div>
+
+                                <div className={styles.contactItem}>
+                                    <div className={styles.iconWrapper}>
+                                        <Phone size={20} />
+                                    </div>
+                                    <div>
+                                        <span className={styles.itemLabel}>SECRETARIAT LINE</span>
+                                        <p className={styles.itemText}>+233 20 123 4567</p>
+                                    </div>
+                                </div>
+
+                                <div className={styles.contactItem}>
+                                    <div className={styles.iconWrapper}>
+                                        <Globe size={20} />
+                                    </div>
+                                    <div>
+                                        <span className={styles.itemLabel}>GLOBAL OFFICE</span>
+                                        <p className={styles.itemText}>Monday — Friday, 09:00 - 17:00 GMT</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Form */}
-                    <div className={styles.formColumn}>
-                        {submitted ? (
-                            <div className={styles.successCard}>
-                                <div className={styles.checkCircle}>✓</div>
-                                <h2>Message Sent!</h2>
-                                <p>Thank you for reaching out. We appreciate your feedback and will get back to you shortly.</p>
-                                <button 
-                                    className={styles.infoBtn}
-                                    onClick={() => {
-                                        setSubmitted(false);
-                                        setFormData({ name: "", email: "", subject: "inquiry", message: "" });
-                                    }}
-                                >
-                                    Send Another Message
-                                </button>
-                            </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className={styles.form}>
-                                <h2>Send a Message</h2>
-                                
-                                <div className={styles.formGroup}>
-                                    <label>Full Name</label>
-                                    <input 
-                                        type="text" 
-                                        required
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                                        placeholder="Your Name"
-                                    />
-                                </div>
-
-                                <div className={styles.formGroup}>
-                                    <label>Email Address</label>
-                                    <input 
-                                        type="email" 
-                                        required
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                        placeholder="your@email.com"
-                                    />
-                                </div>
-
-                                <div className={styles.formGroup}>
-                                    <label>Subject</label>
-                                    <select 
-                                        value={formData.subject}
-                                        onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                    {/* Transmission Module */}
+                    <div className={`${styles.formColumn} animate-fade-up`} style={{ animationDelay: '0.4s' }}>
+                        <div className={styles.formCard}>
+                            {submitted ? (
+                                <div className={styles.successState}>
+                                    <div className={styles.successIcon}>
+                                        <MessageSquare size={48} className="gold-accent" />
+                                    </div>
+                                    <h2 className={styles.successTitle}>Transmission Received</h2>
+                                    <p className={styles.successMsg}>
+                                        Your inquiry has been logged within our institutional portal. 
+                                        A member of the executive secretariat will review your request 
+                                        and provide a formal response within 48 business hours.
+                                    </p>
+                                    <button
+                                        className="btn btn-outline"
+                                        onClick={() => {
+                                            setSubmitted(false);
+                                            setFormData({ name: "", email: "", subject: "inquiry", message: "" });
+                                        }}
                                     >
-                                        <option value="inquiry">General Inquiry</option>
-                                        <option value="order">Order Support</option>
-                                        <option value="opinion">My Opinion / Feedback</option>
-                                        <option value="suggestion">Merchandise Suggestion</option>
-                                    </select>
+                                        NEW TRANSMISSION
+                                    </button>
                                 </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className={styles.form}>
+                                    <div className={styles.formHeader}>
+                                        <h2 className={styles.formTitle}>Direct Transmission</h2>
+                                        <p className={styles.formSubtitle}>Complete the protocol below to initiate reaching out.</p>
+                                    </div>
 
-                                <div className={styles.formGroup}>
-                                    <label>Message</label>
-                                    <textarea 
-                                        required
-                                        rows={6}
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({...formData, message: e.target.value})}
-                                        placeholder="How can we help you?"
-                                    ></textarea>
-                                </div>
+                                    <div className={styles.formBody}>
+                                        <div className={styles.formGroup}>
+                                            <label className={styles.label}>IDENTITY / FULL NAME</label>
+                                            <input
+                                                className={styles.input}
+                                                type="text"
+                                                required
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                placeholder="Enter your full name"
+                                            />
+                                        </div>
 
-                                <button type="submit" className={styles.submitBtn}>
-                                    Send Message <Send size={18} />
-                                </button>
-                            </form>
-                        )}
+                                        <div className={styles.formGroup}>
+                                            <label className={styles.label}>SECURE EMAIL ADDRESS</label>
+                                            <input
+                                                className={styles.input}
+                                                type="email"
+                                                required
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                placeholder="your@alumni-identity.com"
+                                            />
+                                        </div>
+
+                                        <div className={styles.formGroup}>
+                                            <label className={styles.label}>INQUIRY CLASSIFICATION</label>
+                                            <select
+                                                className={styles.select}
+                                                value={formData.subject}
+                                                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                                            >
+                                                <option value="inquiry">General Institutional Inquiry</option>
+                                                <option value="order">Heritage Collection Support</option>
+                                                <option value="opinion">Strategic Alumni Feedback</option>
+                                                <option value="suggestion">Heritage & Tradition Proposals</option>
+                                            </select>
+                                        </div>
+
+                                        <div className={styles.formGroup}>
+                                            <label className={styles.label}>MESSAGE CONTENT</label>
+                                            <textarea
+                                                className={styles.textarea}
+                                                required
+                                                rows={5}
+                                                value={formData.message}
+                                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                                placeholder="State your inquiry with clarity..."
+                                            ></textarea>
+                                        </div>
+
+                                        <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>
+                                            TRANSMIT MESSAGE <Send size={16} />
+                                        </button>
+                                    </div>
+                                </form>
+                            )}
+                        </div>
                     </div>
                 </div>
             </section>

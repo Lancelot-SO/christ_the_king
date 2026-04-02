@@ -118,11 +118,11 @@ export default function SettingsPage() {
                                 </div>
                                 <div className={styles.formGroup}>
                                     <label>Email Address</label>
-                                    <input type="email" defaultValue="admin@oaa.org.gh" />
+                                    <input type="email" defaultValue="admin@christtheking.edu.gh" />
                                 </div>
                                 <div className={styles.formGroup}>
                                     <label>Bio / Role</label>
-                                    <textarea rows={4} defaultValue="Managing the official OAA Store and Alumni Relations." />
+                                    <textarea rows={4} defaultValue="Managing the official Christ the King Store and Alumni Relations." />
                                 </div>
                             </div>
                             <button className={styles.saveBtn}>Save Changes</button>
@@ -138,7 +138,7 @@ export default function SettingsPage() {
                                 <h2 className={styles.sectionTitle}>Store Configuration</h2>
                                 <div className={styles.formGroup}>
                                     <label>Store Name</label>
-                                    <input type="text" defaultValue="OAA Official Store" />
+                                    <input type="text" defaultValue="Christ the King Official Store" />
                                 </div>
                                 <div className={styles.formGroup}>
                                     <label>Currency</label>
@@ -149,7 +149,7 @@ export default function SettingsPage() {
                                 </div>
                                 <div className={styles.formGroup}>
                                     <label>Contact Email</label>
-                                    <input type="email" defaultValue="shop@oaa.org.gh" />
+                                    <input type="email" defaultValue="shop@christtheking.edu.gh" />
                                 </div>
                             </div>
                             <button className={styles.saveBtn}>Update Store</button>

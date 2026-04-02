@@ -1,22 +1,24 @@
 .hero {
-    padding: 6rem 0 3rem;
+    padding: 12rem 0 2rem;
     background: #fdfdfd;
     text-align: center;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
-    color: var(--primary);
+    color: var(--burgundy);
 }
 
 .hero p {
     color: var(--muted-foreground);
     font-size: 1.125rem;
+    max-width: 65ch;
+    margin: 0 auto;
 }
 
 .grid {
@@ -28,35 +30,56 @@
 
 .emptyState {
     text-align: center;
-    padding: 8rem 0;
+    padding: 4rem 0 6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    background: radial-gradient(circle at center, #fafafa 0%, white 100%);
+    border-radius: var(--radius);
+}
+
+.pageContent {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
 }
 
 .emptyState h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--foreground);
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--burgundy);
+    margin: 0;
+}
+
+.emptyState p {
+    color: var(--muted-foreground);
+    margin-bottom: 1rem;
+    margin-top: -1rem;
 }
 
 .shopBtn {
-    background: var(--primary);
+    background: var(--burgundy);
     color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    padding: 1.25rem 3.5rem;
+    border-radius: var(--radius);
+    font-weight: 800;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(124, 25, 54, 0.1);
 }
 
 .shopBtn:hover {
-    background: var(--accent);
+    background: var(--burgundy-dark);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 40px rgba(124, 25, 54, 0.2);
 }
 
 .simpleFooter {

@@ -46,7 +46,7 @@ export default function CheckoutPage() {
     const totalAmount = subtotal + deliveryFee;
 
     const paystackConfig = {
-        reference: `AOSA-${new Date().getTime().toString()}`,
+        reference: `CTK-${new Date().getTime().toString()}`,
         email: formData.email,
         amount: Math.round(totalAmount * 100), // Paystack expects amount in pesewas
         publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "",
@@ -124,7 +124,7 @@ export default function CheckoutPage() {
     return (
         <main>
             <Header />
-            <div className="container" style={{ paddingTop: '120px' }}>
+            <div className={`container ${styles.pageContent}`}>
                 <h1 className={styles.title}>Checkout</h1>
 
                 <form onSubmit={handleSubmit} className={styles.checkoutGrid}>
@@ -154,51 +154,40 @@ export default function CheckoutPage() {
                                     <label>Delivery Address / Town</label>
                                     <input type="text" name="address" required value={formData.address} onChange={handleChange} />
                                 </div>
-                                <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
-                                    <label>Additional Notes (Optional)</label>
-                                    <textarea name="notes" rows={3} value={formData.notes} onChange={handleChange}></textarea>
+                            </div>
+                            
+                            <div className={styles.paymentSubSection}>
+                                <h2>2. Payment Method</h2>
+                                <div className={styles.paymentOptions}>
+                                    <div
+                                        className={`${styles.paymentOption} ${paymentMethod === 'momo' ? styles.activeOption : ""}`}
+                                        onClick={() => setPaymentMethod('momo')}
+                                    >
+                                        <Smartphone size={20} />
+                                        <span>Mobile Money</span>
+                                    </div>
+
+                                    <div
+                                        className={`${styles.paymentOption} ${paymentMethod === 'card' ? styles.activeOption : ""}`}
+                                        onClick={() => setPaymentMethod('card')}
+                                    >
+                                        <CreditCard size={20} />
+                                        <span>Card</span>
+                                    </div>
+
+                                    <div
+                                        className={`${styles.paymentOption} ${paymentMethod === 'bank' ? styles.activeOption : ""}`}
+                                        onClick={() => setPaymentMethod('bank')}
+                                    >
+                                        <Building size={20} />
+                                        <span>Bank Transfer</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className={`${styles.card} ${styles.paymentCard}`}>
-                            <h2>2. Payment Method</h2>
-                            <div className={styles.paymentOptions}>
-                                <div
-                                    className={`${styles.paymentOption} ${paymentMethod === 'momo' ? styles.activeOption : ""}`}
-                                    onClick={() => setPaymentMethod('momo')}
-                                >
-                                    <Smartphone size={24} />
-                                    <div>
-                                        <strong>Mobile Money</strong>
-                                        <p>MTN, Vodafone, AirtelTigo</p>
-                                    </div>
-                                    {paymentMethod === 'momo' && <div className={styles.check}>✓</div>}
-                                </div>
-
-                                <div
-                                    className={`${styles.paymentOption} ${paymentMethod === 'card' ? styles.activeOption : ""}`}
-                                    onClick={() => setPaymentMethod('card')}
-                                >
-                                    <CreditCard size={24} />
-                                    <div>
-                                        <strong>Debit/Credit Card</strong>
-                                        <p>Visa, Mastercard</p>
-                                    </div>
-                                    {paymentMethod === 'card' && <div className={styles.check}>✓</div>}
-                                </div>
-
-                                <div
-                                    className={`${styles.paymentOption} ${paymentMethod === 'bank' ? styles.activeOption : ""}`}
-                                    onClick={() => setPaymentMethod('bank')}
-                                >
-                                    <Building size={24} />
-                                    <div>
-                                        <strong>Bank Transfer</strong>
-                                        <p>Manual confirmation</p>
-                                    </div>
-                                    {paymentMethod === 'bank' && <div className={styles.check}>✓</div>}
-                                </div>
+                            <div className={`${styles.inputGroup} ${styles.fullWidth}`} style={{ marginTop: '2rem' }}>
+                                <label>Additional Notes (Optional)</label>
+                                <textarea name="notes" rows={2} value={formData.notes} onChange={handleChange}></textarea>
                             </div>
                         </div>
                     </div>
