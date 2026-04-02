@@ -86,7 +86,7 @@ export default function Sidebar() {
                     transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 >
                     <div className={styles.logo}>
-                        <Image src="/Asset 2only.png" alt="Christ the King Logo" width={40} height={40} />
+                        <Image src="/Logo_new.png" alt="Christ the King Logo" width={50} height={50} priority />
                     </div>
 
                     <nav className={styles.nav}>

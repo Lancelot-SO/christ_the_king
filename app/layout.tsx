@@ -18,6 +18,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Christ the King | Legacy & Collection",
   description: "The official editorial platform and boutique for Christ the King School alumni. Heritage, contribution, and exclusive collections.",
+  icons: {
+    icon: "/Logo_new.png?v=2",
+  },
 };
 
 export default function RootLayout({
