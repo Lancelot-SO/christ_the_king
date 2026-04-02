@@ -51,7 +51,7 @@ interface Profile {
 }
 
 export default function AccountPage() {
-    const { user, isLoading, signOut } = useAuth();
+    const { user, isLoading, isAdmin, signOut } = useAuth();
     const router = useRouter();
     const [orders, setOrders] = useState<Order[]>([]);
     const [profile, setProfile] = useState<Profile | null>(null);
@@ -70,6 +70,12 @@ export default function AccountPage() {
             router.push("/login");
         }
     }, [user, isLoading, router]);
+
+    useEffect(() => {
+        if (!isLoading && user && isAdmin) {
+            router.push("/admin/dashboard");
+        }
+    }, [user, isLoading, isAdmin, router]);
 
     useEffect(() => {
         if (user) {

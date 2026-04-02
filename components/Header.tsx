@@ -103,14 +103,16 @@ export default function Header() {
                                             <span className={styles.userEmail}>{user.email}</span>
                                         </div>
                                         <div className={styles.dropdownDivider} />
-                                        <Link 
-                                            href="/account" 
-                                            className={styles.dropdownItem}
-                                            onClick={() => setIsUserDropdownOpen(false)}
-                                        >
-                                            <UserIcon size={16} />
-                                            <span>My Account</span>
-                                        </Link>
+                                        {!isAdmin && (
+                                            <Link 
+                                                href="/account" 
+                                                className={styles.dropdownItem}
+                                                onClick={() => setIsUserDropdownOpen(false)}
+                                            >
+                                                <UserIcon size={16} />
+                                                <span>My Account</span>
+                                            </Link>
+                                        )}
                                         {isAdmin && (
                                             <Link 
                                                 href="/admin/dashboard" 
@@ -192,14 +194,16 @@ export default function Header() {
                                                     <div className={styles.userAvatar}>{userInitials}</div>
                                                     <span className={styles.userEmail}>{user.email}</span>
                                                 </div>
-                                                <Link 
-                                                    href="/account" 
-                                                    className={styles.mobileDashboardBtn}
-                                                    onClick={() => setIsMenuOpen(false)}
-                                                >
-                                                    <UserIcon size={18} />
-                                                    <span>My Account</span>
-                                                </Link>
+                                                {!isAdmin && (
+                                                    <Link 
+                                                        href="/account" 
+                                                        className={styles.mobileDashboardBtn}
+                                                        onClick={() => setIsMenuOpen(false)}
+                                                    >
+                                                        <UserIcon size={18} />
+                                                        <span>My Account</span>
+                                                    </Link>
+                                                )}
                                                 {isAdmin && (
                                                     <Link 
                                                         href="/admin/dashboard" 
