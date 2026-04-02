@@ -63,8 +63,13 @@ html, body {
   color: var(--foreground);
 }
 
-img, video, iframe {
+.modular-media {
   border-radius: 2rem; /* Modular Elegance Standard */
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 body {

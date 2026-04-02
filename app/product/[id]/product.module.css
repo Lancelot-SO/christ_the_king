@@ -1,9 +1,9 @@
 .productGrid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 0.8fr 1.2fr;
     gap: 8vw;
-    margin-bottom: 15rem;
-    align-items: start;
+    margin-bottom: 10rem;
+    align-items: flex-start;
 }
 
 .backBtn {
@@ -32,9 +32,10 @@
 
 .mainImage {
     position: relative;
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     background-color: var(--muted);
     overflow: hidden;
+    border-radius: var(--radius);
 }
 
 .img {
@@ -53,12 +54,14 @@
 
 .thumbnail {
     position: relative;
-    width: 80px;
+    width: 100px;
     height: 100px;
     background-color: var(--muted);
     cursor: pointer;
     opacity: 0.4;
     transition: all 0.4s ease;
+    border-radius: 1.5rem;
+    overflow: hidden;
 }
 
 .thumbnailActive {
@@ -66,7 +69,7 @@
 }
 
 .details {
-    padding-top: 2rem;
+    padding-top: 0;
 }
 
 .category {
@@ -81,35 +84,36 @@
 
 .title {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     line-height: 1.1;
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
     color: var(--foreground);
 }
 
 .price {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--burgundy);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .description {
-    font-size: 1.125rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.6;
     color: var(--muted-foreground);
-    margin-bottom: 4rem;
-    max-width: 45ch;
+    margin-bottom: 3rem;
+    max-width: 50ch;
 }
 
 .divider {
     height: 1px;
     background-color: var(--border);
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    opacity: 0.6;
 }
 
 .optionGroup {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .optionLabel {
@@ -119,7 +123,7 @@
     letter-spacing: 0.2em;
     color: var(--muted-foreground);
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .colorSelector {
@@ -146,12 +150,17 @@
 }
 
 .sizeBtn {
-    min-width: 3.5rem;
-    height: 3.5rem;
+    min-width: 2.5rem;
+    height: 2.5rem;
     border: 1px solid var(--border);
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-size: 0.65rem;
+    font-weight: 800;
     transition: all 0.3s ease;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
 }
 
 .sizeBtn:disabled {
@@ -168,19 +177,30 @@
 .quantitySelector {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
+    gap: 1.25rem;
+    padding: 0.4rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 3rem;
     width: fit-content;
+    font-size: 0.8rem;
 }
 
 .quantitySelector button {
-    font-size: 1.25rem;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .quantitySelector button:hover:not(:disabled) {
+    background-color: var(--muted);
     opacity: 1;
 }
 
@@ -194,26 +214,38 @@
 .addToCart {
     background-color: var(--burgundy);
     color: white;
-    height: 4rem;
-    font-size: 0.75rem;
-    font-weight: 700;
+    height: 3rem;
+    font-size: 0.65rem;
+    font-weight: 800;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    border-radius: var(--radius);
+    transition: all 0.4s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .buyNow {
     background-color: transparent;
     border: 1px solid var(--foreground);
     color: var(--foreground);
-    height: 4rem;
-    font-size: 0.75rem;
-    font-weight: 700;
+    height: 3rem;
+    font-size: 0.65rem;
+    font-weight: 800;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    border-radius: var(--radius);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.buyNow:hover:not(:disabled) {
+    background-color: var(--foreground);
+    color: var(--background);
 }
 
 .shippingInfo {

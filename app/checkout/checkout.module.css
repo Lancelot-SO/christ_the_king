@@ -1,13 +1,16 @@
 .title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+    color: var(--burgundy);
 }
 
 .checkoutGrid {
     display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 3rem;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
     margin-bottom: 8rem;
+    align-items: flex-start;
 }
 
 .formSection {
@@ -57,16 +60,20 @@
 .inputGroup input,
 .inputGroup select,
 .inputGroup textarea {
-    padding: 0.75rem;
+    padding: 1rem 1.25rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius);
     outline: none;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: var(--muted);
 }
 
-.inputGroup input:focus {
-    border-color: var(--primary);
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+    border-color: var(--burgundy);
+    background-color: white;
 }
 
 .paymentOptions {
@@ -79,12 +86,13 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.25rem 2rem;
     border: 1px solid var(--border);
-    border-radius: 2rem; /* Modular Elegance 32px */
+    border-radius: var(--radius);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    background: transparent;
 }
 
 .paymentOption:hover {
@@ -115,9 +123,10 @@
 
 .orderSummary .card {
     position: sticky;
-    top: 120px;
-    background: var(--primary);
+    top: 140px;
+    background: var(--burgundy);
     color: white;
+    padding: 3rem;
 }
 
 .orderSummary h2 {
@@ -154,25 +163,30 @@
 
 .totalRow {
     opacity: 1;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-top: 2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--gold);
 }
 
 .payBtn {
     width: 100%;
-    background: var(--accent);
+    background: var(--gold);
     color: black;
-    padding: 1.25rem;
-    border-radius: 2rem; /* Modular Elegance 32px */
-    font-weight: 700;
+    height: 3rem;
+    border-radius: var(--radius);
+    font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+    transition: all 0.4s ease;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
 }
 
 .payBtn:hover {

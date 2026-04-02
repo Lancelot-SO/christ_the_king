@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ChevronLeft, ShoppingCart, Loader2, Check } from "lucide-react";
+import { ChevronLeft, ShoppingCart, Loader2, Check, Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -181,9 +181,13 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                         <div className={styles.optionGroup}>
                             <span className={styles.optionLabel}>QUANTITY</span>
                             <div className={styles.quantitySelector}>
-                                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} disabled={isSoldOut}>—</button>
+                                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} disabled={isSoldOut}>
+                                    <Minus size={14} />
+                                </button>
                                 <span>{quantity}</span>
-                                <button onClick={() => setQuantity(quantity + 1)} disabled={isSoldOut}>+</button>
+                                <button onClick={() => setQuantity(quantity + 1)} disabled={isSoldOut}>
+                                    <Plus size={14} />
+                                </button>
                             </div>
                         </div>
 
