@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import AlumniJoinForm from "@/components/AlumniJoinForm";
 
 export default function Home() {
   return (
@@ -83,17 +84,7 @@ export default function Home() {
       <section className={styles.societySection}>
         <div className="container">
           <div className={styles.societyWrapper}>
-            <div className={styles.societyContent}>
-                <h3 className={styles.societyTitle}>Join the Christ the King Society</h3>
-                <p className={styles.societySub}>
-                    Be the first to receive exclusive drops from the Christ the King collection 
-                    and updates on alumni events.
-                </p>
-                <form className={styles.societyForm}>
-                    <input type="email" placeholder="YOUR EMAIL ADDRESS" className={styles.societyInput} />
-                    <button type="submit" className={styles.societyBtn}>JOIN US</button>
-                </form>
-            </div>
+            <AlumniJoinForm />
           </div>
         </div>
       </section>
