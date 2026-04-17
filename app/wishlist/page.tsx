@@ -45,7 +45,7 @@ export default function WishlistPage() {
 
     return (
         <main>
-            <Header light />
+            <Header />
             <div className={`${styles.hero} animate-fade-up`}>
                 <div className="container">
                     <h1>My Wishlist</h1>

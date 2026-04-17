@@ -34,6 +34,28 @@ export default function DuesPage() {
         amount: 250,
     });
 
+    // Fundraising contribution modal state
+    const [showContribModal, setShowContribModal] = useState(false);
+    const [contribData, setContribData] = useState({
+        name: "",
+        email: "",
+        amount: 0,
+        tier: "",
+        reference: "",
+    });
+    const [isContribPaying, setIsContribPaying] = useState(false);
+
+    const openContribModal = (tier: string, suggestedAmount: number) => {
+        setContribData({
+            name: "",
+            email: "",
+            amount: suggestedAmount,
+            tier,
+            reference: `FUND-${tier.replace(/\s+/g, "-").toUpperCase()}-${Date.now()}`,
+        });
+        setShowContribModal(true);
+    };
+
     useEffect(() => {
         const fetchFees = async () => {
             try {
@@ -82,6 +104,189 @@ export default function DuesPage() {
         <main className={styles.main}>
             <Header light />
             
+
+            {/* Fundraising Opportunities Section */}
+            <section className={styles.fundraisingSection}>
+                <div className={styles.fundraisingContainer}>
+                    <span className={styles.fundraisingLabel}>BUILDING THE FUTURE</span>
+                    <h2 className={styles.fundraisingTitle}>Fundraising Opportunities</h2>
+                    <p className={styles.fundraisingIntro}>
+                        Join us in shaping the next chapter of CTKIS. Every contribution, 
+                        no matter the size, builds a legacy that will inspire generations.
+                    </p>
+
+                    <div className={styles.fundraisingGrid}>
+                        {/* Sponsor a Classroom */}
+                        <div className={styles.fundCard}>
+                            <span className={styles.fundCardLabel}>PREMIER TIER</span>
+                            <h3 className={styles.fundCardTitle}>Sponsor a Classroom</h3>
+                            <p className={styles.fundCardDesc}>
+                                Bring your graduating class or decade together to sponsor a classroom 
+                                and make a lasting impact on CTKIS students.
+                            </p>
+                            <div className={styles.fundCardPrice}>
+                                <span className={styles.fundCardAmount}>GH₵3,600,000</span>
+                                <span className={styles.fundCardUnit}>per floor</span>
+                            </div>
+                            <div className={styles.fundCardDetails}>
+                                <p>Pool contributions with your peers — smaller gifts from many alumni make this achievable.</p>
+                                <p>Leave your mark through classroom naming and recognition.</p>
+                            </div>
+                            <p className={styles.fundCardQuote}>
+                                &ldquo;If 300 of us give GH₵3,000 each, we can fund a full classroom!&rdquo;
+                            </p>
+                            <button className={styles.fundCardBtn} onClick={() => openContribModal("Classroom Sponsorship", 3000)}>
+                                CONTRIBUTE NOW
+                            </button>
+                        </div>
+
+                        {/* Brick-by-Brick */}
+                        <div className={styles.fundCard}>
+                            <span className={styles.fundCardLabel}>FOUNDATION</span>
+                            <h3 className={styles.fundCardTitle}>Brick-by-Brick</h3>
+                            <p className={styles.fundCardDesc}>
+                                Dedicate a brick to yourself, a loved one, or your graduating class. 
+                                Your name will be recognised in our publications.
+                            </p>
+                            <div className={styles.fundCardPrice}>
+                                <span className={styles.fundCardAmount}>GH₵1,000</span>
+                                <span className={styles.fundCardUnit}>per brick</span>
+                            </div>
+                            <div className={styles.fundCardDetails}>
+                                <p>900 bricks build one complete classroom.</p>
+                            </div>
+                            <p className={styles.fundCardQuote}>
+                                &ldquo;Be part of the foundation — help build a classroom that will shape generations.&rdquo;
+                            </p>
+                            <button className={styles.fundCardBtn} onClick={() => openContribModal("Brick-by-Brick", 1000)}>
+                                CONTRIBUTE NOW
+                            </button>
+                        </div>
+
+                        {/* Custom Giving */}
+                        <div className={styles.fundCard}>
+                            <span className={styles.fundCardLabel}>FLEXIBLE</span>
+                            <h3 className={styles.fundCardTitle}>Custom Giving</h3>
+                            <p className={styles.fundCardDesc}>
+                                Contribute any amount toward the total project cost. 
+                                Every gift brings us closer to our goal.
+                            </p>
+                            <div className={styles.fundCardPrice}>
+                                <span className={styles.fundCardAmount}>Any Amount</span>
+                                <span className={styles.fundCardUnit}>your choice</span>
+                            </div>
+                            <button className={styles.fundCardBtn} onClick={() => openContribModal("Custom Giving", 0)}>
+                                CONTRIBUTE NOW
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Furniture & Equipment — featured showcase */}
+                    <div className={styles.equipmentSection}>
+                        <span className={styles.fundCardLabel}>EQUIP A CLASSROOM</span>
+                        <h3 className={styles.equipmentTitle}>Furniture &amp; Equipment</h3>
+                        <p className={styles.equipmentDesc}>
+                            Sponsor furniture and equipment to make lessons more engaging and dynamic.
+                        </p>
+                        <div className={styles.equipmentGrid}>
+                            <div className={styles.equipItem}>
+                                <span className={styles.equipPrice}>GH₵699</span>
+                                <span className={styles.equipName}>Cabinets</span>
+                            </div>
+                            <div className={styles.equipItem}>
+                                <span className={styles.equipPrice}>GH₵1,699</span>
+                                <span className={styles.equipName}>Desks</span>
+                            </div>
+                            <div className={styles.equipItem}>
+                                <span className={styles.equipPrice}>GH₵2,334</span>
+                                <span className={styles.equipName}>Furniture Sets</span>
+                            </div>
+                            <div className={styles.equipItem}>
+                                <span className={styles.equipPrice}>GH₵7,591</span>
+                                <span className={styles.equipName}>ICT Lab PCs</span>
+                            </div>
+                            <div className={styles.equipItem}>
+                                <span className={styles.equipPrice}>GH₵42,050</span>
+                                <span className={styles.equipName}>Interactive Boards</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Contribution Modal */}
+            {showContribModal && (
+                <div className={styles.modalOverlay} onClick={() => setShowContribModal(false)}>
+                    <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                        <button className={styles.modalClose} onClick={() => setShowContribModal(false)}>
+                            ✕
+                        </button>
+                        <span className={styles.modalLabel}>{contribData.tier.toUpperCase()}</span>
+                        <h3 className={styles.modalTitle}>Make a Contribution</h3>
+                        <p className={styles.modalDesc}>Your generosity helps build the future of CTKIS.</p>
+
+                        <div className={styles.modalForm}>
+                            <div className={styles.modalField}>
+                                <label className={styles.modalFieldLabel}>FULL NAME</label>
+                                <input
+                                    type="text"
+                                    placeholder="Your full name"
+                                    value={contribData.name}
+                                    onChange={(e) => setContribData({...contribData, name: e.target.value})}
+                                    className={styles.modalInput}
+                                />
+                            </div>
+                            <div className={styles.modalField}>
+                                <label className={styles.modalFieldLabel}>RECEIPT EMAIL</label>
+                                <input
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    value={contribData.email}
+                                    onChange={(e) => setContribData({...contribData, email: e.target.value})}
+                                    className={styles.modalInput}
+                                />
+                            </div>
+                            <div className={styles.modalField}>
+                                <label className={styles.modalFieldLabel}>AMOUNT (GH₵)</label>
+                                <input
+                                    type="number"
+                                    placeholder="Enter amount"
+                                    value={contribData.amount || ""}
+                                    onChange={(e) => setContribData({...contribData, amount: Number(e.target.value)})}
+                                    className={styles.modalInput}
+                                />
+                            </div>
+                        </div>
+
+                        <PaymentButton
+                            config={{
+                                publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+                                email: contribData.email,
+                                amount: Math.round(contribData.amount * 100),
+                                currency: 'GHS',
+                                reference: contribData.reference,
+                                metadata: {
+                                    custom_fields: [
+                                        { display_name: "Donor Name", variable_name: "donor_name", value: contribData.name },
+                                        { display_name: "Contribution Tier", variable_name: "tier", value: contribData.tier },
+                                    ]
+                                }
+                            }}
+                            onSuccess={(response: any) => {
+                                setShowContribModal(false);
+                                alert("Thank you for your generous contribution!");
+                            }}
+                            onClose={() => setIsContribPaying(false)}
+                            loading={isContribPaying}
+                            setLoading={setIsContribPaying}
+                            styles={{ payBtn: styles.modalPayBtn }}
+                            label={`CONTRIBUTE GH₵${contribData.amount ? contribData.amount.toLocaleString() : '0'}`}
+                            skipCartCheck={true}
+                        />
+                    </div>
+                </div>
+            )}
+
             <header id="hero-section" className={styles.pageHeader}>
                 <span className={styles.subtitle}>INSTITUTIONAL GOVERNANCE</span>
                 <h1 className={styles.title}>Member Dues</h1>
@@ -210,6 +415,7 @@ export default function DuesPage() {
                     )}
                 </div>
             </section>
+
 
             <Footer />
         </main>

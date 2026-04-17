@@ -67,6 +67,7 @@
 }
 
 .title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     margin-bottom: 2.5rem;
     line-height: 1;
 }
