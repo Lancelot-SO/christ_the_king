@@ -4,7 +4,7 @@
 }
 
 .pageHeader {
-    padding: 10rem 0 4rem;
+    padding: 4rem 0;
     text-align: center;
     background-color: var(--burgundy);
     color: #FFFFFF;
@@ -271,8 +271,407 @@
     .totalRow {
         font-size: 1.5rem;
     }
+}
 
-    .pageHeader {
-        padding-top: 10rem;
+/* Fundraising Opportunities */
+.fundraisingSection {
+    padding: 10rem 2rem 6rem;
+    background-color: var(--burgundy);
+    color: #FFFFFF;
+}
+
+.fundraisingContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fundraisingLabel {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+}
+
+.fundraisingTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.fundraisingIntro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 55ch;
+    margin: 0 auto 5rem;
+}
+
+/* Card Grid */
+.fundraisingGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem;
+    text-align: left;
+}
+
+.fundCard {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.fundCard:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+}
+
+.fundCardLabel {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.fundCardTitle {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.fundCardDesc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 2rem;
+}
+
+.fundCardPrice {
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.fundCardAmount {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+}
+
+.fundCardUnit {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.fundCardDetails {
+    margin-bottom: 1.5rem;
+}
+
+.fundCardDetails p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 0.5rem;
+}
+
+.fundCardQuote {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Equipment Showcase */
+.equipmentSection {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2rem;
+    padding: 4rem;
+    text-align: center;
+}
+
+.equipmentTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.equipmentDesc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 3.5rem;
+    max-width: 50ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.equipmentGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+}
+
+.equipItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.equipPrice {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.equipName {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 1024px) {
+    .fundraisingGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .equipmentGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .fundraisingSection {
+        padding: 8rem 1.5rem 4rem;
+    }
+
+    .fundCard {
+        padding: 2.5rem 2rem;
+    }
+
+    .equipmentSection {
+        padding: 3rem 2rem;
+    }
+
+    .equipmentGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Fund Card Button */
+.fundCardBtn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius);
+    color: #FFFFFF;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: auto;
+}
+
+.fundCardBtn:hover {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--burgundy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Contribution Modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modalContent {
+    background: var(--background);
+    border-radius: 2rem;
+    padding: 4rem 3.5rem;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modalClose {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.modalClose:hover {
+    color: var(--foreground);
+}
+
+.modalLabel {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.modalTitle {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--foreground);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.modalDesc {
+    font-size: 0.95rem;
+    color: var(--muted-foreground);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.modalField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modalFieldLabel {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--muted-foreground);
+    padding-left: 1rem;
+}
+
+.modalInput {
+    width: 100%;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.modalInput::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.5;
+}
+
+.modalInput:focus {
+    border-color: var(--burgundy);
+}
+
+.modalPayBtn {
+    width: 100%;
+    height: 3.5rem;
+    background-color: var(--burgundy);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    border-radius: var(--radius);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modalPayBtn:hover {
+    background-color: var(--burgundy-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(124, 25, 54, 0.2);
+}
+
+@media (max-width: 768px) {
+    .modalContent {
+        padding: 3rem 2rem;
+        border-radius: 1.5rem;
+    }
+
+    .modalTitle {
+        font-size: 1.5rem;
     }
 }

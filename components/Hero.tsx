@@ -26,14 +26,14 @@ export default function Hero() {
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className={styles.textContent}
                 >
-                    <span className={styles.label}>ESTABLISHED 1956</span>
+                    <span className={styles.label}>70 YEARS OF GRACE, GROWTH, AND GREATNESS</span>
                     <h1 className={styles.title}>
-                        Your Year.<br />
-                        <span className="gold-accent">Your Legacy.</span>
+                        Welcome to Christ the King<br />
+                        <span className="gold-accent">70th Anniversary.</span>
                     </h1>
                     <p className={styles.description}>
-                        A premium digital experience for the Christ the King community.
-                        Celebrate your journey, contribute to the future, and wear your identity.
+                        This year, we celebrate 70 remarkable years of nurturing children in faith, character, 
+                        and academic excellence under the guidance of the Catholic Church.
                     </p>
                     <div className={styles.actions}>
                         <Link href="/catalog" className="btn btn-primary">

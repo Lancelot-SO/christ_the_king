@@ -2,6 +2,82 @@
     min-height: 100vh;
 }
 
+/* Fundraising Preview */
+.fundraisingPreview {
+    padding: calc(var(--section-padding) * 1.5) 0;
+    background-color: var(--burgundy);
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.fundraisingPreviewDesc {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 50ch;
+    margin: 0 auto 4rem;
+}
+
+.fundraisingPreviewGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.previewCard {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.previewCard:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+}
+
+.previewCardLabel {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+
+.previewCardTitle {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.previewCardPrice {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.previewCardUnit {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.fundraisingPreview .editorialLink {
+    margin: 0 auto;
+}
+
 /* Heritage Chapter */
 .heritageChapter {
     padding: calc(var(--section-padding) * 1.5) 0;
@@ -63,6 +139,7 @@
 }
 
 .chapterHeading {
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
     margin-bottom: 3rem;
 }
 
@@ -72,6 +149,10 @@
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 4rem;
     max-width: 50ch;
+}
+
+.chapterText + .chapterText {
+    margin-top: -2.5rem;
 }
 
 .metrics {
@@ -217,6 +298,11 @@
 }
 
 @media (max-width: 1024px) {
+    .fundraisingPreviewGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
     .chapterGrid {
         grid-template-columns: 1fr;
         gap: 6rem;

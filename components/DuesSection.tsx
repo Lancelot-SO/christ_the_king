@@ -8,7 +8,7 @@ export default function DuesSection() {
     return (
         <section className={styles.duesSection}>
             <div className={`container ${styles.grid}`}>
-                {/* Left Side: Editorial Storytelling */}
+                {/* Left Side: How You Can Help */}
                 <div className={styles.storyContent}>
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -16,71 +16,61 @@ export default function DuesSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 1 }}
                     >
-                        <span className={styles.kicker}>THE LEGACY CIRCLE</span>
+                        <span className={styles.kicker}>HOW YOU CAN HELP</span>
                         <h2 className={styles.title}>
-                            Support the institutions<br />
-                            that <span className="gold-accent">formed you.</span>
+                            Be part of the<br />
+                            <span className="gold-accent">transformation.</span>
                         </h2>
                         <p className={styles.lead}>
-                            Your annual dues aren't just a membership fee—they are a direct investment 
-                            into the scholarships, infrastructure, and community that define 
-                            the Christ the King experience. Together, we preserve the legacy.
+                            CTKIS is calling on alumni, parents, and friends of the school 
+                            to support in the following ways.
                         </p>
                         
                         <div className={styles.impactGrid}>
                             <div className={styles.impactItem}>
-                                <span className={styles.impactValue}>70%</span>
-                                <span className={styles.impactLabel}>Scholarship Support</span>
+                                <span className={styles.impactValue}>01</span>
+                                <span className={styles.impactLabel}>Donate</span>
+                                <p className={styles.impactDesc}>Every contribution — big or small — brings us closer to completing Phase Two.</p>
                             </div>
                             <div className={styles.impactItem}>
-                                <span className={styles.impactValue}>25%</span>
-                                <span className={styles.impactLabel}>Campus Development</span>
+                                <span className={styles.impactValue}>02</span>
+                                <span className={styles.impactLabel}>Sponsor a Project</span>
+                                <p className={styles.impactDesc}>Consider sponsoring a classroom, library resource, tablet, or scholarship.</p>
                             </div>
                             <div className={styles.impactItem}>
-                                <span className={styles.impactValue}>05%</span>
-                                <span className={styles.impactLabel}>Alumni Network</span>
+                                <span className={styles.impactValue}>03</span>
+                                <span className={styles.impactLabel}>Volunteer</span>
+                                <p className={styles.impactDesc}>Help spread the word. Engage your year groups and networks.</p>
                             </div>
                         </div>
                     </motion.div>
                 </div>
 
-                {/* Right Side: Fintech Hub */}
+                {/* Right Side: Call to Action */}
                 <div className={styles.fintechHub}>
                     <div className={styles.hubCard}>
                         <div className={styles.hubHeader}>
-                            <span className={styles.hubLabel}>CALENDAR YEAR 2026</span>
-                            <h3 className={styles.hubTitle}>Class of 2015</h3>
+                            <span className={styles.hubLabel}>CORPORATE &amp; INDIVIDUAL</span>
+                            <h3 className={styles.hubTitle}>Together, We Build</h3>
                         </div>
                         
-                        <div className={styles.statsContainer}>
-                            <div className={styles.statRow}>
-                                <span className={styles.statLabel}>Contribution Status</span>
-                                <span className={`${styles.status} ${styles.pending}`}>Pending Activation</span>
-                            </div>
-                            
-                            <div className={styles.progressSection}>
-                                <div className={styles.progressBar}>
-                                    <div className={styles.progressFill} style={{ width: '45%' }}></div>
-                                </div>
-                                <div className={styles.progressLabels}>
-                                    <span>GHS 0.00 Paid</span>
-                                    <span>GHS 500.00 Goal</span>
-                                </div>
-                            </div>
+                        <p className={styles.hubText}>
+                            Together, we can leave a lasting legacy for current and future generations of CTKIS students. 
+                            Your generosity will ensure that the next 70 years continue to shine with grace, growth, and greatness.
+                        </p>
 
-                            <div className={styles.amountDisplay}>
-                                <span className={styles.currency}>GHS</span>
-                                <span className={styles.amount}>500.00</span>
-                            </div>
+                        <div className={styles.ctaGroup}>
+                            <Link href="/dues" className="btn btn-primary" style={{ width: '100%' }}>
+                                DONATE NOW
+                            </Link>
+                            <Link href="/contact" className="btn btn-outline" style={{ width: '100%', color: 'var(--burgundy)', borderColor: 'var(--burgundy)' }}>
+                                VOLUNTEER
+                            </Link>
                         </div>
-
-                        <Link href="/dues" className="btn btn-primary" style={{ width: '100%', marginTop: '2rem' }}>
-                            CONTRIBUTE NOW
-                        </Link>
                         
                         <p className={styles.secureNote}>
-                            Secure payment processed through CTK Treasury. 
-                            Your contribution is tax-deductible in applicable regions.
+                            If you are part of a business or organisation, explore partnership 
+                            opportunities to sponsor or contribute to the redevelopment project.
                         </p>
                     </div>
                 </div>
