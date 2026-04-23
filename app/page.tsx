@@ -14,52 +14,6 @@ export default function Home() {
       <Header />
       <Hero />
 
-      {/* Featured Collection Section */}
-      <FeaturedProducts />
-
-      {/* Dues & Contribution Hub */}
-      <DuesSection />
-
-      {/* Fundraising Preview */}
-      <section className={styles.fundraisingPreview}>
-        <div className="container">
-          <span className={styles.preTitle}>BUILDING THE FUTURE</span>
-          <h2 className={styles.chapterHeading}>
-            Fundraising <span className="gold-accent">Opportunities.</span>
-          </h2>
-          <p className={styles.fundraisingPreviewDesc}>
-            From sponsoring a classroom to buying a single brick, every contribution 
-            helps build the next chapter of CTKIS.
-          </p>
-
-          <div className={styles.fundraisingPreviewGrid}>
-            <div className={styles.previewCard}>
-              <span className={styles.previewCardLabel}>PREMIER TIER</span>
-              <h3 className={styles.previewCardTitle}>Sponsor a Classroom</h3>
-              <span className={styles.previewCardPrice}>GH₵3,600,000</span>
-              <span className={styles.previewCardUnit}>per floor</span>
-            </div>
-            <div className={styles.previewCard}>
-              <span className={styles.previewCardLabel}>FOUNDATION</span>
-              <h3 className={styles.previewCardTitle}>Brick-by-Brick</h3>
-              <span className={styles.previewCardPrice}>GH₵1,000</span>
-              <span className={styles.previewCardUnit}>per brick</span>
-            </div>
-            <div className={styles.previewCard}>
-              <span className={styles.previewCardLabel}>EQUIP</span>
-              <h3 className={styles.previewCardTitle}>Furniture & Equipment</h3>
-              <span className={styles.previewCardPrice}>From GH₵699</span>
-              <span className={styles.previewCardUnit}>per item</span>
-            </div>
-          </div>
-
-          <Link href="/dues" className={styles.editorialLink}>
-            <span>VIEW ALL OPPORTUNITIES</span>
-            <div className={styles.line}></div>
-          </Link>
-        </div>
-      </section>
-
       {/* Heritage Story Chapter */}
       <section className={styles.heritageChapter}>
         <div className="container">
@@ -102,6 +56,52 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Campaign Section */}
+      <FeaturedProducts />
+
+      {/* Fundraising Preview */}
+      <section className={styles.fundraisingPreview}>
+        <div className="container">
+          <span className={styles.preTitle}>BUILDING THE FUTURE</span>
+          <h2 className={styles.chapterHeading}>
+            Fundraising <span className="gold-accent">Opportunities.</span>
+          </h2>
+          <p className={styles.fundraisingPreviewDesc}>
+            From sponsoring a classroom to buying a single brick, every contribution 
+            helps build the next chapter of CTKIS.
+          </p>
+
+          <div className={styles.fundraisingPreviewGrid}>
+            <div className={styles.previewCard}>
+              <span className={styles.previewCardLabel}>PREMIER TIER</span>
+              <h3 className={styles.previewCardTitle}>Sponsor a Classroom</h3>
+              <span className={styles.previewCardPrice}>GH₵3,600,000</span>
+              <span className={styles.previewCardUnit}>per floor</span>
+            </div>
+            <div className={styles.previewCard}>
+              <span className={styles.previewCardLabel}>FOUNDATION</span>
+              <h3 className={styles.previewCardTitle}>Brick-by-Brick</h3>
+              <span className={styles.previewCardPrice}>GH₵1,000</span>
+              <span className={styles.previewCardUnit}>per brick</span>
+            </div>
+            <div className={styles.previewCard}>
+              <span className={styles.previewCardLabel}>EQUIP</span>
+              <h3 className={styles.previewCardTitle}>Furniture & Equipment</h3>
+              <span className={styles.previewCardPrice}>From GH₵699</span>
+              <span className={styles.previewCardUnit}>per item</span>
+            </div>
+          </div>
+
+          <Link href="/dues" className={styles.editorialLink}>
+            <span>VIEW ALL OPPORTUNITIES</span>
+            <div className={styles.line}></div>
+          </Link>
+        </div>
+      </section>
+
+      {/* How You Can Help */}
+      <DuesSection />
 
       {/* Join the Society / Newsletter Section */}
       <section className={styles.societySection}>

@@ -36,11 +36,11 @@ export default function Hero() {
                         and academic excellence under the guidance of the Catholic Church.
                     </p>
                     <div className={styles.actions}>
-                        <Link href="/catalog" className="btn btn-primary">
-                            Explore Collection
+                        <Link href="/dues" className="btn btn-primary">
+                            Support the Anniversary
                         </Link>
-                        <Link href="/dues" className="btn btn-outline">
-                            Contribution
+                        <Link href="/about" className="btn btn-outline">
+                            Discover Our Story
                         </Link>
                     </div>
                 </motion.div>
