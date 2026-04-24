@@ -13,7 +13,7 @@ export default function FeaturedProducts() {
                         <span className={styles.kicker}>FUNDRAISING CAMPAIGN</span>
                         <h2 className={styles.title}>Building for the Future</h2>
                         <p className={styles.description}>
-                            As we celebrate <em>70 Years of Grace, Growth, and Greatness</em>, we are taking a bold step forward to 
+                            As we celebrate <em>70 Years of Grace, Growth, and Greatness</em>, we are taking a bold step forward to
                             transform our school&apos;s infrastructure and create modern, inspiring learning spaces for our students.
                         </p>
                     </div>
@@ -21,7 +21,7 @@ export default function FeaturedProducts() {
                         <span className={styles.goalLabel}>OUR GOAL</span>
                         <span className={styles.goalAmount}>GH₵13,540,211.44</span>
                         <p className={styles.goalDesc}>
-                            Phase Two of the school&apos;s redevelopment — additional classrooms, 
+                            Phase Two of the school&apos;s redevelopment — additional classrooms,
                             furnished learning spaces, and enhanced facilities.
                         </p>
                     </div>
@@ -29,17 +29,20 @@ export default function FeaturedProducts() {
 
                 <div className={styles.categoryGrid}>
                     <div className={styles.card}>
-                        <Image 
-                            src="/fundraising/DJI_0015_1.jpg" 
-                            alt="Modern classrooms"
-                            fill
+                        <video 
+                            src="/fundraising/classroom new.mp4" 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
                             className={styles.image}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                         <div className={styles.label}>CLASSROOMS</div>
                     </div>
                     <div className={styles.card}>
-                        <Image 
-                            src="/fundraising/DJI_0026_1.jpg" 
+                        <Image
+                            src="/fundraising/DJI_0015_1.jpg"
                             alt="School building expansion"
                             fill
                             className={styles.image}
@@ -47,8 +50,8 @@ export default function FeaturedProducts() {
                         <div className={styles.label}>INFRASTRUCTURE</div>
                     </div>
                     <div className={styles.card}>
-                        <Image 
-                            src="/fundraising/1362AAD Image.jpg" 
+                        <Image
+                            src="/fundraising/1362AAD Image.jpg"
                             alt="Students learning"
                             fill
                             className={styles.image}
@@ -56,8 +59,8 @@ export default function FeaturedProducts() {
                         <div className={styles.label}>STUDENT IMPACT</div>
                     </div>
                     <div className={styles.card}>
-                        <Image 
-                            src="/fundraising/ict-lab.png" 
+                        <Image
+                            src="/fundraising/ict-lab.png"
                             alt="ICT computer lab"
                             fill
                             className={styles.image}

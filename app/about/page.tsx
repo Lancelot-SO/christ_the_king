@@ -30,7 +30,7 @@ export default function AboutPage() {
                                     className={styles.img}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 >
-                                    <source src="/Compressed.mp4" type="video/mp4" />
+                                    <source src="/New Video.mp4" type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
