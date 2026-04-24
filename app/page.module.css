@@ -357,4 +357,15 @@
     .societyTitle {
         font-size: 2rem;
     }
+
+    .societyForm {
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 100%;
+    }
+
+    .societyBtn {
+        width: 100%;
+        padding: 1.25rem 2rem;
+    }
 }
