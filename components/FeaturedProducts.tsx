@@ -30,7 +30,7 @@ export default function FeaturedProducts() {
                 <div className={styles.categoryGrid}>
                     <div className={styles.card}>
                         <Image 
-                            src="/fundraising/classroom.png" 
+                            src="/fundraising/DJI_0015_1.jpg" 
                             alt="Modern classrooms"
                             fill
                             className={styles.image}
@@ -39,7 +39,7 @@ export default function FeaturedProducts() {
                     </div>
                     <div className={styles.card}>
                         <Image 
-                            src="/fundraising/building.png" 
+                            src="/fundraising/DJI_0026_1.jpg" 
                             alt="School building expansion"
                             fill
                             className={styles.image}
@@ -48,7 +48,7 @@ export default function FeaturedProducts() {
                     </div>
                     <div className={styles.card}>
                         <Image 
-                            src="/fundraising/students.png" 
+                            src="/fundraising/1362AAD Image.jpg" 
                             alt="Students learning"
                             fill
                             className={styles.image}

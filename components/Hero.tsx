@@ -2,20 +2,24 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
     return (
         <section id="hero-section" className={styles.hero}>
             <div className={styles.imageWrapper}>
-                <Image
-                    src="/blazer+lapel pin.png"
-                    alt="Christ the King Alumni Heritage"
-                    fill
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
                     className={styles.image}
-                    priority
-                />
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                >
+                    <source src="/EKOW TEST 1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
                 <div className={styles.imageOverlay}></div>
             </div>
 

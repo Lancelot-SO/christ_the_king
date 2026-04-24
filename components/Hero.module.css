@@ -29,15 +29,25 @@
     inset: 0;
     background: linear-gradient(to right,
             #fef9fa 0%,
-            rgba(254, 249, 250, 0) 40%,
-            rgba(124, 25, 54, 0.2) 100%);
+            #fef9fa 5%,
+            rgba(254, 249, 250, 0.95) 12%,
+            rgba(254, 249, 250, 0.8) 20%,
+            rgba(254, 249, 250, 0.5) 35%,
+            rgba(254, 249, 250, 0) 60%,
+            rgba(124, 25, 54, 0.05) 80%,
+            rgba(124, 25, 54, 0.15) 100%);
 }
 
 [data-theme='dark'] .imageOverlay {
     background: linear-gradient(to right,
             var(--background) 0%,
-            rgba(0, 0, 0, 0) 40%,
-            rgba(124, 25, 54, 0.4) 100%);
+            var(--background) 5%,
+            rgba(0, 0, 0, 0.95) 12%,
+            rgba(0, 0, 0, 0.8) 20%,
+            rgba(0, 0, 0, 0.5) 35%,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(124, 25, 54, 0.1) 80%,
+            rgba(124, 25, 54, 0.3) 100%);
 }
 
 /* Content Area */

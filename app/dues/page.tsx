@@ -6,9 +6,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import styles from "./dues.module.css";
 
-const PaymentButton = dynamic(() => import("@/components/PaymentButton"), { 
+const PaymentButton = dynamic(() => import("@/components/PaymentButton"), {
     ssr: false,
     loading: () => (
         <button className={styles.payBtn} disabled>
@@ -103,7 +104,7 @@ export default function DuesPage() {
     return (
         <main className={styles.main}>
             <Header light />
-            
+
 
             {/* Fundraising Opportunities Section */}
             <section className={styles.fundraisingSection}>
@@ -111,7 +112,7 @@ export default function DuesPage() {
                     <span className={styles.fundraisingLabel}>BUILDING THE FUTURE</span>
                     <h2 className={styles.fundraisingTitle}>Fundraising Opportunities</h2>
                     <p className={styles.fundraisingIntro}>
-                        Join us in shaping the next chapter of CTKIS. Every contribution, 
+                        Join us in shaping the next chapter of CTKIS. Every contribution,
                         no matter the size, builds a legacy that will inspire generations.
                     </p>
 
@@ -121,7 +122,7 @@ export default function DuesPage() {
                             <span className={styles.fundCardLabel}>PREMIER TIER</span>
                             <h3 className={styles.fundCardTitle}>Sponsor a Classroom</h3>
                             <p className={styles.fundCardDesc}>
-                                Bring your graduating class or decade together to sponsor a classroom 
+                                Bring your graduating class or decade together to sponsor a classroom
                                 and make a lasting impact on CTKIS students.
                             </p>
                             <div className={styles.fundCardPrice}>
@@ -145,7 +146,7 @@ export default function DuesPage() {
                             <span className={styles.fundCardLabel}>FOUNDATION</span>
                             <h3 className={styles.fundCardTitle}>Brick-by-Brick</h3>
                             <p className={styles.fundCardDesc}>
-                                Dedicate a brick to yourself, a loved one, or your graduating class. 
+                                Dedicate a brick to yourself, a loved one, or your graduating class.
                                 Your name will be recognised in our publications.
                             </p>
                             <div className={styles.fundCardPrice}>
@@ -168,7 +169,7 @@ export default function DuesPage() {
                             <span className={styles.fundCardLabel}>FLEXIBLE</span>
                             <h3 className={styles.fundCardTitle}>Custom Giving</h3>
                             <p className={styles.fundCardDesc}>
-                                Contribute any amount toward the total project cost. 
+                                Contribute any amount toward the total project cost.
                                 Every gift brings us closer to our goal.
                             </p>
                             <div className={styles.fundCardPrice}>
@@ -232,7 +233,7 @@ export default function DuesPage() {
                                     type="text"
                                     placeholder="Your full name"
                                     value={contribData.name}
-                                    onChange={(e) => setContribData({...contribData, name: e.target.value})}
+                                    onChange={(e) => setContribData({ ...contribData, name: e.target.value })}
                                     className={styles.modalInput}
                                 />
                             </div>
@@ -242,7 +243,7 @@ export default function DuesPage() {
                                     type="email"
                                     placeholder="your@email.com"
                                     value={contribData.email}
-                                    onChange={(e) => setContribData({...contribData, email: e.target.value})}
+                                    onChange={(e) => setContribData({ ...contribData, email: e.target.value })}
                                     className={styles.modalInput}
                                 />
                             </div>
@@ -252,7 +253,7 @@ export default function DuesPage() {
                                     type="number"
                                     placeholder="Enter amount"
                                     value={contribData.amount || ""}
-                                    onChange={(e) => setContribData({...contribData, amount: Number(e.target.value)})}
+                                    onChange={(e) => setContribData({ ...contribData, amount: Number(e.target.value) })}
                                     className={styles.modalInput}
                                 />
                             </div>
@@ -290,11 +291,11 @@ export default function DuesPage() {
             <header id="hero-section" className={styles.pageHeader}>
                 <span className={styles.subtitle}>INSTITUTIONAL GOVERNANCE</span>
                 <h1 className={styles.title}>Member Dues</h1>
-                
+
                 <div className={styles.stepsNav}>
                     {[1, 2, 3].map((s) => (
-                        <div 
-                            key={s} 
+                        <div
+                            key={s}
                             className={`${styles.stepIndicator} ${step >= s ? styles.stepActive : ""}`}
                         >
                             <span>STEP 0{s}</span>
@@ -314,17 +315,17 @@ export default function DuesPage() {
                                     <p className={styles.loadingText}>Fetching year groups...</p>
                                 ) : (
                                     getYearGroups().map((yg: string) => (
-                                        <button 
+                                        <button
                                             key={yg}
                                             className={`${styles.selectionBtn} ${formData.yearGroup === yg ? styles.selected : ""}`}
-                                            onClick={() => setFormData({...formData, yearGroup: yg})}
+                                            onClick={() => setFormData({ ...formData, yearGroup: yg })}
                                         >
                                             {yg}
                                         </button>
                                     ))
                                 )}
                             </div>
-                            <button 
+                            <button
                                 disabled={!formData.yearGroup}
                                 className={styles.nextBtn}
                                 onClick={() => setStep(2)}
@@ -340,14 +341,14 @@ export default function DuesPage() {
                             <p className={styles.stepDesc}>Choose your contribution schedule for the {formData.yearGroup}.</p>
                             <div className={styles.grid}>
                                 {[
-                                    {id: "monthly", label: "Monthly", price: Math.round(getAnnualPrice() / 10)},
-                                    {id: "annual", label: "Annual", price: getAnnualPrice()},
-                                    {id: "lifetime", label: "Lifetime", price: getAnnualPrice() * 20},
+                                    { id: "monthly", label: "Monthly", price: Math.round(getAnnualPrice() / 10) },
+                                    { id: "annual", label: "Annual", price: getAnnualPrice() },
+                                    { id: "lifetime", label: "Lifetime", price: getAnnualPrice() * 20 },
                                 ].map((plan) => (
-                                    <button 
+                                    <button
                                         key={plan.id}
                                         className={`${styles.selectionBtn} ${formData.subscription === plan.id ? styles.selected : ""}`}
-                                        onClick={() => setFormData({...formData, subscription: plan.id, amount: plan.price})}
+                                        onClick={() => setFormData({ ...formData, subscription: plan.id, amount: plan.price })}
                                     >
                                         <span className={styles.planLabel}>{plan.label}</span>
                                         <span className={styles.planPrice}>GHS {plan.price.toLocaleString()}</span>
@@ -379,19 +380,19 @@ export default function DuesPage() {
                                     <span>GHS {formData.amount.toLocaleString()}</span>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.formGroup} style={{ marginBottom: '2rem', padding: '0 1rem' }}>
                                 <label style={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--muted-foreground)', display: 'block', marginBottom: '0.5rem', paddingLeft: '1rem' }}>RECEIPT EMAIL</label>
-                                <input 
-                                    type="email" 
+                                <input
+                                    type="email"
                                     placeholder="your@email.com"
                                     value={formData.email}
-                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     style={{ width: '100%', background: 'var(--muted)', border: '1px solid var(--border)', padding: '1rem', borderRadius: '2rem', fontSize: '0.875rem' }}
                                 />
                             </div>
 
-                            <PaymentButton 
+                            <PaymentButton
                                 config={{
                                     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
                                     email: formData.email,

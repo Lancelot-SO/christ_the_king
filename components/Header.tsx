@@ -50,8 +50,8 @@ export default function Header({ light = false }: HeaderProps) {
             <div className={styles.pillContainer}>
                 {/* Left: Nav */}
                 <nav className={styles.nav}>
-                    <Link href="/catalog" className={styles.navLink}>Collection</Link>
                     <Link href="/about" className={styles.navLink}>Legacy</Link>
+                    <Link href="/dues" className={styles.navLink}>Contribute</Link>
                 </nav>
 
                 {/* Center: Logo */}
@@ -69,7 +69,7 @@ export default function Header({ light = false }: HeaderProps) {
 
                 {/* Right: Actions */}
                 <div className={styles.actions}>
-                    <Link href="/dues" className={`${styles.navLink} ${styles.desktopOnly}`}>Contribute</Link>
+                    <Link href="/catalog" className={`${styles.navLink} ${styles.desktopOnly}`}>Collection</Link>
                     <div className={styles.iconButtons}>
                         <Link href="/wishlist" className={styles.iconBtn}>
                             <Heart size={20} />
@@ -146,9 +146,9 @@ export default function Header({ light = false }: HeaderProps) {
                             }}
                         >
                             {[
-                                { label: "THE COLLECTION", href: "/catalog", id: "01" },
-                                { label: "OUR LEGACY", href: "/about", id: "02" },
-                                { label: "CONTRIBUTION", href: "/dues", id: "03" },
+                                { label: "OUR LEGACY", href: "/about", id: "01" },
+                                { label: "CONTRIBUTION", href: "/dues", id: "02" },
+                                { label: "THE COLLECTION", href: "/catalog", id: "03" },
                                 { label: "MY ACCOUNT", href: "/account", id: "04" },
                             ].map((item) => (
                                 <motion.div
