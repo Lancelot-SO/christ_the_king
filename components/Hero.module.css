@@ -111,6 +111,13 @@
         height: 50vh;
     }
 
+    .imageOverlay {
+        background: linear-gradient(to bottom,
+                rgba(254, 249, 250, 0.2) 0%,
+                rgba(254, 249, 250, 0) 20%);
+        /* Only a very subtle top gradient to help the header stand out */
+    }
+
     .contentWrapper {
         width: 100%;
         padding: 5rem 1.5rem;
