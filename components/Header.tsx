@@ -62,6 +62,7 @@ export default function Header({ light = false }: HeaderProps) {
                         width={140}
                         height={46}
                         className={styles.logo}
+                        style={{ width: 'auto', height: '46px' }}
                         priority
                     />
                     <span className={styles.brandName}>CHRIST THE KING</span>

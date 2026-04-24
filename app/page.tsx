@@ -24,6 +24,7 @@ export default function Home() {
                         src="/Asset 2only.png" 
                         alt="Christ the King Logo" 
                         fill 
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className={styles.img} 
                         style={{ objectFit: 'contain', padding: '15%' }}
                     />
