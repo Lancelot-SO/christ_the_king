@@ -26,7 +26,7 @@ export default function AboutPage() {
                                     loop
                                     muted
                                     playsInline
-                                    preload="metadata"
+                                    preload="auto"
                                     className={styles.img}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 >

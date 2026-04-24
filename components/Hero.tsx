@@ -13,7 +13,7 @@ export default function Hero() {
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                     className={styles.image}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 >
