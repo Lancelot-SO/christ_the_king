@@ -437,8 +437,8 @@
 }
 
 .fundCard {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #FFFFFF;
+    border: 1px solid var(--gold);
     border-radius: 1.5rem;
     padding: 3rem 2.5rem;
     backdrop-filter: blur(10px);
@@ -449,9 +449,9 @@
 }
 
 .fundCard:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--gold);
     transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .fundCardLabel {
@@ -466,7 +466,7 @@
 .fundCardTitle {
     font-family: var(--font-serif);
     font-size: 1.75rem;
-    color: #FFFFFF;
+    color: var(--gold);
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
     line-height: 1.2;
@@ -475,14 +475,14 @@
 .fundCardDesc {
     font-size: 0.95rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--gold);
     margin-bottom: 2rem;
 }
 
 .fundCardPrice {
     padding: 1.5rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
     margin-bottom: 2rem;
 }
 
@@ -500,7 +500,8 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--gold);
+    opacity: 0.8;
 }
 
 .fundCardDetails {
@@ -510,19 +511,20 @@
 .fundCardDetails p {
     font-size: 0.875rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--gold);
     margin-bottom: 0.5rem;
+    opacity: 0.9;
 }
 
 .fundCardQuote {
     font-style: italic;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--gold);
     line-height: 1.6;
     margin-top: auto;
     margin-bottom: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid var(--gold);
 }
 
 /* Equipment Showcase */
@@ -686,9 +688,9 @@
     width: 100%;
     padding: 1rem 2rem;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--gold);
     border-radius: var(--radius);
-    color: #FFFFFF;
+    color: var(--gold);
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.2em;
@@ -701,7 +703,7 @@
 .fundCardBtn:hover {
     background-color: var(--gold);
     border-color: var(--gold);
-    color: var(--burgundy-dark);
+    color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
