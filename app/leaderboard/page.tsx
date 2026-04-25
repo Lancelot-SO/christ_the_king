@@ -104,7 +104,7 @@ export default function LeaderboardPage() {
 
     return (
         <main className={styles.main}>
-            <Header light />
+            <Header />
 
             <header className={styles.hero}>
                 <motion.div 

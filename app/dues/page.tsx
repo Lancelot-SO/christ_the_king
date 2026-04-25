@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import styles from "./dues.module.css";
 
 const PaymentButton = dynamic(() => import("@/components/PaymentButton"), {
@@ -208,14 +209,14 @@ export default function DuesPage() {
                     {/* Furniture & Equipment — collapsible dropdown */}
                     <div className={styles.equipmentSection}>
                         <div className={styles.equipmentHeader} onClick={() => setEquipOpen(!equipOpen)}>
-                            <div>
+                            <div className={styles.equipHeaderInfo}>
                                 <span className={styles.fundCardLabel}>EQUIP A CLASSROOM</span>
                                 <h3 className={styles.equipmentTitle}>Furniture &amp; Equipment</h3>
                                 <p className={styles.equipmentDesc}>
                                     Sponsor furniture and equipment to make lessons more engaging and dynamic.
                                 </p>
                             </div>
-                            <span className={`${styles.equipChevron} ${equipOpen ? styles.equipChevronOpen : ''}`}>▾</span>
+                            <ChevronDown className={`${styles.equipChevron} ${equipOpen ? styles.equipChevronOpen : ''}`} />
                         </div>
                         <div className={`${styles.equipmentCollapse} ${equipOpen ? styles.equipmentCollapseOpen : ''}`}>
                             <div className={styles.equipmentGrid}>
