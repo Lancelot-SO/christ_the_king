@@ -70,7 +70,7 @@ export default function DuesPage() {
             phone: "",
             amount: suggestedAmount,
             tier,
-            reference: `FUND-${tier.replace(/\s+/g, "-").toUpperCase()}-${Date.now()}`,
+            reference: `CTKIS-${Date.now()}`,
             honourOf: "Self",
             honourOfOther: "",
             honourOfName: "",
@@ -141,26 +141,26 @@ export default function DuesPage() {
                     </p>
 
                     <div className={styles.fundraisingGrid}>
-                        {/* Sponsor a Classroom */}
+                        {/* Sponsor the 70th Speech and Prize Giving Day */}
                         <div className={styles.fundCard}>
                             <span className={styles.fundCardLabel}>PREMIER TIER</span>
-                            <h3 className={styles.fundCardTitle}>Sponsor a Classroom</h3>
+                            <h3 className={styles.fundCardTitle}>Sponsor the 70th Speech and Prize Giving Day</h3>
                             <p className={styles.fundCardDesc}>
-                                Bring your graduating class or decade together to sponsor a classroom
+                                Bring your graduating class or decade together to sponsor the 70th Speech and Prize Giving Day
                                 and make a lasting impact on CTKIS students.
                             </p>
                             <div className={styles.fundCardPrice}>
-                                <span className={styles.fundCardAmount}>GH₵3,600,000</span>
-                                <span className={styles.fundCardUnit}>per floor</span>
+                                <span className={styles.fundCardAmount}>GH₵5,000</span>
+                                <span className={styles.fundCardUnit}>per sponsorship</span>
                             </div>
                             <div className={styles.fundCardDetails}>
                                 <p>Pool contributions with your peers — smaller gifts from many alumni make this achievable.</p>
-                                <p>Leave your mark through classroom naming and recognition.</p>
+                                <p>Leave your mark through event naming and recognition.</p>
                             </div>
                             <p className={styles.fundCardQuote}>
-                                &ldquo;If 300 of us give GH₵3,000 each, we can fund a full classroom!&rdquo;
+                                &ldquo;Support the 70th Speech and Prize Giving Day!&rdquo;
                             </p>
-                            <button className={styles.fundCardBtn} onClick={() => openContribModal("Classroom Sponsorship", 3000)}>
+                            <button className={styles.fundCardBtn} onClick={() => openContribModal("70th Speech and Prize Giving Day", 5000)}>
                                 CONTRIBUTE NOW
                             </button>
                         </div>
@@ -678,7 +678,7 @@ export default function DuesPage() {
                                     email: formData.email,
                                     amount: Math.round(formData.amount * 100),
                                     currency: 'GHS',
-                                    reference: `CONTRIB-${formData.yearGroup.split(" ").pop()}-${Date.now()}`
+                                    reference: `CTKIS-${formData.yearGroup.split(" ").pop()}-${Date.now()}`
                                 }}
                                 onSuccess={(response: any) => {
                                     alert("Thank you for your contribution!");
