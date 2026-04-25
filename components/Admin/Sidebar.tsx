@@ -15,7 +15,8 @@ import {
     Mail,
     X,
     Store,
-    CreditCard
+    CreditCard,
+    Heart
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -49,6 +50,7 @@ export default function Sidebar() {
         { label: "Customers", icon: <Users size={20} />, href: "/admin/dashboard/customers" },
         { label: "Alumni Family", icon: <Mail size={20} />, href: "/admin/dashboard/alumni-family" },
         { label: "Dues", icon: <CreditCard size={20} />, href: "/admin/dashboard/dues" },
+        { label: "Donations", icon: <Heart size={20} />, href: "/admin/dashboard/donations" },
         { label: "Settings", icon: <Settings size={20} />, href: "/admin/dashboard/settings" },
     ];
 
