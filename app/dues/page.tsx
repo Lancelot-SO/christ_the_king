@@ -526,7 +526,6 @@ export default function DuesPage() {
                                         }
                                     }}
                                     onSuccess={async (response: any) => {
-                                        setShowContribModal(false);
                                         try {
                                             await fetch('/api/donations', {
                                                 method: 'POST',
@@ -547,9 +546,13 @@ export default function DuesPage() {
                                                 }),
                                             });
                                         } catch (err) {
-                                            console.error('Failed to record donation:', err);
+                                            if (err instanceof Error && err.name !== 'AbortError') {
+                                                console.error('Failed to record donation:', err);
+                                            }
+                                        } finally {
+                                            setShowContribModal(false);
+                                            alert("Thank you for your generous contribution! A confirmation email has been sent.");
                                         }
-                                        alert("Thank you for your generous contribution! A confirmation email has been sent.");
                                     }}
                                     onClose={() => setIsContribPaying(false)}
                                     loading={isContribPaying}

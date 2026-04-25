@@ -1,0 +1,212 @@
+.pageContainer {
+    min-height: 100vh;
+    background-color: var(--background);
+    padding: 6rem 1.5rem 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: var(--font-sans);
+}
+
+.receiptCard {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.receiptHeader {
+    background: var(--burgundy);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.receiptHeader::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-image: radial-gradient(circle at 10px 0, transparent 10px, #ffffff 11px);
+    background-size: 20px 20px;
+    background-repeat: repeat-x;
+}
+
+.schoolTitle {
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+.schoolSubtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+.receiptBody {
+    padding: 3rem 3rem 4rem;
+    text-align: center;
+}
+
+.thankYouText {
+    font-family: var(--font-serif);
+    color: var(--burgundy);
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.dateText {
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+}
+
+.amountBox {
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.amountLabel {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--muted-foreground);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.amountValue {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--burgundy);
+    font-family: var(--font-serif);
+}
+
+.detailsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.detailRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+.detailLabel {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--muted-foreground);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.detailValue {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--foreground);
+    text-align: right;
+    max-width: 60%;
+}
+
+.receiptFooter {
+    text-align: center;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+.footerMessage {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+}
+
+.ctaBtn {
+    display: inline-block;
+    background: var(--burgundy);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.ctaBtn:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Error State */
+.errorContainer {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.errorTitle {
+    color: var(--burgundy);
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.errorText {
+    color: var(--muted-foreground);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .pageContainer {
+        padding: 4rem 1rem 2rem;
+    }
+
+    .receiptBody {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .thankYouText {
+        font-size: 1.75rem;
+    }
+
+    .amountValue {
+        font-size: 2.5rem;
+    }
+
+    .detailRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .detailValue {
+        text-align: left;
+        max-width: 100%;
+    }
+}
