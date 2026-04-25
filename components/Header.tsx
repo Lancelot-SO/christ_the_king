@@ -28,13 +28,13 @@ export default function Header({ light = false }: HeaderProps) {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
-        
+
         window.addEventListener("scroll", handleScroll);
         // Immediate check and delayed check for hydrating states
         handleScroll();
         setTimeout(handleScroll, 100);
         setTimeout(handleScroll, 500);
-        
+
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -44,7 +44,7 @@ export default function Header({ light = false }: HeaderProps) {
     };
 
     return (
-        <header 
+        <header
             className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${light && !isScrolled ? styles.light : ""}`}
         >
             <div className={styles.pillContainer}>
@@ -52,6 +52,7 @@ export default function Header({ light = false }: HeaderProps) {
                 <nav className={styles.nav}>
                     <Link href="/about" className={styles.navLink}>Legacy</Link>
                     <Link href="/dues" className={styles.navLink}>Contribute</Link>
+                    <Link href="/leaderboard" className={styles.navLink}>Leaderboard</Link>
                 </nav>
 
                 {/* Center: Logo */}
@@ -70,7 +71,7 @@ export default function Header({ light = false }: HeaderProps) {
 
                 {/* Right: Actions */}
                 <div className={styles.actions}>
-                    <Link href="/catalog" className={`${styles.navLink} ${styles.desktopOnly}`}>Collection</Link>
+                    <Link href="/catalog" className={`${styles.navLink} ${styles.desktopOnly}`}>Collections</Link>
                     <div className={styles.iconButtons}>
                         <Link href="/wishlist" className={styles.iconBtn}>
                             <Heart size={20} />
@@ -82,7 +83,7 @@ export default function Header({ light = false }: HeaderProps) {
                         </Link>
                         {mounted && user ? (
                             <div className={styles.userWrapper}>
-                                <button 
+                                <button
                                     className={`${styles.iconBtn} ${isUserMenuOpen ? styles.activeIcon : ""}`}
                                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                                 >
@@ -90,7 +91,7 @@ export default function Header({ light = false }: HeaderProps) {
                                 </button>
                                 <AnimatePresence>
                                     {isUserMenuOpen && (
-                                        <motion.div 
+                                        <motion.div
                                             className={styles.userDropdown}
                                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -120,7 +121,7 @@ export default function Header({ light = false }: HeaderProps) {
             {/* Mobile Overlay Menu */}
             <AnimatePresence>
                 {isMenuOpen && (
-                    <motion.div 
+                    <motion.div
                         className={styles.mobileOverlay}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -133,8 +134,8 @@ export default function Header({ light = false }: HeaderProps) {
                                 <X size={32} />
                             </button>
                         </div>
-                        
-                        <motion.nav 
+
+                        <motion.nav
                             className={styles.overlayNav}
                             initial="initial"
                             animate="animate"
@@ -149,8 +150,9 @@ export default function Header({ light = false }: HeaderProps) {
                             {[
                                 { label: "OUR LEGACY", href: "/about", id: "01" },
                                 { label: "CONTRIBUTION", href: "/dues", id: "02" },
-                                { label: "THE COLLECTION", href: "/catalog", id: "03" },
-                                { label: "MY ACCOUNT", href: "/account", id: "04" },
+                                { label: "LEADERBOARD", href: "/leaderboard", id: "03" },
+                                { label: "THE COLLECTION", href: "/catalog", id: "04" },
+                                { label: "MY ACCOUNT", href: "/account", id: "05" },
                             ].map((item) => (
                                 <motion.div
                                     key={item.id}
@@ -160,8 +162,8 @@ export default function Header({ light = false }: HeaderProps) {
                                     }}
                                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    <Link 
-                                        href={item.href} 
+                                    <Link
+                                        href={item.href}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         <span>{item.id} /</span> {item.label}
@@ -170,7 +172,7 @@ export default function Header({ light = false }: HeaderProps) {
                             ))}
                         </motion.nav>
 
-                        <motion.div 
+                        <motion.div
                             className={styles.overlayFooter}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}

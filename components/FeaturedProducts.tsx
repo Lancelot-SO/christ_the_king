@@ -30,7 +30,7 @@ export default function FeaturedProducts() {
                 <div className={styles.categoryGrid}>
                     <div className={styles.card}>
                         <video 
-                            src="/fundraising/classroom new.mp4" 
+                            src="/fundraising/classroom_new.mp4" 
                             autoPlay 
                             loop 
                             muted 
@@ -51,7 +51,7 @@ export default function FeaturedProducts() {
                     </div>
                     <div className={styles.card}>
                         <Image
-                            src="/fundraising/1362AAD Image.jpg"
+                            src="/fundraising/1362AAD_Image.jpg"
                             alt="Students learning"
                             fill
                             className={styles.image}
