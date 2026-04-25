@@ -69,16 +69,16 @@ export default function Home() {
             Fundraising <span className="gold-accent">Opportunities.</span>
           </h2>
           <p className={styles.fundraisingPreviewDesc}>
-            From sponsoring a classroom to buying a single brick, every contribution 
+            From sponsoring the 70th Speech and Prize Giving Day to buying a single brick, every contribution 
             helps build the next chapter of CTKIS.
           </p>
 
           <div className={styles.fundraisingPreviewGrid}>
             <div className={styles.previewCard}>
               <span className={styles.previewCardLabel}>PREMIER TIER</span>
-              <h3 className={styles.previewCardTitle}>Sponsor a Classroom</h3>
-              <span className={styles.previewCardPrice}>GH₵3,600,000</span>
-              <span className={styles.previewCardUnit}>per floor</span>
+              <h3 className={styles.previewCardTitle}>Sponsor the 70th Speech and Prize Giving Day</h3>
+              <span className={styles.previewCardPrice}>GH₵5,000</span>
+              <span className={styles.previewCardUnit}>per sponsorship</span>
             </div>
             <div className={styles.previewCard}>
               <span className={styles.previewCardLabel}>FOUNDATION</span>

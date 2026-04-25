@@ -188,7 +188,7 @@ export default function AccountPage() {
     };
 
     const paystackConfig = {
-        reference: `DUES-${profile?.class_year}-${user?.id?.substring(0, 8)}-${new Date().getTime()}`,
+        reference: `CTKIS-DUES-${profile?.class_year}-${user?.id?.substring(0, 8)}-${new Date().getTime()}`,
         email: profile?.email || user?.email || "",
         amount: Math.round((duesFee?.amount || 0) * 100),
         publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "",

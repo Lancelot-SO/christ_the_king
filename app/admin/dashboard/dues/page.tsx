@@ -400,7 +400,7 @@ export default function DuesPage() {
                                         email: adminProfile.email,
                                         amount: Math.round((fees.find(f => f.year_group === adminProfile.class_year)?.amount || 0) * 100),
                                         currency: 'GHS',
-                                        reference: `ADMIN-DUES-${adminProfile.class_year}-${adminProfile.id.substring(0, 8)}-${Date.now()}`
+                                        reference: `CTKIS-ADMIN-DUES-${adminProfile.class_year}-${adminProfile.id.substring(0, 8)}-${Date.now()}`
                                     }}
                                     onSuccess={(response: any) => handleAdminPaymentSuccess(response.reference)}
                                     onClose={() => setIsPaying(false)}
