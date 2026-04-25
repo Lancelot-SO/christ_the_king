@@ -459,7 +459,7 @@
     font-size: 0.6rem;
     font-weight: 800;
     letter-spacing: 0.3em;
-    color: var(--gold);
+    color: var(--burgundy);
     margin-bottom: 1.5rem;
 }
 
@@ -475,14 +475,14 @@
 .fundCardDesc {
     font-size: 0.95rem;
     line-height: 1.7;
-    color: var(--gold);
+    color: var(--burgundy);
     margin-bottom: 2rem;
 }
 
 .fundCardPrice {
     padding: 1.5rem 0;
-    border-top: 1px solid var(--gold);
-    border-bottom: 1px solid var(--gold);
+    border-top: 1px solid var(--burgundy);
+    border-bottom: 1px solid var(--burgundy);
     margin-bottom: 2rem;
 }
 
@@ -491,7 +491,7 @@
     font-family: var(--font-serif);
     font-size: 1.75rem;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--burgundy);
     margin-bottom: 0.25rem;
 }
 
@@ -500,7 +500,7 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--burgundy);
     opacity: 0.8;
 }
 
@@ -511,7 +511,7 @@
 .fundCardDetails p {
     font-size: 0.875rem;
     line-height: 1.7;
-    color: var(--gold);
+    color: var(--burgundy);
     margin-bottom: 0.5rem;
     opacity: 0.9;
 }
@@ -519,12 +519,12 @@
 .fundCardQuote {
     font-style: italic;
     font-size: 0.85rem;
-    color: var(--gold);
+    color: var(--burgundy);
     line-height: 1.6;
     margin-top: auto;
     margin-bottom: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--gold);
+    border-top: 1px solid var(--burgundy);
 }
 
 /* Equipment Showcase */
@@ -703,10 +703,10 @@
 .fundCardBtn {
     width: 100%;
     padding: 1rem 2rem;
-    background: transparent;
-    border: 1px solid var(--gold);
+    background-color: var(--burgundy);
+    border: 1px solid var(--burgundy);
     border-radius: var(--radius);
-    color: var(--gold);
+    color: #FFFFFF;
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.2em;
@@ -717,8 +717,8 @@
 }
 
 .fundCardBtn:hover {
-    background-color: var(--gold);
-    border-color: var(--gold);
+    background-color: var(--burgundy-dark);
+    border-color: var(--burgundy-dark);
     color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
