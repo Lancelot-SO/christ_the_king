@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin as supabase } from '@/lib/supabaseServer';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { transporter } from '@/lib/email';
 
 export async function POST(req: NextRequest) {
     try {
@@ -33,7 +31,7 @@ export async function POST(req: NextRequest) {
         // For larger lists, we should batch them or use a background job.
         // For now, we'll try to use the bulk send feature.
         
-        if (process.env.RESEND_API_KEY) {
+        if (process.env.EMAIL_USER && process.env.EMAIL_APP_PASSWORD) {
             try {
                 // Batch size for Resend (conservative)
                 const batchSize = 100;
@@ -42,8 +40,8 @@ export async function POST(req: NextRequest) {
                 for (let i = 0; i < emails.length; i += batchSize) {
                     const batch = emails.slice(i, i + batchSize);
                     
-                    await resend.emails.send({
-                        from: 'CTK Alumni <notifications@resend.dev>', // Verified domain in production
+                    await transporter.sendMail({
+                        from: `"CTK Alumni" <${process.env.EMAIL_USER}>`,
                         to: batch,
                         subject: subject,
                         html: isHtml ? message : `<div style="font-family: sans-serif;">${message.replace(/\n/g, '<br/>')}</div>`
@@ -59,7 +57,7 @@ export async function POST(req: NextRequest) {
                 return NextResponse.json({ error: emailError.message || 'Failed to send emails via Resend' }, { status: 500 });
             }
         } else {
-            return NextResponse.json({ error: 'Resend API key is not configured' }, { status: 500 });
+            return NextResponse.json({ error: 'Nodemailer configuration is missing' }, { status: 500 });
         }
 
     } catch (error: any) {

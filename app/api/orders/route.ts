@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin as supabase } from '@/lib/supabaseServer';
-import { Resend } from 'resend';
-
-// Initialise Resend with API key from environment
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { transporter } from '@/lib/email';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@example.com'; // Fallback admin email
 const LOW_STOCK_THRESHOLD = 10;
 
@@ -64,7 +61,7 @@ export async function POST(req: NextRequest) {
         }
 
         // 3. Send Notifications (Low Stock or Out of Stock)
-        if (lowStockNotifications.length > 0 && process.env.RESEND_API_KEY) {
+        if (lowStockNotifications.length > 0 && process.env.EMAIL_USER && process.env.EMAIL_APP_PASSWORD) {
             try {
                 // Fetch admin email from settings table, fallback to env or default
                 const { data: settingsData } = await supabase
@@ -87,8 +84,8 @@ export async function POST(req: NextRequest) {
                     subject = '⚠️ Low Stock Alert - Christ The King';
                 }
 
-                await resend.emails.send({
-                    from: 'Christ The King <notifications@resend.dev>',
+                await transporter.sendMail({
+                    from: `"Christ The King" <${process.env.EMAIL_USER}>`,
                     to: recipientEmail,
                     subject: subject,
                     html: `

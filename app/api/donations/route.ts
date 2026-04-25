@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin as supabase } from '@/lib/supabaseServer';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { transporter } from '@/lib/email';
 
 export async function POST(req: NextRequest) {
     try {
@@ -23,7 +21,7 @@ export async function POST(req: NextRequest) {
         } = body;
 
         // 1. Record donation in the database
-        const { error: dbError } = await supabase
+        const { data: insertData, error: dbError } = await supabase
             .from('donations')
             .insert([{
                 reference,
@@ -39,18 +37,24 @@ export async function POST(req: NextRequest) {
                 recognition: recognition || 'Use my name',
                 connection: connection || 'Alumni',
                 status: 'completed',
-            }]);
+            }])
+            .select('id')
+            .single();
 
         if (dbError) {
             console.error('Donation record failed:', dbError);
             return NextResponse.json({ error: 'Failed to save donation record.' }, { status: 500 });
         }
 
+        const donationId = insertData?.id;
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+        const receiptUrl = `${siteUrl}/receipt/${donationId}`;
+
         // 2. Send confirmation email to the donor
-        if (process.env.RESEND_API_KEY && email) {
+        if (process.env.EMAIL_USER && process.env.EMAIL_APP_PASSWORD && email) {
             try {
-                await resend.emails.send({
-                    from: 'Christ The King <notifications@resend.dev>',
+                await transporter.sendMail({
+                    from: `"Christ The King" <${process.env.EMAIL_USER}>`,
                     to: email,
                     subject: `Thank You for Your ${tier} Donation — Christ The King`,
                     html: `
@@ -89,6 +93,10 @@ export async function POST(req: NextRequest) {
                                     </tr>
                                 </table>
 
+                                <div style="text-align: center; margin: 35px 0;">
+                                    <a href="${receiptUrl}" style="background-color: #D4AF37; color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-weight: bold; font-family: sans-serif; letter-spacing: 0.05em; display: inline-block; font-size: 14px;">VIEW DONATION RECEIPT</a>
+                                </div>
+
                                 <p style="color: #555; line-height: 1.8; font-size: 15px;">
                                     Your support is making a direct impact on the future of CTKIS students. We are deeply grateful.
                                 </p>
@@ -109,11 +117,11 @@ export async function POST(req: NextRequest) {
         }
 
         // 3. Notify admin about the new donation
-        if (process.env.RESEND_API_KEY) {
+        if (process.env.EMAIL_USER && process.env.EMAIL_APP_PASSWORD) {
             try {
                 const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
-                await resend.emails.send({
-                    from: 'Christ The King <notifications@resend.dev>',
+                await transporter.sendMail({
+                    from: `"Christ The King" <${process.env.EMAIL_USER}>`,
                     to: adminEmail,
                     subject: `New ${tier} Donation: GH₵${Number(amount).toLocaleString()} from ${name}`,
                     html: `
@@ -123,6 +131,8 @@ export async function POST(req: NextRequest) {
                         <p><strong>Amount:</strong> GH₵ ${Number(amount).toLocaleString()}</p>
                         <p><strong>Connection:</strong> ${connection}</p>
                         <p><strong>Reference:</strong> ${reference}</p>
+                        <br/>
+                        <p><a href="${receiptUrl}"><strong>View Guest Receipt Portal Link</strong></a></p>
                     `
                 });
             } catch (adminEmailError) {
@@ -130,7 +140,7 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        return NextResponse.json({ success: true, message: 'Donation recorded successfully' });
+        return NextResponse.json({ success: true, message: 'Donation recorded successfully', receiptUrl });
 
     } catch (error: any) {
         console.error('Donation Processing Error:', error);

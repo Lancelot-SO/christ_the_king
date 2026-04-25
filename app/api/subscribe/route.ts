@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin as supabase } from '@/lib/supabaseServer';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { transporter } from '@/lib/email';
 
 export async function POST(req: NextRequest) {
     try {
@@ -30,10 +28,10 @@ export async function POST(req: NextRequest) {
         }
 
         // 2. Send Welcome Email
-        if (process.env.RESEND_API_KEY) {
+        if (process.env.EMAIL_USER && process.env.EMAIL_APP_PASSWORD) {
             try {
-                await resend.emails.send({
-                    from: 'CTK Alumni Family <notifications@resend.dev>', // Use verified domain in production
+                await transporter.sendMail({
+                    from: `"CTK Alumni Family" <${process.env.EMAIL_USER}>`,
                     to: email,
                     subject: 'Welcome to the CTKIS Alumni Family! 🎓',
                     html: `
