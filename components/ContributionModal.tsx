@@ -23,7 +23,28 @@ interface ContributionModalProps {
 export default function ContributionModal({ isOpen, onClose, initialTier, initialAmount }: ContributionModalProps) {
     const [contribStep, setContribStep] = useState(1);
     const [isContribPaying, setIsContribPaying] = useState(false);
-    
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+    const validateEmail = (v: string) =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? "" : "Please enter a valid email address.";
+
+    const validatePhone = (v: string) => {
+        const digits = v.replace(/\D/g, '');
+        return digits.length === 10 ? "" : "Phone number must be exactly 10 digits.";
+    };
+
+    const validateYearGroup = (v: string) => {
+        const match = v.match(/(\d{4})/);
+        if (!match) return "Please include a year (e.g. Class of 1995).";
+        const year = parseInt(match[1], 10);
+        if (year < 1956) return "Year must be 1956 or later.";
+        if (year > new Date().getFullYear()) return "Year cannot be in the future.";
+        return "";
+    };
+
+    const setError = (field: string, msg: string) =>
+        setFieldErrors((prev) => ({ ...prev, [field]: msg }));
+
     // We only initialize this once when the modal opens
     const [contribData, setContribData] = useState({
         name: "",
@@ -42,9 +63,19 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
         connectionOther: "",
     });
 
+    const step1Valid =
+        !!contribData.name &&
+        !!contribData.yearGroup &&
+        !!contribData.phone &&
+        !!contribData.email &&
+        !validateEmail(contribData.email) &&
+        !validatePhone(contribData.phone) &&
+        !validateYearGroup(contribData.yearGroup);
+
     useEffect(() => {
         if (isOpen) {
             setContribStep(1);
+            setFieldErrors({});
             setContribData({
                 name: "",
                 maidenName: "",
@@ -104,9 +135,14 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                                             type="text"
                                             placeholder="Your full name"
                                             value={contribData.name}
-                                            onChange={(e) => setContribData({ ...contribData, name: e.target.value })}
-                                            className={styles.modalInput}
+                                            onChange={(e) => {
+                                                setContribData({ ...contribData, name: e.target.value });
+                                                setError('name', '');
+                                            }}
+                                            onBlur={(e) => setError('name', e.target.value.trim() ? '' : 'Full name is required.')}
+                                            className={`${styles.modalInput} ${fieldErrors.name ? styles.inputError : ''}`}
                                         />
+                                        {fieldErrors.name && <span className={styles.fieldError}>{fieldErrors.name}</span>}
                                     </div>
                                     <div className={styles.modalField}>
                                         <label className={styles.modalFieldLabel}>MAIDEN NAME</label>
@@ -127,19 +163,29 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                                             type="text"
                                             placeholder="e.g. Class of 1995"
                                             value={contribData.yearGroup}
-                                            onChange={(e) => setContribData({ ...contribData, yearGroup: e.target.value })}
-                                            className={styles.modalInput}
+                                            onChange={(e) => {
+                                                setContribData({ ...contribData, yearGroup: e.target.value });
+                                                setError('yearGroup', '');
+                                            }}
+                                            onBlur={(e) => setError('yearGroup', validateYearGroup(e.target.value))}
+                                            className={`${styles.modalInput} ${fieldErrors.yearGroup ? styles.inputError : ''}`}
                                         />
+                                        {fieldErrors.yearGroup && <span className={styles.fieldError}>{fieldErrors.yearGroup}</span>}
                                     </div>
                                     <div className={styles.modalField}>
                                         <label className={styles.modalFieldLabel}>PHONE NUMBER</label>
                                         <input
                                             type="tel"
-                                            placeholder="+233..."
+                                            placeholder="e.g. 0241234567"
                                             value={contribData.phone}
-                                            onChange={(e) => setContribData({ ...contribData, phone: e.target.value })}
-                                            className={styles.modalInput}
+                                            onChange={(e) => {
+                                                setContribData({ ...contribData, phone: e.target.value });
+                                                setError('phone', '');
+                                            }}
+                                            onBlur={(e) => setError('phone', validatePhone(e.target.value))}
+                                            className={`${styles.modalInput} ${fieldErrors.phone ? styles.inputError : ''}`}
                                         />
+                                        {fieldErrors.phone && <span className={styles.fieldError}>{fieldErrors.phone}</span>}
                                     </div>
                                 </div>
 
@@ -149,9 +195,14 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                                         type="email"
                                         placeholder="your@email.com"
                                         value={contribData.email}
-                                        onChange={(e) => setContribData({ ...contribData, email: e.target.value })}
-                                        className={styles.modalInput}
+                                        onChange={(e) => {
+                                            setContribData({ ...contribData, email: e.target.value });
+                                            setError('email', '');
+                                        }}
+                                        onBlur={(e) => setError('email', validateEmail(e.target.value))}
+                                        className={`${styles.modalInput} ${fieldErrors.email ? styles.inputError : ''}`}
                                     />
+                                    {fieldErrors.email && <span className={styles.fieldError}>{fieldErrors.email}</span>}
                                 </div>
                             </>
                         )}
@@ -301,7 +352,7 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                                 className={styles.nextBtn} 
                                 onClick={() => setContribStep(contribStep + 1)}
                                 disabled={
-                                    (contribStep === 1 && (!contribData.name || !contribData.yearGroup || !contribData.phone || !contribData.email)) ||
+                                    (contribStep === 1 && !step1Valid) ||
                                     (contribStep === 2 && (!contribData.honourOf || (contribData.honourOf === 'Other' && !contribData.honourOfOther) || !contribData.connection || (contribData.connection === 'Other' && !contribData.connectionOther) || !contribData.recognition))
                                 }
                             >
