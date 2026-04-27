@@ -807,7 +807,8 @@
 .modalFooter {
     padding: 1.5rem 0 0.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     gap: 0.75rem;
 }
 
@@ -912,6 +913,19 @@
 
 .modalInput:focus {
     border-color: var(--burgundy);
+}
+
+.inputError {
+    border-color: #c0392b !important;
+    background: #fff5f5;
+}
+
+.fieldError {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #c0392b;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
 }
 
 .formGrid {
@@ -1132,6 +1146,11 @@
     .modalScrollArea {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+    }
+
+    .modalFooter {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .modalFooter button {
