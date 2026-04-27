@@ -93,7 +93,7 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                     </p>
                 </div>
 
-                <div className={styles.modalScrollArea} style={{ minHeight: '350px' }}>
+                <div className={styles.modalScrollArea}>
                     <div className={styles.modalForm}>
                         {contribStep === 1 && (
                             <>
@@ -294,31 +294,20 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                             </div>
                         )}
                     </div>
-                </div>
 
-                <div className={styles.modalFooter}>
-                    {contribStep > 1 && (
-                        <button 
-                            className={`${styles.nextBtn} ${styles.nextBtnSecondary}`} 
-                            onClick={() => setContribStep(contribStep - 1)}
-                            style={{ padding: '0 2rem' }}
-                        >
-                            BACK
-                        </button>
-                    )}
-                    
-                    {contribStep < 3 ? (
-                        <button 
-                            className={styles.nextBtn} 
-                            onClick={() => setContribStep(contribStep + 1)}
-                            disabled={
-                                (contribStep === 1 && (!contribData.name || !contribData.yearGroup || !contribData.phone || !contribData.email)) ||
-                                (contribStep === 2 && (!contribData.honourOf || (contribData.honourOf === 'Other' && !contribData.honourOfOther) || !contribData.connection || (contribData.connection === 'Other' && !contribData.connectionOther) || !contribData.recognition))
-                            }
-                        >
-                            CONTINUE
-                        </button>
-                    ) : (
+                    <div className={styles.modalFooter}>
+                        {contribStep < 3 ? (
+                            <button 
+                                className={styles.nextBtn} 
+                                onClick={() => setContribStep(contribStep + 1)}
+                                disabled={
+                                    (contribStep === 1 && (!contribData.name || !contribData.yearGroup || !contribData.phone || !contribData.email)) ||
+                                    (contribStep === 2 && (!contribData.honourOf || (contribData.honourOf === 'Other' && !contribData.honourOfOther) || !contribData.connection || (contribData.connection === 'Other' && !contribData.connectionOther) || !contribData.recognition))
+                                }
+                            >
+                                CONTINUE
+                            </button>
+                        ) : (
                         <PaymentButton
                             config={{
                                 publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '',
@@ -376,7 +365,18 @@ export default function ContributionModal({ isOpen, onClose, initialTier, initia
                             label={`CONTRIBUTE GH₵${contribData.amount ? contribData.amount.toLocaleString() : '0'}`}
                             skipCartCheck={true}
                         />
-                    )}
+                        )}
+
+                        {contribStep > 1 && (
+                            <button 
+                                className={`${styles.nextBtn} ${styles.nextBtnSecondary}`} 
+                                onClick={() => setContribStep(contribStep - 1)}
+                                style={{ padding: '0 2rem' }}
+                            >
+                                BACK
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

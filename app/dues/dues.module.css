@@ -748,8 +748,10 @@
 .modalContent {
     background: var(--background);
     border-radius: 2rem;
-    padding: 3rem 0; /* Padding handled by internal containers */
-    max-width: 550px; /* Slightly wider */
+    padding: 3rem 0;
+    /* Padding handled by internal containers */
+    max-width: 550px;
+    /* Slightly wider */
     width: 95%;
     max-height: 90vh;
     position: relative;
@@ -787,14 +789,10 @@
 }
 
 .modalFooter {
-    padding: 1.5rem 3.5rem 1rem;
-    border-top: 1px solid var(--border);
+    padding: 1.5rem 0 0.5rem;
     display: flex;
-    gap: 1rem;
-    background: var(--background);
-    z-index: 10;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .modalProgress {
@@ -953,7 +951,7 @@
     display: none;
 }
 
-.radioInput:checked + .radioLabel {
+.radioInput:checked+.radioLabel {
     background: var(--burgundy);
     color: white;
     border-color: var(--burgundy);
@@ -1030,7 +1028,7 @@
     border: 1px solid var(--border);
     border-radius: 1.5rem;
     padding: 2.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .summaryTitle {
@@ -1114,15 +1112,10 @@
         max-width: 90%;
     }
 
-    .modalHeader, .modalFooter, .modalScrollArea {
+    .modalHeader,
+    .modalScrollArea {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-    }
-
-    .modalFooter {
-        flex-direction: column;
-        gap: 0.75rem;
-        padding-bottom: 1.5rem;
     }
 
     .modalFooter button {
@@ -1163,7 +1156,8 @@
 
     .equipmentCollapseOpen {
         padding: 0 1.5rem 2rem;
-        max-height: 1200px; /* Allow enough height for stacked items */
+        max-height: 1200px;
+        /* Allow enough height for stacked items */
     }
 
     .equipmentGrid {
