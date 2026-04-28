@@ -551,6 +551,10 @@
     flex: 1;
 }
 
+.equipHeaderInfo .fundCardLabel {
+    color: var(--gold-light);
+}
+
 .equipmentHeader:hover {
     background: rgba(255, 255, 255, 0.02);
 }

@@ -1,0 +1,248 @@
+.eventsSection {
+    padding: var(--section-padding) 0;
+    background-color: var(--muted);
+}
+
+.chapterHeading {
+    margin-bottom: 4rem;
+}
+
+.layoutGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+    .layoutGrid {
+        grid-template-columns: 2.5fr 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+.eventCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--background);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .eventCard {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.eventImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #2b1115;
+}
+
+@media (min-width: 1024px) {
+    .eventImageWrapper {
+        height: 100%;
+        min-height: 400px;
+        aspect-ratio: auto;
+    }
+}
+
+.eventImage {
+    object-fit: contain;
+}
+
+.eventContent {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .eventContent {
+        padding: 4rem 3rem;
+    }
+}
+
+.eventHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .eventHeader {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+
+.eventTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--burgundy);
+    line-height: 1.2;
+    flex: 1;
+}
+
+.eventDate {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--burgundy);
+    color: var(--primary-foreground);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    min-width: 120px;
+}
+
+@media (min-width: 768px) {
+    .eventDate {
+        align-items: center;
+    }
+}
+
+.dateDay {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-serif);
+    line-height: 1;
+}
+
+.dateMonth {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.dateTime {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+.eventDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detailLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted-foreground);
+    font-weight: 600;
+}
+
+.detailValue {
+    font-size: 1.25rem;
+    color: var(--foreground);
+    font-weight: 500;
+}
+
+.ticketAdmit {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+    font-weight: 400;
+    margin-left: 0.5rem;
+}
+
+.eventActionArea {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.purchaseInfo {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--foreground);
+}
+
+.purchaseInfo strong {
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+.sideEventsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sideEventsTitle {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--burgundy);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sideEventItem {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.sideEventDate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--background);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    min-width: 60px;
+}
+
+.sideDateDay {
+    font-size: 1.5rem;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--burgundy);
+    line-height: 1;
+}
+
+.sideDateMonth {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted-foreground);
+    margin-top: 0.2rem;
+}
+
+.sideEventInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sideEventInfo h4 {
+    font-size: 1.1rem;
+    font-family: var(--font-serif);
+    color: var(--foreground);
+    margin: 0;
+}
+
+.sideEventInfo p {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+    margin: 0;
+}

@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AlumniJoinForm from "@/components/AlumniJoinForm";
 import FundraisingPreview from "@/components/FundraisingPreview";
+import Events from "@/components/Events";
 
 export default function Home() {
   return (
@@ -61,6 +62,9 @@ export default function Home() {
 
       {/* Campaign Section */}
       <FeaturedProducts />
+
+      {/* Events Section */}
+      <Events />
 
       {/* Fundraising Preview */}
       <FundraisingPreview />

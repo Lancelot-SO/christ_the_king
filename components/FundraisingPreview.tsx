@@ -65,6 +65,18 @@ export default function FundraisingPreview() {
                             CONTRIBUTE NOW
                         </button>
                     </div>
+                    <div className={styles.previewCard}>
+                        <span className={styles.previewCardLabel}>EVENT</span>
+                        <h3 className={styles.previewCardTitle}>70th Anniversary Fundraising Dinner</h3>
+                        <span className={styles.previewCardPrice}>GH₵1,200</span>
+                        <span className={styles.previewCardUnit}>per ticket</span>
+                        <button 
+                            onClick={() => openContribModal("Fundraising Dinner Ticket", 1200)} 
+                            className={styles.previewCardBtn}
+                        >
+                            BUY TICKET
+                        </button>
+                    </div>
                 </div>
 
                 <Link href="/dues" className={styles.editorialLink}>

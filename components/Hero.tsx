@@ -32,7 +32,7 @@ export default function Hero() {
                 >
                     <span className={styles.label}>70 YEARS OF GRACE, GROWTH, AND GREATNESS</span>
                     <h1 className={styles.title}>
-                        Welcome to Christ the King<br />International School<br />
+                        Welcome to<br />Christ the King<br />International School<br />
                         <span className="gold-accent">70th Anniversary.</span>
                     </h1>
                     <p className={styles.description}>

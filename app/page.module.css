@@ -4,7 +4,7 @@
 
 /* Fundraising Preview */
 .fundraisingPreview {
-    padding: calc(var(--section-padding) * 1.5) 0;
+    padding: calc(var(--section-padding) * 1.5) 0 calc(var(--section-padding) * 0.5) 0;
     background-color: var(--burgundy);
     color: #FFFFFF;
     text-align: center;
@@ -20,7 +20,7 @@
 
 .fundraisingPreviewGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-bottom: 5rem;
 }
@@ -78,7 +78,7 @@
 .previewCardBtn {
     width: 100%;
     padding: 1rem;
-    margin-top: 1.5rem;
+    margin-top: auto;
     background-color: var(--burgundy);
     color: #FFFFFF;
     font-size: 0.65rem;
@@ -104,7 +104,7 @@
 
 /* Heritage Chapter */
 .heritageChapter {
-    padding: calc(var(--section-padding) * 1.5) 0;
+    padding: calc(var(--section-padding) * 0.5) 0 calc(var(--section-padding) * 1.5) 0;
     overflow: hidden;
     background-color: var(--burgundy);
     color: #FFFFFF;
@@ -226,19 +226,17 @@
 
 /* Society Section */
 .societySection {
-    background-color: var(--burgundy); /* Matches heritage chapter to prevent gaps */
+    background-color: var(--background);
     padding: calc(var(--section-padding) * 1.5) 0;
 }
 
 .societyWrapper {
-    background-color: rgba(255, 255, 255, 0.03); /* Lighter glass */
+    background-color: var(--muted);
     padding: 7rem 4rem;
     text-align: center;
     border-radius: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.08); /* More subtle border */
-    backdrop-filter: blur(10px); /* Add glass blur */
-    -webkit-backdrop-filter: blur(10px);
-    color: #FFFFFF;
+    border: 1px solid var(--border);
+    color: var(--foreground);
 }
 
 .societyContent {
@@ -251,14 +249,14 @@
     font-size: clamp(2.5rem, 6vw, 4rem); 
     font-weight: 700;
     margin-bottom: 2rem;
-    color: #FFFFFF;
+    color: var(--burgundy);
     line-height: 1.1;
     letter-spacing: -0.02em;
 }
 
 .societySub {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--muted-foreground);
     margin-bottom: 4rem;
     line-height: 1.6;
 }
@@ -274,21 +272,21 @@
     flex: 1;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid var(--border);
     padding: 1rem 0;
     font-size: 0.875rem;
     letter-spacing: 0.1em;
     outline: none;
     transition: border-color 0.3s ease;
-    color: #FFFFFF;
+    color: var(--foreground);
 }
 
 .societyInput::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--muted-foreground);
 }
 
 .societyInput:focus {
-    border-color: var(--gold);
+    border-color: var(--burgundy);
 }
 
 .societyLabel {
@@ -296,14 +294,14 @@
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.3em;
-    color: var(--gold-light);
+    color: var(--muted-foreground);
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
 
 .societyBtn {
-    background-color: var(--gold);
-    color: var(--burgundy-dark);
+    background-color: var(--burgundy);
+    color: #FFFFFF;
     padding: 1.25rem 3.5rem;
     font-size: 0.75rem;
     font-weight: 800;
@@ -316,7 +314,7 @@
 }
 
 .societyBtn:hover {
-    background-color: var(--gold-light);
+    background-color: var(--burgundy-dark);
     transform: translateY(-2px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
