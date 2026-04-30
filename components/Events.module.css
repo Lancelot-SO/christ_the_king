@@ -1,10 +1,13 @@
 .eventsSection {
-    padding: var(--section-padding) 0;
+    padding: 2rem 0; /* Reduced from 4.5rem */
     background-color: var(--muted);
+    min-height: auto;
+    display: flex;
+    align-items: center;
 }
 
 .chapterHeading {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem; /* Reduced from 4rem */
 }
 
 .layoutGrid {
@@ -28,156 +31,176 @@
     background: var(--background);
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
     width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    max-height: 85vh; /* Ensure it doesn't exceed viewport height */
 }
 
 @media (min-width: 1024px) {
     .eventCard {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.1fr 1fr; /* Adjusted ratio for better fit */
+        min-height: 520px; /* Reduced from 600px */
     }
 }
 
 .eventImageWrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     background-color: #2b1115;
 }
 
 @media (min-width: 1024px) {
     .eventImageWrapper {
         height: 100%;
-        min-height: 400px;
         aspect-ratio: auto;
     }
 }
 
 .eventImage {
-    object-fit: contain;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eventCard:hover .eventImage {
+    transform: scale(1.05);
 }
 
 .eventContent {
-    padding: 3rem 2rem;
+    padding: 2rem 2rem; /* Reduced from 3rem */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: linear-gradient(to bottom right, #ffffff, #fcfaf5);
 }
 
 @media (min-width: 1024px) {
     .eventContent {
-        padding: 4rem 3rem;
+        padding: 2.5rem 3.5rem; /* Reduced from 5rem 4rem */
     }
 }
 
 .eventHeader {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    gap: 1.5rem; /* Reduced from 2rem */
+    margin-bottom: 2rem; /* Reduced from 3.5rem */
 }
 
 @media (min-width: 768px) {
     .eventHeader {
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
 .eventTitle {
     font-family: var(--font-serif);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-size: clamp(1.8rem, 3vw, 2.5rem); /* Reduced from 3.2rem */
     color: var(--burgundy);
-    line-height: 1.2;
+    line-height: 1.1;
     flex: 1;
+    letter-spacing: -0.01em;
 }
 
 .eventDate {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     background: var(--burgundy);
     color: var(--primary-foreground);
-    padding: 1rem 1.5rem;
-    border-radius: 1rem;
+    padding: 1rem 1.5rem; /* Reduced from 1.25 1.75 */
+    border-radius: 1.25rem;
     min-width: 120px;
-}
-
-@media (min-width: 768px) {
-    .eventDate {
-        align-items: center;
-    }
+    box-shadow: 0 10px 25px rgba(124, 25, 54, 0.2);
 }
 
 .dateDay {
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* Reduced from 2.8rem */
     font-weight: 700;
     font-family: var(--font-serif);
     line-height: 1;
 }
 
 .dateMonth {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-top: 0.3rem;
+    text-transform: uppercase;
 }
 
 .dateTime {
     font-size: 0.75rem;
-    opacity: 0.8;
-    margin-top: 0.5rem;
+    opacity: 0.9;
+    margin-top: 0.4rem;
+    font-weight: 500;
 }
 
 .eventDetails {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Reduced from 2.5rem */
+    margin-bottom: 2.5rem; /* Reduced from 4rem */
 }
 
 .detailItem {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.5rem; /* Reduced from 0.75rem */
 }
 
 .detailLabel {
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--muted-foreground);
-    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold-dark);
+    font-weight: 800;
 }
 
 .detailValue {
-    font-size: 1.25rem;
+    font-size: 1.25rem; /* Reduced from 1.5rem */
     color: var(--foreground);
-    font-weight: 500;
+    font-weight: 600;
+    font-family: var(--font-serif);
+}
+
+.priceWrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
 }
 
 .ticketAdmit {
     font-size: 0.9rem;
     color: var(--muted-foreground);
     font-weight: 400;
-    margin-left: 0.5rem;
 }
 
 .eventActionArea {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Reduced from 2.5rem */
+    padding-top: 1.5rem; /* Reduced from 2.5rem */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .purchaseInfo {
-    font-size: 1.1rem;
+    font-size: 0.9rem; /* Reduced from 1rem */
     line-height: 1.6;
-    color: var(--foreground);
+    color: var(--muted-foreground);
 }
 
 .purchaseInfo strong {
     color: var(--burgundy);
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.eventActionArea button {
+    width: 100%;
+    max-width: 280px;
 }
 
 .sideEventsColumn {

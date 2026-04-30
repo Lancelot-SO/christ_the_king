@@ -50,6 +50,7 @@ export default function Sidebar() {
         { label: "Customers", icon: <Users size={20} />, href: "/admin/dashboard/customers" },
         { label: "Alumni Family", icon: <Mail size={20} />, href: "/admin/dashboard/alumni-family" },
         { label: "Dues", icon: <CreditCard size={20} />, href: "/admin/dashboard/dues" },
+        { label: "Tickets", icon: <Package size={20} />, href: "/admin/dashboard/tickets" },
         { label: "Donations", icon: <Heart size={20} />, href: "/admin/dashboard/donations" },
         { label: "Settings", icon: <Settings size={20} />, href: "/admin/dashboard/settings" },
     ];
