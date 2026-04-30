@@ -35,6 +35,7 @@ export default function TicketPurchaseModal({ isOpen, onClose, eventTitle, price
         reference: (new Date()).getTime().toString(),
         email: email,
         amount: price * 100, // Paystack amount is in kobo/pesewas
+        currency: "GHS",
         publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
         metadata: {
             custom_fields: [
@@ -55,40 +56,33 @@ export default function TicketPurchaseModal({ isOpen, onClose, eventTitle, price
     const handleSuccess = async (reference: any) => {
         setLoading(true);
         try {
-            // 1. Get ticket type ID
-            const { data: typeData } = await supabase
-                .from('ticket_types')
-                .select('id')
-                .eq('name', eventTitle)
-                .single();
-
-            const generatedCode = `CTK-70-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+            const generatedCode = `CTKIS-70-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
             setTicketCode(generatedCode);
 
-            // 2. Save ticket to database
-            const { error: insertError } = await supabase
-                .from('tickets')
-                .insert({
-                    ticket_type_id: typeData?.id,
+            // Call API to save ticket and send emails
+            const response = await fetch('/api/tickets', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     customer_name: name,
                     customer_email: email,
                     customer_phone: phone,
                     payment_reference: reference.reference,
-                    payment_status: 'success',
+                    event_title: eventTitle,
+                    price: price,
                     ticket_code: generatedCode
-                });
+                })
+            });
 
-            if (insertError) throw insertError;
-
-            // 3. Update sold quantity
-            if (typeData?.id) {
-                await supabase.rpc('increment_ticket_sold', { type_id: typeData.id });
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to process ticket');
             }
 
             setSuccess(true);
-        } catch (err) {
+        } catch (err: any) {
             console.error("Error saving ticket:", err);
-            alert("Payment successful but there was an error saving your ticket. Please contact support with your reference: " + reference.reference);
+            alert("Payment successful but there was an error saving your ticket: " + err.message + ". Please contact support with your reference: " + reference.reference);
         } finally {
             setLoading(false);
         }
@@ -99,15 +93,15 @@ export default function TicketPurchaseModal({ isOpen, onClose, eventTitle, price
     return (
         <AnimatePresence>
             <div className={styles.overlay} onClick={onClose}>
-                <motion.div 
-                    className={styles.modal} 
+                <motion.div
+                    className={styles.modal}
                     onClick={e => e.stopPropagation()}
                     initial={{ opacity: 0, y: 50, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 50, scale: 0.9 }}
                 >
                     <button className={styles.closeBtn} onClick={onClose}><X size={24} /></button>
-                    
+
                     {!success ? (
                         <>
                             <div className={styles.modalHeader}>
@@ -128,9 +122,9 @@ export default function TicketPurchaseModal({ isOpen, onClose, eventTitle, price
                             <form className={styles.form} onSubmit={e => e.preventDefault()}>
                                 <div className={styles.inputGroup}>
                                     <label><User size={16} /> Full Name</label>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your name" 
+                                    <input
+                                        type="text"
+                                        placeholder="Enter your name"
                                         value={name}
                                         onChange={e => setName(e.target.value)}
                                         required
@@ -138,9 +132,9 @@ export default function TicketPurchaseModal({ isOpen, onClose, eventTitle, price
                                 </div>
                                 <div className={styles.inputGroup}>
                                     <label><Mail size={16} /> Email Address</label>
-                                    <input 
-                                        type="email" 
-                                        placeholder="Enter your email" 
+                                    <input
+                                        type="email"
+                                        placeholder="Enter your email"
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
                                         required
@@ -148,16 +142,16 @@ export default function TicketPurchaseModal({ isOpen, onClose, eventTitle, price
                                 </div>
                                 <div className={styles.inputGroup}>
                                     <label><Phone size={16} /> Phone Number (Optional)</label>
-                                    <input 
-                                        type="tel" 
-                                        placeholder="Enter your phone number" 
+                                    <input
+                                        type="tel"
+                                        placeholder="Enter your phone number"
                                         value={phone}
                                         onChange={e => setPhone(e.target.value)}
                                     />
                                 </div>
 
                                 <div className={styles.actions}>
-                                    <PaymentButton 
+                                    <PaymentButton
                                         config={paystackConfig}
                                         onSuccess={handleSuccess}
                                         onClose={() => setLoading(false)}
