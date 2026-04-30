@@ -36,7 +36,7 @@ CREATE POLICY "Allow admins full access to tickets" ON tickets FOR ALL USING (is
 -- Allow public insert for ticket purchases
 CREATE POLICY "Allow public insert to tickets" ON tickets FOR INSERT WITH CHECK (true);
 -- Allow users to read their own tickets if logged in
-CREATE POLICY "Allow users to read own tickets by email" ON tickets FOR SELECT USING (customer_email = (SELECT email FROM auth.users WHERE id = auth.uid()));
+CREATE POLICY "Allow users to read own tickets by email" ON tickets FOR SELECT USING (customer_email = (auth.jwt() ->> 'email'));
 
 -- Insert initial ticket type for the 70th Anniversary Dinner
 INSERT INTO ticket_types (name, price, description, total_quantity)
