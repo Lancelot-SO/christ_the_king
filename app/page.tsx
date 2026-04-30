@@ -8,9 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AlumniJoinForm from "@/components/AlumniJoinForm";
 import FundraisingPreview from "@/components/FundraisingPreview";
-import dynamic from "next/dynamic";
-
-const Events = dynamic(() => import("@/components/Events"), { ssr: false });
+import Events from "@/components/Events";
 
 export default function Home() {
   return (

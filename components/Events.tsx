@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./Events.module.css";
-import TicketPurchaseModal from "./TicketPurchaseModal";
+import dynamic from "next/dynamic";
+
+const TicketPurchaseModal = dynamic(() => import("./TicketPurchaseModal"), { ssr: false });
 
 export default function Events() {
     const [isModalOpen, setIsModalOpen] = useState(false);
